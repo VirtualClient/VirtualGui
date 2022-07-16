@@ -16,8 +16,6 @@ interface ScaleHelper {
     fun getScaledWidth() : Int
     fun getScaledHeight() : Int
 
-    fun setScale(scale: Int)
-
     fun getMouseY(): Float {
         return ((VirtualMouse.rawY * getScaledHeight().toDouble()) / VirtualWindow.windowHeight.toDouble()).toFloat()
     }

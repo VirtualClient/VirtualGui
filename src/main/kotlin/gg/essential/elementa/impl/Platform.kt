@@ -9,13 +9,15 @@ interface Platform {
 
     var currentScreen: Any?
 
+    val forceUnicodeFont: Boolean
+
     fun isAllowedInChat(char: Char): Boolean
 
     fun enableStencil()
 
     fun isCallingFromMinecraftThread(): Boolean
 
-    fun setMinecraftScale(scale: Int)
+    fun scale(scaledWidth: Double, scaledHeight: Double)
 
     @ApiStatus.Internal
     companion object {

@@ -15,9 +15,4 @@ object VanillaScaleHelper : ScaleHelper {
     override fun getScaledWidth(): Int = VirtualWindow.scaledWidth
     override fun getScaledHeight(): Int = VirtualWindow.scaledHeight
 
-    override fun setScale(scale: Int) {
-        Platform.platform.setMinecraftScale(scale)
-    }
-
-
 }

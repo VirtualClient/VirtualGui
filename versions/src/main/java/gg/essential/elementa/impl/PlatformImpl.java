@@ -1,9 +1,12 @@
 package gg.essential.elementa.impl;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import gg.virtualclient.virtualminecraft.VirtualMinecraft;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.Matrix4f;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
@@ -66,11 +69,32 @@ public class PlatformImpl implements Platform {
     }
 
     @Override
-    public void setMinecraftScale(int scale) {
+    public boolean getForceUnicodeFont() {
         //#if MC>=11900
-        MinecraftClient.getInstance().options.getGuiScale().setValue(scale);
+        return MinecraftClient.getInstance().options.getForceUnicodeFont().getValue();
         //#else
-        //$$ MinecraftClient.getInstance().options.guiScale = scale;
+        //$$ return MinecraftClient.getInstance().options.forceUnicodeFont;
+        //#endif
+    }
+
+    @Override
+    public void scale(double scaledWidth, double scaledHeight) {
+        //#if MC>=11701
+        RenderSystem.clear(256, VirtualMinecraft.INSTANCE.isRunningOnMac());
+        Matrix4f matrix4f = Matrix4f.projectionMatrix(0.0f, (float) scaledWidth, 0.0f, (float) scaledHeight, 1000.0f, 3000.0f);
+        RenderSystem.setProjectionMatrix(matrix4f);
+        MatrixStack matrixStack = RenderSystem.getModelViewStack();
+        matrixStack.loadIdentity();
+        matrixStack.translate(0.0, 0.0, -2000.0);
+        RenderSystem.applyModelViewMatrix();
+        //#else
+        //$$ RenderSystem.clear(256, VirtualMinecraft.INSTANCE.isRunningOnMac());
+        //$$ RenderSystem.matrixMode(5889);
+        //$$ RenderSystem.loadIdentity();
+        //$$ RenderSystem.ortho(0.0, scaledWidth, scaledHeight, 0.0, 1000.0, 3000.0);
+        //$$ RenderSystem.matrixMode(5888);
+        //$$ RenderSystem.loadIdentity();
+        //$$ RenderSystem.translatef(0.0F, 0.0F, -2000.0F);
         //#endif
     }
 }
