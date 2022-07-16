@@ -4,11 +4,15 @@ import gg.essential.elementa.constraints.*
 import gg.essential.elementa.font.DefaultFonts
 import gg.essential.elementa.font.FontProvider
 import gg.virtualclient.virtualminecraft.VirtualTextRenderer
+import net.kyori.adventure.text.Component
 import java.awt.Color
 
 fun Char.width(textScale: Float = 1f) = VirtualTextRenderer.getInstance().getWidth(this.toString()) * textScale
 
 fun String.width(textScale: Float = 1f, fontProvider: FontProvider = DefaultFonts.VANILLA_FONT_RENDERER) =
+    fontProvider.getStringWidth(this, 10f) * textScale
+
+fun Component.width(textScale: Float = 1f, fontProvider: FontProvider = DefaultFonts.VANILLA_FONT_RENDERER) =
     fontProvider.getStringWidth(this, 10f) * textScale
 
 @JvmOverloads

@@ -10,25 +10,33 @@ import gg.essential.elementa.state.State
 import gg.essential.elementa.state.pixels
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import java.awt.Color
 
 /**
  * Simple text component that draws its given `text` at the scale determined by
  * this component's width & height constraints.
  */
-open class UIText
-constructor(
-    text: State<String>,
+open class UIText constructor(
+    text: State<Component>,
     shadow: State<Boolean> = BasicState(true),
     shadowColor: State<Color?> = BasicState(null)
 ) : UIComponent() {
-    @JvmOverloads constructor(
+    constructor(
         text: String = "",
+        shadow: Boolean = true,
+        shadowColor: Color? = null
+    ) : this(BasicState(LegacyComponentSerializer.legacySection().deserialize(text)), BasicState(shadow), BasicState(shadowColor))
+
+    @JvmOverloads constructor(
+        text: Component = Component.empty(),
         shadow: Boolean = true,
         shadowColor: Color? = null
     ) : this(BasicState(text), BasicState(shadow), BasicState(shadowColor))
 
-    private val textState: MappedState<String, String> = text.map { it } // extra map so we can easily rebind it
+
+    private val textState: MappedState<Component, Component> = text.map { it } // extra map so we can easily rebind it
     private val shadowState: MappedState<Boolean, Boolean> = shadow.map { it }
     private val shadowColorState: MappedState<Color?, Color?> = shadowColor.map { it }
     private val textScaleState = constraints.asState { getTextScale() }
@@ -57,7 +65,7 @@ constructor(
         }.pixels())
     }
 
-    fun bindText(newTextState: State<String>) = apply {
+    fun bindText(newTextState: State<Component>) = apply {
         textState.rebind(newTextState)
     }
 
@@ -70,7 +78,10 @@ constructor(
     }
 
     fun getText() = textState.get()
-    fun setText(text: String) = apply { textState.set(text) }
+    fun setText(text: Component) = apply { textState.set(text) }
+
+    fun setText(text: String) = apply { textState.set(LegacyComponentSerializer.legacySection().deserialize(text)) }
+
 
     fun getShadow() = shadowState.get()
     fun setShadow(shadow: Boolean) = apply { shadowState.set(shadow) }
@@ -97,7 +108,7 @@ constructor(
 
     override fun draw(matrixStack: VirtualMatrixStack) {
         val text = textState.get()
-        if (text.isEmpty())
+        if (text == Component.empty())
             return
 
         beforeDraw(matrixStack)
