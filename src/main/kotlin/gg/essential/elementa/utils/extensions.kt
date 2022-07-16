@@ -2,7 +2,7 @@ package gg.essential.elementa.utils
 
 import gg.essential.elementa.UIComponent
 import gg.essential.elementa.components.Window
-import gg.virtualclient.virtualminecraft.VirtualWindow
+import gg.essential.elementa.scale.ScaleHelper
 import gg.virtualclient.virtualminecraft.shader.BlendState
 import gg.virtualclient.virtualminecraft.shader.VirtualShader
 import java.awt.Color
@@ -13,11 +13,11 @@ fun Float.guiHint(roundDown: Boolean) = UIComponent.guiHint(this, roundDown)
 fun Double.guiHint(roundDown: Boolean) = UIComponent.guiHint(this, roundDown)
 
 fun Float.roundToRealPixels(): Float {
-    val factor = VirtualWindow.scaleFactor.toFloat()
+    val factor = ScaleHelper.activeScaleHelper.getScaleFactor().toFloat()
     return round(this * factor).let { if (it == 0f && this != 0f) sign(this) else it } / factor
 }
 fun Double.roundToRealPixels(): Double {
-    val factor = VirtualWindow.scaleFactor
+    val factor = ScaleHelper.activeScaleHelper.getScaleFactor()
     return round(this * factor).let { if (it == 0.0 && this != 0.0) sign(this) else it } / factor
 }
 

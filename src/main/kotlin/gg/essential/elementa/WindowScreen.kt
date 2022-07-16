@@ -2,8 +2,9 @@ package gg.essential.elementa
 
 import gg.essential.elementa.components.Window
 import gg.essential.elementa.constraints.animation.*
+import gg.essential.elementa.scale.ScaleHelper
+import gg.essential.elementa.scale.VanillaScaleHelper
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
-import gg.virtualclient.virtualminecraft.VirtualMouse
 import gg.virtualclient.virtualminecraft.VirtualScreen
 import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import net.kyori.adventure.text.Component
@@ -20,8 +21,9 @@ abstract class WindowScreen @JvmOverloads constructor(
     private val version: ElementaVersion = ElementaVersion.V2,
     private val enableRepeatKeys: Boolean = true,
     private val drawDefaultBackground: Boolean = true,
+    val scaleHelper: ScaleHelper = VanillaScaleHelper
 ) : VirtualScreen(Component.empty()) {
-    val window = Window(version)
+    val window = Window(version, scaleHelper = scaleHelper)
     private var isInitialized = false
 
     init {
@@ -57,8 +59,8 @@ abstract class WindowScreen @JvmOverloads constructor(
         // See [ElementaVersion.V2] for more info
         val (adjustedMouseX, adjustedMouseY) =
             if (version >= ElementaVersion.v2 && (mouseX == floor(mouseX) && mouseY == floor(mouseY))) {
-                val x = VirtualMouse.scaledX
-                val y = VirtualMouse.scaledY
+                val x = window.getMouseX()
+                val y = window.getMouseY()
 
                 mouseX + (x - floor(x)) to mouseY + (y - floor(y))
             } else {

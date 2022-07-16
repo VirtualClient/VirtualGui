@@ -10,7 +10,6 @@ import gg.essential.elementa.markdown.MarkdownComponent
 import gg.essential.elementa.markdown.MarkdownConfig
 import gg.essential.elementa.markdown.selection.TextCursor
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
-import gg.virtualclient.virtualminecraft.VirtualMouse
 import java.awt.Color
 
 class TextDrawable(
@@ -171,8 +170,8 @@ class TextDrawable(
             }
         }
 
-        val mouseX = VirtualMouse.scaledX - state.xShift
-        val mouseY = VirtualMouse.scaledY - state.yShift
+        val mouseX = md.getMouseX() - state.xShift
+        val mouseY = md.getMouseY() - state.yShift
         isHovered = if (style.linkLocation != null) {
             isHovered(mouseX.toFloat(), mouseY.toFloat())
         } else false

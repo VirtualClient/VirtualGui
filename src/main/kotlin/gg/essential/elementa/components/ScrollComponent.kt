@@ -8,7 +8,6 @@ import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.ScissorEffect
 import gg.essential.elementa.utils.bindLast
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
-import gg.virtualclient.virtualminecraft.VirtualMouse
 import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import java.awt.Color
 import java.util.concurrent.CopyOnWriteArrayList
@@ -498,7 +497,7 @@ class ScrollComponent @JvmOverloads constructor(
 
         if (horizontalScrollEnabled) {
             val xBegin = autoScrollBegin.first + getLeft()
-            val currentX = VirtualMouse.scaledX
+            val currentX = getMouseX()
 
             if (currentX in getLeft()..getRight()) {
                 val deltaX = currentX - xBegin
@@ -510,7 +509,7 @@ class ScrollComponent @JvmOverloads constructor(
 
         if (verticalScrollEnabled) {
             val yBegin = autoScrollBegin.second + getTop()
-            val currentY = VirtualMouse.scaledY
+            val currentY = getMouseY()
 
             if (currentY in getTop()..getBottom()) {
                 val deltaY = currentY - yBegin

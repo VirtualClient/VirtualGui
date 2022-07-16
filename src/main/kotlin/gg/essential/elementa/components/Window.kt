@@ -8,10 +8,11 @@ import gg.essential.elementa.constraints.resolution.ConstraintResolverV2
 import gg.essential.elementa.effects.ScissorEffect
 import gg.essential.elementa.font.FontRenderer
 import gg.essential.elementa.impl.Platform.Companion.platform
+import gg.essential.elementa.scale.ScaleHelper
+import gg.essential.elementa.scale.VanillaScaleHelper
 import gg.essential.elementa.utils.elementaDev
 import gg.essential.elementa.utils.requireMainThread
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
-import gg.virtualclient.virtualminecraft.VirtualWindow
 import org.lwjgl.opengl.GL11
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.TimeUnit
@@ -22,7 +23,8 @@ import java.util.concurrent.TimeUnit
  */
 class Window @JvmOverloads constructor(
     internal val version: ElementaVersion = ElementaVersion.V2,
-    val animationFPS: Int = 244
+    val animationFPS: Int = 244,
+    private var scaleHelper: ScaleHelper = VanillaScaleHelper
 ) : UIComponent() {
     private var systemTime = -1L
     private var currentMouseButton = -1
@@ -42,6 +44,19 @@ class Window @JvmOverloads constructor(
         super.parent = this
     }
 
+    override fun onWindowResize() {
+        //So the components that will be initialized/reinitialized here all have the scale helper applied.
+        val prevScaleHelper = ScaleHelper.activeScaleHelper
+        ScaleHelper.activeScaleHelper = scaleHelper
+        scaleHelper.init()
+        super.onWindowResize()
+        ScaleHelper.activeScaleHelper = prevScaleHelper
+    }
+
+    override fun getScaleHelper(): ScaleHelper {
+        return scaleHelper
+    }
+
     override fun afterInitialization() {
         enqueueRenderOperation {
             FontRenderer.initShaders()
@@ -58,6 +73,12 @@ class Window @JvmOverloads constructor(
             return
 
         requireMainThread()
+
+        val prevScaleHelper = ScaleHelper.activeScaleHelper
+
+        //Just to make sure it is set
+        ScaleHelper.activeScaleHelper = this.scaleHelper
+        scaleHelper.drawScreen(matrixStack)
 
         val startTime = System.nanoTime()
 
@@ -133,10 +154,14 @@ class Window @JvmOverloads constructor(
                 }
             }
         }
+        scaleHelper.postDrawScreen(matrixStack)
+        ScaleHelper.activeScaleHelper = prevScaleHelper
     }
 
     internal fun drawEmbedded(matrixStack: VirtualMatrixStack) {
+        scaleHelper.drawScreen(matrixStack)
         super.draw(matrixStack)
+        scaleHelper.postDrawScreen(matrixStack)
     }
 
     fun drawFloatingComponents(matrixStack: VirtualMatrixStack) {
@@ -262,11 +287,11 @@ class Window @JvmOverloads constructor(
     }
 
     override fun getWidth(): Float {
-        return VirtualWindow.scaledWidth.toFloat()
+        return getScaleHelper().getScaledWidth().toFloat()
     }
 
     override fun getHeight(): Float {
-        return VirtualWindow.scaledHeight.toFloat()
+        return getScaleHelper().getScaledHeight().toFloat()
     }
 
     override fun getRight() = getWidth()
@@ -280,12 +305,12 @@ class Window @JvmOverloads constructor(
         ) return false
 
         val currentScissor = ScissorEffect.currentScissorState ?: return true
-        val sf = VirtualWindow.scaleFactor
+        val sf = ScaleHelper.activeScaleHelper.getScaleFactor()
 
         val realX = currentScissor.x / sf
         val realWidth = currentScissor.width / sf
 
-        val bottomY = ((VirtualWindow.scaledHeight * sf) - currentScissor.y) / sf
+        val bottomY = ((ScaleHelper.activeScaleHelper.getScaledHeight() * sf) - currentScissor.y) / sf
         val realHeight = currentScissor.height / sf
 
         return right > realX &&

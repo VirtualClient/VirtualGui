@@ -15,6 +15,8 @@ interface Platform {
 
     fun isCallingFromMinecraftThread(): Boolean
 
+    fun setMinecraftScale(scale: Int)
+
     @ApiStatus.Internal
     companion object {
         internal val platform: Platform =

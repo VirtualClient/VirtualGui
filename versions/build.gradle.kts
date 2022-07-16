@@ -34,11 +34,11 @@ dependencies {
 //    modApi(libs.versions.universalcraft.map { "gg.essential:universalcraft-$platform:$it" }) {
 //        exclude(group = "org.jetbrains.kotlin")
 //    }
-    modApi("gg.virtualclient:virtualminecraft:1.0.0-${platform.mcVersion}-SNAPSHOT")
-
-    common(project(":")) {
-        exclude("gg.virtualclient", "virtualminecraft")
+    modApi("gg.virtualclient:virtualminecraft:1.0.0-${platform.mcVersion}-SNAPSHOT") {
+        exclude(group = "org.jetbrains.kotlin")
     }
+
+    common(project(":"))
 
     if (platform.isFabric) {
         val fabricApiVersion = when(platform.mcVersion) {

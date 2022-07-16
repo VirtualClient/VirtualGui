@@ -5,6 +5,7 @@ import gg.essential.elementa.components.image.CacheableImage
 import gg.essential.elementa.components.image.DefaultLoadingImage
 import gg.essential.elementa.components.image.ImageCache
 import gg.essential.elementa.components.image.ImageProvider
+import gg.essential.elementa.impl.Platform
 import gg.essential.elementa.svg.SVGParser
 import gg.essential.elementa.utils.ResourceCache
 import gg.essential.elementa.utils.drawTexture

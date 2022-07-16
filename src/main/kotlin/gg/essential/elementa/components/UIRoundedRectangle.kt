@@ -33,9 +33,9 @@ open class UIRoundedRectangle(radius: Float) : UIComponent() {
     }
 
     companion object {
-        private lateinit var shader: VirtualShader
-        private lateinit var shaderRadiusUniform: FloatUniform
-        private lateinit var shaderInnerRectUniform: Float4Uniform
+        lateinit var shader: VirtualShader
+        lateinit var shaderRadiusUniform: FloatUniform
+        lateinit var shaderInnerRectUniform: Float4Uniform
 
         fun initShaders() {
             if (::shader.isInitialized)
@@ -48,6 +48,10 @@ open class UIRoundedRectangle(radius: Float) : UIComponent() {
             }
             shaderRadiusUniform = shader.getFloatUniform("u_Radius")
             shaderInnerRectUniform = shader.getFloat4Uniform("u_InnerRect")
+        }
+
+        fun isShaderInitialized(): Boolean {
+            return ::shader.isInitialized
         }
 
         /**

@@ -1,6 +1,7 @@
 package gg.essential.elementa.effects
 
 import gg.essential.elementa.UIComponent
+import gg.essential.elementa.scale.ScaleHelper
 import gg.essential.elementa.utils.roundToRealPixels
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualWindow
@@ -45,7 +46,7 @@ class ScissorEffect @JvmOverloads constructor(
 
     override fun beforeDraw(matrixStack: VirtualMatrixStack) {
         val bounds = customBoundingBox?.getScissorBounds() ?: scissorBounds ?: boundComponent.getScissorBounds()
-        val scaleFactor = VirtualWindow.scaleFactor.toInt()
+        val scaleFactor = ScaleHelper.activeScaleHelper.getScaleFactor().toInt()
 
         if (currentScissorState == null) {
             glEnable(GL_SCISSOR_TEST)

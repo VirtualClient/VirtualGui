@@ -12,11 +12,11 @@ import gg.essential.elementa.effects.ScissorEffect
 import gg.essential.elementa.events.UIClickEvent
 import gg.essential.elementa.events.UIScrollEvent
 import gg.essential.elementa.font.FontProvider
+import gg.essential.elementa.scale.ScaleHelper
 import gg.essential.elementa.utils.*
 import gg.essential.elementa.utils.requireMainThread
 import gg.essential.elementa.utils.requireState
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
-import gg.virtualclient.virtualminecraft.VirtualMouse
 import gg.virtualclient.virtualminecraft.VirtualWindow
 import org.lwjgl.opengl.GL11
 import java.awt.Color
@@ -370,13 +370,13 @@ abstract class UIComponent : Observable() {
     }
 
     protected fun getMousePosition(): Pair<Float, Float> {
-        return pixelCoordinatesToPixelCenter(VirtualMouse.scaledX, VirtualMouse.scaledY).let { (x, y) -> x.toFloat() to y.toFloat() }
+        return pixelCoordinatesToPixelCenter(getMouseX().toDouble(), getMouseY().toDouble()).let { (x, y) -> x.toFloat() to y.toFloat() }
     }
 
     internal fun pixelCoordinatesToPixelCenter(mouseX: Double, mouseY: Double): Pair<Double, Double> {
         // Move the position of a click to the center of a pixel. See [ElementaVersion.v2] for more info
         return if ((Window.ofOrNull(this)?.version ?: ElementaVersion.v0) >= ElementaVersion.v2) {
-            val halfPixel = 0.5 / VirtualWindow.scaleFactor
+            val halfPixel = 0.5 / getScaleHelper().getScaleFactor()
             mouseX + halfPixel to mouseY + halfPixel
         } else {
             mouseX to mouseY
@@ -1141,6 +1141,18 @@ abstract class UIComponent : Observable() {
         }
     }
 
+    open fun getScaleHelper(): ScaleHelper {
+        return Window.ofOrNull(this)?.getScaleHelper() ?: ScaleHelper.activeScaleHelper
+    }
+
+    internal fun getMouseX(): Float {
+        return getScaleHelper().getMouseX()
+    }
+
+    internal fun getMouseY(): Float {
+        return getScaleHelper().getMouseY()
+    }
+
     companion object {
         val DEBUG_OUTLINE_WIDTH = System.getProperty("elementa.debug.width")?.toDoubleOrNull() ?: 2.0
 
@@ -1198,7 +1210,7 @@ abstract class UIComponent : Observable() {
          * Hints a number with respect to the current GUI scale.
          */
         fun guiHint(number: Float, roundDown: Boolean): Float {
-            val factor = VirtualWindow.scaleFactor.toFloat()
+            val factor = ScaleHelper.activeScaleHelper.getScaleFactor().toFloat()
             return (number * factor).let {
                 if (roundDown) floor(it) else ceil(it)
             } / factor
@@ -1208,18 +1220,11 @@ abstract class UIComponent : Observable() {
          * Hints a number with respect to the current GUI scale.
          */
         fun guiHint(number: Double, roundDown: Boolean): Double {
-            val factor = VirtualWindow.scaleFactor
+            val factor = ScaleHelper.activeScaleHelper.getScaleFactor()
             return (number * factor).let {
                 if (roundDown) floor(it) else ceil(it)
             } / factor
         }
 
-        internal fun getMouseX(): Float {
-            return VirtualMouse.scaledX.toFloat()
-        }
-
-        internal fun getMouseY(): Float {
-            return VirtualMouse.scaledY.toFloat()
-        }
     }
 }

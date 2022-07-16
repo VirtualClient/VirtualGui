@@ -64,4 +64,13 @@ public class PlatformImpl implements Platform {
         //$$ return Minecraft.getMinecraft().isCallingFromMinecraftThread();
         //#endif
     }
+
+    @Override
+    public void setMinecraftScale(int scale) {
+        //#if MC>=11900
+        MinecraftClient.getInstance().options.getGuiScale().setValue(scale);
+        //#else
+        //$$ MinecraftClient.getInstance().options.guiScale = scale;
+        //#endif
+    }
 }

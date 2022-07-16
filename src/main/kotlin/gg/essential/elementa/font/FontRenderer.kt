@@ -5,6 +5,7 @@ import gg.essential.elementa.constraints.ConstraintType
 import gg.essential.elementa.constraints.resolution.ConstraintVisitor
 import gg.essential.elementa.font.data.Font
 import gg.essential.elementa.font.data.Glyph
+import gg.essential.elementa.scale.ScaleHelper
 import gg.essential.elementa.utils.readFromLegacyShader
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
@@ -217,7 +218,7 @@ class FontRenderer(
         doffsetUniform.setValue(3.5f / currentPointSize)
 
 
-        val guiScale = VirtualWindow.scaleFactor.toFloat()
+        val guiScale = ScaleHelper.activeScaleHelper.getScaleFactor().toFloat()
 
         //Reset
         obfuscated = false
