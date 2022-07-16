@@ -13,7 +13,7 @@ import gg.essential.elementa.constraints.debug.withDebugger
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.OutlineEffect
 import gg.essential.elementa.effects.ScissorEffect
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 
 class ConstraintResolutionGui(
@@ -390,7 +390,7 @@ class ConstraintResolutionGui(
             component.parent = this
         }
 
-        override fun draw(matrixStack: UMatrixStack) {
+        override fun draw(matrixStack: VirtualMatrixStack) {
             beforeDraw(matrixStack)
 
             withDebugger(CycleSafeConstraintDebugger(RecalculatingConstraintDebugger())) {

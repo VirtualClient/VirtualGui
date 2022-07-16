@@ -2,17 +2,15 @@ package gg.essential.elementa.markdown.drawables
 
 import gg.essential.elementa.markdown.DrawState
 import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.elementa.markdown.MarkdownConfig
 import gg.essential.elementa.markdown.selection.Cursor
-import gg.essential.elementa.markdown.selection.TextCursor
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class CodeBlockDrawable(md: MarkdownComponent) : Drawable(md) {
     override fun layoutImpl(x: Float, y: Float, width: Float): Layout {
         TODO("Not yet implemented")
     }
 
-    override fun draw(matrixStack: UMatrixStack, state: DrawState) {
+    override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
         TODO("Not yet implemented")
     }
 

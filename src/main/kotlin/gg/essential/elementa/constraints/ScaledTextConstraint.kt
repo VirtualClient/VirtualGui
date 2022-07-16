@@ -3,7 +3,6 @@ package gg.essential.elementa.constraints
 import gg.essential.elementa.UIComponent
 import gg.essential.elementa.components.UIText
 import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.universal.UGraphics
 import java.lang.UnsupportedOperationException
 
 /**
@@ -17,7 +16,7 @@ class ScaledTextConstraint(var scale: Float) : SizeConstraint {
 
     override fun getWidthImpl(component: UIComponent): Float {
         return when (component) {
-            is UIText -> scale * UGraphics.getStringWidth(component.getText())
+            is UIText -> scale * component.getFontProvider().getStringWidth(component.getText(), 10f)
             else -> throw IllegalAccessException("ScaledTextConstraint can only be used with UIText")
         }
     }

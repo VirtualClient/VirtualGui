@@ -1,6 +1,6 @@
 package gg.essential.elementa.components.image
 
-import gg.essential.universal.utils.ReleasedDynamicTexture
+import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
 
 interface CacheableImage {
 

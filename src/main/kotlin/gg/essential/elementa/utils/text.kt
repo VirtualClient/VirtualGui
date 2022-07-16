@@ -3,8 +3,10 @@ package gg.essential.elementa.utils
 import gg.essential.elementa.dsl.width
 import gg.essential.elementa.font.DefaultFonts
 import gg.essential.elementa.font.FontProvider
-import gg.essential.universal.ChatColor
-import gg.essential.universal.UGraphics
+import gg.virtualclient.virtualminecraft.VirtualTextRenderer
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.TextComponent
+import net.kyori.adventure.text.TranslatableComponent
 
 fun getStringSplitToWidthTruncated(
     text: String,
@@ -32,6 +34,79 @@ fun getStringSplitToWidthTruncated(
     }
 }
 
+fun getComponentSplitToWidth(
+    text: Component,
+    maxLineWidth: Float,
+    textScale: Float,
+    ensureSpaceAtEndOfLines: Boolean = true,
+    fontProvider: FontProvider = DefaultFonts.VANILLA_FONT_RENDERER
+): List<Component> {
+    val allComponents = mutableListOf(text)
+    fun addAllChildren(component: Component) {
+        component.children().forEach {
+            allComponents.add(it)
+            if(it.children().isNotEmpty()) {
+                addAllChildren(it)
+            }
+        }
+    }
+    addAllChildren(text)
+
+    val maxWidth = maxLineWidth - if (ensureSpaceAtEndOfLines) ' '.width(textScale) else 0f
+
+    var currentComponent: TextComponent.Builder = Component.text()
+    val components = mutableListOf<Component>()
+
+    var currentWidth = 0.0F
+
+
+    allComponents.forEach {
+        val width = fontProvider.getStringWidth(it, 10f) * textScale
+        if(currentWidth + width < maxWidth) {
+            currentWidth+=width
+            currentComponent.append(it)
+            return@forEach
+        }
+
+        val content: String = if(it is TextComponent) {
+            it.content()
+        } else if(it is TranslatableComponent) {
+            //TODO: Implement
+            ""
+        } else {
+            println("Warning: Tried to get width of unsupported text-component ${it.javaClass.simpleName}. Ignoring")
+            return@forEach
+        }
+
+        var builder = StringBuilder()
+
+        content.toCharArray().forEach { char ->
+            val charWidth = fontProvider.getStringWidth(Component.text(char, it.style()), 10f) * textScale
+
+            if(charWidth + currentWidth > maxWidth) {
+                currentComponent.append(Component.text(builder.toString(), it.style()))
+                components.add(currentComponent.build())
+                currentComponent = Component.text()
+
+                builder = StringBuilder()
+            }
+
+            builder.append(char)
+        }
+        val toString = builder.toString()
+        if(toString.isNotEmpty()) {
+            currentComponent.append(Component.text(builder.toString(), it.style()))
+        }
+    }
+
+    val build = currentComponent.build()
+    if(build.content().isNotEmpty() || build.children().isNotEmpty()) {
+        components.add(currentComponent.build())
+    }
+
+    return components
+}
+
 fun getStringSplitToWidth(
     text: String,
     maxLineWidth: Float,
@@ -46,8 +121,8 @@ fun getStringSplitToWidth(
     val currLine = StringBuilder()
     var currLineWidth = 0f
     var textPos = 0
-    var currChatColor: ChatColor? = null
-    var currChatFormatting: ChatColor? = null
+    var currChatColor: LegacyColorCode? = null
+    var currChatFormatting: LegacyColorCode? = null
 
     fun pushLine(newLineWidth: Float = 0f) {
         lineList.add(currLine.toString())
@@ -64,9 +139,9 @@ fun getStringSplitToWidth(
 
         while (textPos < text.length && text[textPos].let { it != ' ' && it != '\n'}) {
             val ch = text[textPos]
-            if (processColorCodes && (ch == '§' || ch == '&') && textPos + 1 < text.length) {
+            if (processColorCodes && (ch == '§') && textPos + 1 < text.length) {
                 val colorCh = text[textPos + 1]
-                val nextColor = ChatColor.values().firstOrNull { it.char == colorCh }
+                val nextColor = LegacyColorCode.values().firstOrNull { it.char == colorCh }
                 if (nextColor != null) {
                     builder.append('§')
                     builder.append(colorCh)
@@ -160,7 +235,7 @@ fun sizeStringToWidth(string: String, width: Float): Int {
             '\n' -> k--
             ' ' -> {
                 l = k
-                j += UGraphics.getCharWidth(c0)
+                j += VirtualTextRenderer.getInstance().getWidth(c0.toString())
 
                 if (flag) j++
             }
@@ -176,7 +251,7 @@ fun sizeStringToWidth(string: String, width: Float): Int {
                 }
             }
             else -> {
-                j += UGraphics.getCharWidth(c0)
+                j += VirtualTextRenderer.getInstance().getWidth(c0.toString())
 
                 if (flag) j++
             }

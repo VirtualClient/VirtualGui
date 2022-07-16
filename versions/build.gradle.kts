@@ -20,31 +20,38 @@ val common by configurations.creating
 configurations.compileClasspath { extendsFrom(common) }
 configurations.runtimeClasspath { extendsFrom(common) }
 
+repositories {
+    maven {
+        url = uri("https://repo.virtualclient.gg/artifactory/virtualclient-public/")
+    }
+}
+
 dependencies {
     implementation(libs.kotlin.stdlib.jdk8)
     implementation(libs.kotlin.reflect)
     compileOnly(libs.jetbrains.annotations)
 
-    modApi(libs.versions.universalcraft.map { "gg.essential:universalcraft-$platform:$it" }) {
-        exclude(group = "org.jetbrains.kotlin")
-    }
+//    modApi(libs.versions.universalcraft.map { "gg.essential:universalcraft-$platform:$it" }) {
+//        exclude(group = "org.jetbrains.kotlin")
+//    }
+    modApi("gg.virtualclient:virtualminecraft:1.0.0-${platform.mcVersion}-SNAPSHOT")
 
-    common(project(":"))
+    common(project(":")) {
+        exclude("gg.virtualclient", "virtualminecraft")
+    }
 
     if (platform.isFabric) {
         val fabricApiVersion = when(platform.mcVersion) {
-            11404 -> "0.4.3+build.247-1.14"
-            11502 -> "0.5.1+build.294-1.15"
-            11601 -> "0.14.0+build.371-1.16"
-            11602 -> "0.17.1+build.394-1.16"
-            11701 -> "0.38.1+1.17"
-            11801 -> "0.46.4+1.18"
+            11604 -> "0.23.0+build.410-1.16"
+            11701 -> "0.39.2+1.17"
+            11802 -> "0.57.0+1.18.2"
+            11900 -> "0.57.0+1.19"
             else -> throw GradleException("Unsupported platform $platform")
         }
         val fabricApiModules = mutableListOf(
                 "api-base",
-                "networking-v0",
-                "keybindings-v0",
+//                "networking-v0",
+//                "keybindings-v0",
                 "resource-loader-v0",
                 "lifecycle-events-v1",
         )

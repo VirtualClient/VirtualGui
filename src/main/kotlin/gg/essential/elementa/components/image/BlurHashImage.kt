@@ -4,9 +4,8 @@ import gg.essential.elementa.UIComponent
 import gg.essential.elementa.components.UIImage
 import gg.essential.elementa.utils.decodeBlurHash
 import gg.essential.elementa.utils.drawTexture
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.utils.ReleasedDynamicTexture
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
 import java.awt.Color
 import java.io.File
 import java.net.URL
@@ -20,14 +19,14 @@ open class BlurHashImage(private val hash: String) : UIComponent(), ImageProvide
 
     private fun generateTexture(): ReleasedDynamicTexture {
         return decodeBlurHash(hash, dimensions.first.toInt(), dimensions.second.toInt())?.let {
-            UGraphics.getTexture(it)
+            ReleasedDynamicTexture.getTexture(it)
         } ?: run {
             // We encountered an issue decoding the blur hash, it's probably invalid.
-            UGraphics.getEmptyTexture()
+            ReleasedDynamicTexture.getEmptyTexture()
         }
     }
 
-    override fun drawImage(matrixStack: UMatrixStack, x: Double, y: Double, width: Double, height: Double, color: Color) {
+    override fun drawImage(matrixStack: VirtualMatrixStack, x: Double, y: Double, width: Double, height: Double, color: Color) {
         if (::texture.isInitialized) {
             if (width > 0 && height > 0) {
                 val sizeDifference = abs(dimensions.first * dimensions.second - width * height)
@@ -45,8 +44,8 @@ open class BlurHashImage(private val hash: String) : UIComponent(), ImageProvide
         drawTexture(matrixStack, texture, color, x, y, width, height)
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
-        beforeDrawCompat(matrixStack)
+    override fun draw(matrixStack: VirtualMatrixStack) {
+        beforeDraw(matrixStack)
 
         val x = this.getLeft().toDouble()
         val y = this.getTop().toDouble()
@@ -58,7 +57,7 @@ open class BlurHashImage(private val hash: String) : UIComponent(), ImageProvide
             return super.draw(matrixStack)
         }
 
-        drawImageCompat(matrixStack, x, y, width, height, color)
+        drawImage(matrixStack, x, y, width, height, color)
 
         super.draw(matrixStack)
     }

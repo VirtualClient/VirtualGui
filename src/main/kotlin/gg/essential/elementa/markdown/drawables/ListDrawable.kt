@@ -3,7 +3,7 @@ package gg.essential.elementa.markdown.drawables
 import gg.essential.elementa.dsl.width
 import gg.essential.elementa.markdown.DrawState
 import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class ListDrawable(
     md: MarkdownComponent,
@@ -109,8 +109,8 @@ class ListDrawable(
         )
     }
 
-    override fun draw(matrixStack: UMatrixStack, state: DrawState) {
-        listItems.forEach { it.drawCompat(matrixStack, state) }
+    override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
+        listItems.forEach { it.draw(matrixStack, state) }
     }
 
     override fun cursorAt(mouseX: Float, mouseY: Float, dragged: Boolean, mouseButton: Int) = drawables.cursorAt(mouseX, mouseY, dragged, mouseButton)
@@ -154,11 +154,11 @@ class ListDrawable(
             return Layout(x, y, width, drawable.height)
         }
 
-        override fun draw(matrixStack: UMatrixStack, state: DrawState) {
+        override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
             val newX = x + symbolWidth - actualSymbolWidth
             if (drawable !is ListDrawable)
                 TextDrawable.drawString(matrixStack, config, md.getFontProvider(), symbol, newX + state.xShift, y + state.yShift)
-            drawable.drawCompat(matrixStack, state)
+            drawable.draw(matrixStack, state)
         }
 
         override fun cursorAt(mouseX: Float, mouseY: Float, dragged: Boolean, mouseButton: Int) =

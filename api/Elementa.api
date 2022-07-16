@@ -17,9 +17,7 @@ public abstract class gg/essential/elementa/UIComponent : java/util/Observable {
 	public fun <init> ()V
 	public fun addChild (Lgg/essential/elementa/UIComponent;)Lgg/essential/elementa/UIComponent;
 	public fun addChildren ([Lgg/essential/elementa/UIComponent;)Lgg/essential/elementa/UIComponent;
-	public fun afterDraw ()V
-	public fun afterDraw (Lgg/essential/universal/UMatrixStack;)V
-	public final fun afterDrawCompat (Lgg/essential/universal/UMatrixStack;)V
+	public fun afterDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public fun afterInitialization ()V
 	public fun alwaysDrawChildren ()Z
 	public final fun animate (Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FDF)V
@@ -36,21 +34,15 @@ public abstract class gg/essential/elementa/UIComponent : java/util/Observable {
 	public final fun animateBeforeHide (Lkotlin/jvm/functions/Function1;)Lgg/essential/elementa/UIComponent;
 	public final fun animateTo (Lgg/essential/elementa/constraints/animation/AnimatingConstraints;)V
 	public fun animationFrame ()V
-	public fun beforeChildrenDraw ()V
-	public fun beforeChildrenDraw (Lgg/essential/universal/UMatrixStack;)V
-	public final fun beforeChildrenDrawCompat (Lgg/essential/universal/UMatrixStack;)V
-	public fun beforeDraw ()V
-	public fun beforeDraw (Lgg/essential/universal/UMatrixStack;)V
-	public final fun beforeDrawCompat (Lgg/essential/universal/UMatrixStack;)V
+	public fun beforeChildrenDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun beforeDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public fun childrenOfType (Ljava/lang/Class;)Ljava/util/List;
 	public fun clearChildren ()Lgg/essential/elementa/UIComponent;
 	public final fun delay (JLkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
 	public final fun depth ()I
 	public fun dragMouse (FFI)V
 	public fun dragMouse (III)V
-	public fun draw ()V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
-	public final fun drawCompat (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun enableEffect (Lgg/essential/elementa/effects/Effect;)Lgg/essential/elementa/UIComponent;
 	public final fun enableEffects ([Lgg/essential/elementa/effects/Effect;)Lgg/essential/elementa/UIComponent;
 	protected final fun fireClickEvent (Lgg/essential/elementa/events/UIClickEvent;)V
@@ -201,43 +193,12 @@ public class gg/essential/elementa/UIConstraints : java/util/Observable {
 	public fun withY (Lgg/essential/elementa/constraints/YConstraint;)Lgg/essential/elementa/UIConstraints;
 }
 
-public final class gg/essential/elementa/VanillaFontRenderer : gg/essential/elementa/font/FontProvider {
-	public static final field Companion Lgg/essential/elementa/VanillaFontRenderer$Companion;
-	public static final field SHADOW_HEIGHT F
-	public fun <init> ()V
-	public fun drawString (Lgg/essential/universal/UMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
-	public fun getBaseLineHeight ()F
-	public fun getBelowLineHeight ()F
-	public fun getCachedValue ()Lgg/essential/elementa/font/FontProvider;
-	public synthetic fun getCachedValue ()Ljava/lang/Object;
-	public fun getConstrainTo ()Lgg/essential/elementa/UIComponent;
-	public fun getRecalculate ()Z
-	public fun getShadowHeight ()F
-	public fun getStringHeight (Ljava/lang/String;F)F
-	public fun getStringWidth (Ljava/lang/String;F)F
-	public fun setCachedValue (Lgg/essential/elementa/font/FontProvider;)V
-	public synthetic fun setCachedValue (Ljava/lang/Object;)V
-	public fun setConstrainTo (Lgg/essential/elementa/UIComponent;)V
-	public fun setRecalculate (Z)V
-	public fun visitImpl (Lgg/essential/elementa/constraints/resolution/ConstraintVisitor;Lgg/essential/elementa/constraints/ConstraintType;)V
-}
-
-public final class gg/essential/elementa/VanillaFontRenderer$Companion {
-}
-
-public abstract class gg/essential/elementa/WindowScreen : gg/essential/universal/UScreen {
+public abstract class gg/essential/elementa/WindowScreen : gg/virtualclient/virtualminecraft/VirtualScreen {
 	public fun <init> ()V
 	public fun <init> (Lgg/essential/elementa/ElementaVersion;)V
 	public fun <init> (Lgg/essential/elementa/ElementaVersion;Z)V
 	public fun <init> (Lgg/essential/elementa/ElementaVersion;ZZ)V
-	public fun <init> (Lgg/essential/elementa/ElementaVersion;ZZZ)V
-	public fun <init> (Lgg/essential/elementa/ElementaVersion;ZZZI)V
-	public synthetic fun <init> (Lgg/essential/elementa/ElementaVersion;ZZZIILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun <init> (Z)V
-	public fun <init> (ZZ)V
-	public fun <init> (ZZZ)V
-	public fun <init> (ZZZI)V
-	public synthetic fun <init> (ZZZIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lgg/essential/elementa/ElementaVersion;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun afterInitialization ()V
 	public final fun animate (Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FDF)V
 	public final fun animate (Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FFF)V
@@ -249,15 +210,15 @@ public abstract class gg/essential/elementa/WindowScreen : gg/essential/universa
 	public static synthetic fun animate$default (Lgg/essential/elementa/WindowScreen;Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FIFILjava/lang/Object;)V
 	public static synthetic fun animate$default (Lgg/essential/elementa/WindowScreen;Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FJFILjava/lang/Object;)V
 	public static synthetic fun animate$default (Lgg/essential/elementa/WindowScreen;Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FLjava/awt/Color;FILjava/lang/Object;)V
-	public final fun defaultKeyBehavior (CI)V
+	public fun charTyped (CI)Z
 	public final fun getWindow ()Lgg/essential/elementa/components/Window;
-	public fun initScreen (II)V
-	public fun onDrawScreen (Lgg/essential/universal/UMatrixStack;IIF)V
-	public fun onKeyPressed (ICLgg/essential/universal/UKeyboard$Modifiers;)V
-	public fun onMouseClicked (DDI)V
-	public fun onMouseReleased (DDI)V
-	public fun onMouseScrolled (D)V
-	public fun onScreenClose ()V
+	protected fun init ()V
+	public fun keyPressed (III)Z
+	public fun mouseClicked (DDI)Z
+	public fun mouseReleased (DDI)Z
+	public fun mouseScrolled (DDD)Z
+	public fun onClose ()V
+	public fun render (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;IIF)V
 	public final fun stopAnimating (Lkotlin/reflect/KMutableProperty0;)V
 }
 
@@ -281,9 +242,7 @@ public class gg/essential/elementa/components/GradientComponent : gg/essential/e
 }
 
 public final class gg/essential/elementa/components/GradientComponent$Companion {
-	public final fun drawGradientBlock (DDDDLjava/awt/Color;Ljava/awt/Color;Lgg/essential/elementa/components/GradientComponent$GradientDirection;)V
-	public final fun drawGradientBlock (IIIILjava/awt/Color;Ljava/awt/Color;Lgg/essential/elementa/components/GradientComponent$GradientDirection;)V
-	public final fun drawGradientBlock (Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;Ljava/awt/Color;Lgg/essential/elementa/components/GradientComponent$GradientDirection;)V
+	public final fun drawGradientBlock (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;DDDDLjava/awt/Color;Ljava/awt/Color;Lgg/essential/elementa/components/GradientComponent$GradientDirection;)V
 }
 
 public final class gg/essential/elementa/components/GradientComponent$GradientColors {
@@ -316,8 +275,8 @@ public final class gg/essential/elementa/components/GradientComponent$GradientDi
 public final class gg/essential/elementa/components/SVGComponent : gg/essential/elementa/UIComponent, gg/essential/elementa/components/image/ImageProvider {
 	public static final field Companion Lgg/essential/elementa/components/SVGComponent$Companion;
 	public fun <init> (Lgg/essential/elementa/svg/data/SVG;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
-	public fun drawImage (Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun drawImage (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;DDDDLjava/awt/Color;)V
 	public final fun finalize ()V
 	public final fun setSVG (Lgg/essential/elementa/svg/data/SVG;)V
 }
@@ -349,7 +308,7 @@ public final class gg/essential/elementa/components/ScrollComponent : gg/essenti
 	public fun childrenOfType (Ljava/lang/Class;)Ljava/util/List;
 	public synthetic fun clearChildren ()Lgg/essential/elementa/UIComponent;
 	public fun clearChildren ()Lgg/essential/elementa/components/ScrollComponent;
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun filterChildren (Lkotlin/jvm/functions/Function1;)V
 	public final fun getAllChildren ()Ljava/util/concurrent/CopyOnWriteArrayList;
 	public final fun getEmptyText ()Lgg/essential/elementa/components/UIWrappedText;
@@ -436,7 +395,7 @@ public final class gg/essential/elementa/components/TreeGraphBuilder {
 public final class gg/essential/elementa/components/TreeGraphComponent : gg/essential/elementa/UIComponent {
 	public fun <init> (Lgg/essential/elementa/components/TreeGraphNode;Lgg/essential/elementa/components/TreeGraphStyle;)V
 	public synthetic fun <init> (Lgg/essential/elementa/components/TreeGraphNode;Lgg/essential/elementa/components/TreeGraphStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public abstract class gg/essential/elementa/components/TreeGraphNode {
@@ -454,20 +413,20 @@ public abstract class gg/essential/elementa/components/TreeGraphNode {
 
 public final class gg/essential/elementa/components/TreeGraphStyle {
 	public fun <init> ()V
-	public fun <init> (FFLjava/awt/Color;FZLkotlin/jvm/functions/Function2;)V
-	public synthetic fun <init> (FFLjava/awt/Color;FZLkotlin/jvm/functions/Function2;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (FFLjava/awt/Color;FZLkotlin/jvm/functions/Function3;)V
+	public synthetic fun <init> (FFLjava/awt/Color;FZLkotlin/jvm/functions/Function3;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()F
 	public final fun component2 ()F
 	public final fun component3 ()Ljava/awt/Color;
 	public final fun component4 ()F
 	public final fun component5 ()Z
-	public final fun component6 ()Lkotlin/jvm/functions/Function2;
-	public final fun copy (FFLjava/awt/Color;FZLkotlin/jvm/functions/Function2;)Lgg/essential/elementa/components/TreeGraphStyle;
-	public static synthetic fun copy$default (Lgg/essential/elementa/components/TreeGraphStyle;FFLjava/awt/Color;FZLkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lgg/essential/elementa/components/TreeGraphStyle;
+	public final fun component6 ()Lkotlin/jvm/functions/Function3;
+	public final fun copy (FFLjava/awt/Color;FZLkotlin/jvm/functions/Function3;)Lgg/essential/elementa/components/TreeGraphStyle;
+	public static synthetic fun copy$default (Lgg/essential/elementa/components/TreeGraphStyle;FFLjava/awt/Color;FZLkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lgg/essential/elementa/components/TreeGraphStyle;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getHeightBetweenRows ()F
 	public final fun getLineColor ()Ljava/awt/Color;
-	public final fun getLineDrawer ()Lkotlin/jvm/functions/Function2;
+	public final fun getLineDrawer ()Lkotlin/jvm/functions/Function3;
 	public final fun getLineWidth ()F
 	public final fun getWidthBetweenNodes ()F
 	public fun hashCode ()I
@@ -521,15 +480,15 @@ public class gg/essential/elementa/components/UIBlock : gg/essential/elementa/UI
 	public synthetic fun <init> (Lgg/essential/elementa/constraints/ColorConstraint;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun <init> (Lgg/essential/elementa/state/State;)V
 	public fun <init> (Ljava/awt/Color;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public final class gg/essential/elementa/components/UIBlock$Companion {
-	public final fun drawBlock (Lgg/essential/universal/UMatrixStack;Ljava/awt/Color;DDDD)V
-	public final fun drawBlock (Ljava/awt/Color;DDDD)V
-	public final fun drawBlockSized (Lgg/essential/universal/UMatrixStack;Ljava/awt/Color;DDDD)V
-	public final fun drawBlockSized (Ljava/awt/Color;DDDD)V
-	public final fun drawBlockWithActiveShader (Lgg/essential/universal/UMatrixStack;Ljava/awt/Color;DDDD)V
+	public final fun drawBlock (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/awt/Color;DDDDZ)V
+	public static synthetic fun drawBlock$default (Lgg/essential/elementa/components/UIBlock$Companion;Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/awt/Color;DDDDZILjava/lang/Object;)V
+	public final fun drawBlockSized (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/awt/Color;DDDD)V
+	public final fun drawBlockWithActiveShader (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/awt/Color;DDDDZ)V
+	public static synthetic fun drawBlockWithActiveShader$default (Lgg/essential/elementa/components/UIBlock$Companion;Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/awt/Color;DDDDZILjava/lang/Object;)V
 }
 
 public final class gg/essential/elementa/components/UICircle : gg/essential/elementa/UIComponent {
@@ -539,7 +498,7 @@ public final class gg/essential/elementa/components/UICircle : gg/essential/elem
 	public fun <init> (FLjava/awt/Color;)V
 	public fun <init> (FLjava/awt/Color;I)V
 	public synthetic fun <init> (FLjava/awt/Color;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public fun getHeight ()F
 	public fun getLeft ()F
 	public final fun getSteps ()I
@@ -550,14 +509,13 @@ public final class gg/essential/elementa/components/UICircle : gg/essential/elem
 }
 
 public final class gg/essential/elementa/components/UICircle$Companion {
-	public final fun drawCircle (FFFLjava/awt/Color;)V
-	public final fun drawCircle (Lgg/essential/universal/UMatrixStack;FFFLjava/awt/Color;)V
+	public final fun drawCircle (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;FFFLjava/awt/Color;)V
 	public final fun initShaders ()V
 }
 
 public class gg/essential/elementa/components/UIContainer : gg/essential/elementa/UIComponent {
 	public fun <init> ()V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public class gg/essential/elementa/components/UIImage : gg/essential/elementa/UIComponent, gg/essential/elementa/components/image/CacheableImage, gg/essential/elementa/components/image/ImageProvider {
@@ -567,9 +525,9 @@ public class gg/essential/elementa/components/UIImage : gg/essential/elementa/UI
 	public fun <init> (Ljava/util/concurrent/CompletableFuture;Lgg/essential/elementa/components/image/ImageProvider;Lgg/essential/elementa/components/image/ImageProvider;)V
 	public synthetic fun <init> (Ljava/util/concurrent/CompletableFuture;Lgg/essential/elementa/components/image/ImageProvider;Lgg/essential/elementa/components/image/ImageProvider;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun <init> (Lkotlin/jvm/functions/Function0;)V
-	public fun applyTexture (Lgg/essential/universal/utils/ReleasedDynamicTexture;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
-	public fun drawImage (Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;)V
+	public fun applyTexture (Lgg/virtualclient/virtualminecraft/util/ReleasedDynamicTexture;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun drawImage (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;DDDDLjava/awt/Color;)V
 	public static final fun get (Ljava/net/URL;)Ljava/awt/image/BufferedImage;
 	public final fun getDestroy ()Z
 	public final fun getImageHeight ()F
@@ -617,7 +575,7 @@ public final class gg/essential/elementa/components/UIPoint : gg/essential/eleme
 	public fun <init> (Lgg/essential/elementa/constraints/PositionConstraint;Lgg/essential/elementa/constraints/PositionConstraint;)V
 	public fun <init> (Ljava/lang/Number;Ljava/lang/Number;)V
 	public fun <init> (Lkotlin/Pair;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun getAbsolutePoint ()Lkotlin/Pair;
 	public final fun getAbsoluteX ()F
 	public final fun getAbsoluteY ()F
@@ -635,12 +593,11 @@ public final class gg/essential/elementa/components/UIPoint : gg/essential/eleme
 public class gg/essential/elementa/components/UIRoundedRectangle : gg/essential/elementa/UIComponent {
 	public static final field Companion Lgg/essential/elementa/components/UIRoundedRectangle$Companion;
 	public fun <init> (F)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public final class gg/essential/elementa/components/UIRoundedRectangle$Companion {
-	public final fun drawRoundedRectangle (FFFFFLjava/awt/Color;)V
-	public final fun drawRoundedRectangle (Lgg/essential/universal/UMatrixStack;FFFFFLjava/awt/Color;)V
+	public final fun drawRoundedRectangle (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;FFFFFLjava/awt/Color;)V
 	public final fun initShaders ()V
 }
 
@@ -650,7 +607,7 @@ public class gg/essential/elementa/components/UIShape : gg/essential/elementa/UI
 	public synthetic fun <init> (Ljava/awt/Color;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun addVertex (Lgg/essential/elementa/components/UIPoint;)Lgg/essential/elementa/components/UIShape;
 	public final fun addVertices ([Lgg/essential/elementa/components/UIPoint;)Lgg/essential/elementa/components/UIShape;
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun getDrawMode ()I
 	public final fun getVertices ()Ljava/util/List;
 	public final fun setDrawMode (I)V
@@ -667,7 +624,7 @@ public class gg/essential/elementa/components/UIText : gg/essential/elementa/UIC
 	public final fun bindShadow (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIText;
 	public final fun bindShadowColor (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIText;
 	public final fun bindText (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIText;
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public fun getHeight ()F
 	public final fun getShadow ()Z
 	public final synthetic fun getShadowColor ()Lgg/essential/elementa/state/State;
@@ -701,7 +658,7 @@ public class gg/essential/elementa/components/UIWrappedText : gg/essential/eleme
 	public final fun bindShadow (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIWrappedText;
 	public final fun bindShadowColor (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIWrappedText;
 	public final fun bindText (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIWrappedText;
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun getShadow ()Z
 	public final synthetic fun getShadowColor ()Lgg/essential/elementa/state/State;
 	public final fun getShadowColor ()Ljava/awt/Color;
@@ -715,17 +672,14 @@ public class gg/essential/elementa/components/UIWrappedText : gg/essential/eleme
 public final class gg/essential/elementa/components/Window : gg/essential/elementa/UIComponent {
 	public static final field Companion Lgg/essential/elementa/components/Window$Companion;
 	public fun <init> ()V
-	public fun <init> (I)V
-	public synthetic fun <init> (IILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun <init> (Lgg/essential/elementa/ElementaVersion;)V
 	public fun <init> (Lgg/essential/elementa/ElementaVersion;I)V
 	public synthetic fun <init> (Lgg/essential/elementa/ElementaVersion;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun addFloatingComponent (Lgg/essential/elementa/UIComponent;)V
 	public fun afterInitialization ()V
 	public fun animationFrame ()V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
-	public final fun drawFloatingComponents ()V
-	public final fun drawFloatingComponents (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public final fun drawFloatingComponents (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun focus (Lgg/essential/elementa/UIComponent;)V
 	public final fun getAnimationFPS ()I
 	public fun getBottom ()F
@@ -760,8 +714,8 @@ public class gg/essential/elementa/components/image/BlurHashImage : gg/essential
 	public static final field Companion Lgg/essential/elementa/components/image/BlurHashImage$Companion;
 	public static final field SIZE_THRESHOLD I
 	public fun <init> (Ljava/lang/String;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
-	public fun drawImage (Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun drawImage (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;DDDDLjava/awt/Color;)V
 	public static final fun ofFile (Ljava/lang/String;Ljava/io/File;)Lgg/essential/elementa/components/UIImage;
 	public static final fun ofResource (Ljava/lang/String;Ljava/lang/String;)Lgg/essential/elementa/components/UIImage;
 	public static final fun ofURL (Ljava/lang/String;Ljava/net/URL;)Lgg/essential/elementa/components/UIImage;
@@ -774,13 +728,13 @@ public final class gg/essential/elementa/components/image/BlurHashImage$Companio
 }
 
 public abstract interface class gg/essential/elementa/components/image/CacheableImage {
-	public abstract fun applyTexture (Lgg/essential/universal/utils/ReleasedDynamicTexture;)V
+	public abstract fun applyTexture (Lgg/virtualclient/virtualminecraft/util/ReleasedDynamicTexture;)V
 	public abstract fun supply (Lgg/essential/elementa/components/image/CacheableImage;)V
 }
 
 public final class gg/essential/elementa/components/image/DefaultLoadingImage : gg/essential/elementa/components/image/ImageProvider {
 	public static final field INSTANCE Lgg/essential/elementa/components/image/DefaultLoadingImage;
-	public fun drawImage (Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;)V
+	public fun drawImage (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;DDDDLjava/awt/Color;)V
 }
 
 public final class gg/essential/elementa/components/image/FileImageCache : gg/essential/elementa/components/image/ImageCache {
@@ -796,23 +750,15 @@ public abstract interface class gg/essential/elementa/components/image/ImageCach
 }
 
 public abstract interface class gg/essential/elementa/components/image/ImageProvider {
-	public fun drawImage (DDDDLjava/awt/Color;)V
-	public fun drawImage (Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;)V
-	public fun drawImageCompat (Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;)V
-}
-
-public final class gg/essential/elementa/components/image/ImageProvider$DefaultImpls {
-	public static fun drawImage (Lgg/essential/elementa/components/image/ImageProvider;DDDDLjava/awt/Color;)V
-	public static fun drawImage (Lgg/essential/elementa/components/image/ImageProvider;Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;)V
-	public static fun drawImageCompat (Lgg/essential/elementa/components/image/ImageProvider;Lgg/essential/universal/UMatrixStack;DDDDLjava/awt/Color;)V
+	public abstract fun drawImage (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;DDDDLjava/awt/Color;)V
 }
 
 public class gg/essential/elementa/components/image/MSDFComponent : gg/essential/elementa/UIComponent, gg/essential/elementa/components/image/CacheableImage {
 	public static final field Companion Lgg/essential/elementa/components/image/MSDFComponent$Companion;
 	public fun <init> (Ljava/util/concurrent/CompletableFuture;)V
 	public fun <init> (Lkotlin/jvm/functions/Function0;)V
-	public fun applyTexture (Lgg/essential/universal/utils/ReleasedDynamicTexture;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun applyTexture (Lgg/virtualclient/virtualminecraft/util/ReleasedDynamicTexture;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun getDestroy ()Z
 	public final fun getImageHeight ()F
 	public final fun getImageWidth ()F
@@ -852,13 +798,9 @@ public abstract class gg/essential/elementa/components/input/AbstractTextInput :
 	protected final fun commitTextRemoval (Lgg/essential/elementa/components/input/AbstractTextInput$LinePosition;Lgg/essential/elementa/components/input/AbstractTextInput$LinePosition;Z)V
 	protected fun copySelection ()V
 	protected fun deleteSelection ()V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
-	protected fun drawSelectedText (Lgg/essential/universal/UMatrixStack;Ljava/lang/String;FFI)V
-	protected fun drawSelectedText (Ljava/lang/String;FFI)V
-	protected final fun drawSelectedTextCompat (Lgg/essential/universal/UMatrixStack;Ljava/lang/String;FFI)V
-	protected fun drawUnselectedText (Lgg/essential/universal/UMatrixStack;Ljava/lang/String;FI)V
-	protected fun drawUnselectedText (Ljava/lang/String;FI)V
-	protected final fun drawUnselectedTextCompat (Lgg/essential/universal/UMatrixStack;Ljava/lang/String;FI)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	protected fun drawSelectedText (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/String;FFI)V
+	protected fun drawUnselectedText (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/String;FI)V
 	protected final fun getActivateAction ()Lkotlin/jvm/functions/Function1;
 	protected final fun getActive ()Z
 	protected final fun getAllowInactiveSelection ()Z
@@ -1025,7 +967,7 @@ public final class gg/essential/elementa/components/input/UIMultilineTextInput :
 	public fun <init> (Ljava/lang/String;ZLjava/awt/Color;Ljava/awt/Color;ZLjava/awt/Color;Ljava/awt/Color;)V
 	public fun <init> (Ljava/lang/String;ZLjava/awt/Color;Ljava/awt/Color;ZLjava/awt/Color;Ljava/awt/Color;Ljava/awt/Color;)V
 	public synthetic fun <init> (Ljava/lang/String;ZLjava/awt/Color;Ljava/awt/Color;ZLjava/awt/Color;Ljava/awt/Color;Ljava/awt/Color;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public fun getText ()Ljava/lang/String;
 	public final fun setMaxHeight (Lgg/essential/elementa/constraints/HeightConstraint;)Lgg/essential/elementa/components/input/UIMultilineTextInput;
 	public final fun setMaxLines (I)Lgg/essential/elementa/components/input/UIMultilineTextInput;
@@ -1068,7 +1010,7 @@ public class gg/essential/elementa/components/input/UITextInput : gg/essential/e
 	public fun <init> (Ljava/lang/String;ZLjava/awt/Color;Ljava/awt/Color;ZLjava/awt/Color;Ljava/awt/Color;)V
 	public fun <init> (Ljava/lang/String;ZLjava/awt/Color;Ljava/awt/Color;ZLjava/awt/Color;Ljava/awt/Color;Ljava/awt/Color;)V
 	public synthetic fun <init> (Ljava/lang/String;ZLjava/awt/Color;Ljava/awt/Color;ZLjava/awt/Color;Ljava/awt/Color;Ljava/awt/Color;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	protected final fun getMaxWidth ()Lgg/essential/elementa/constraints/WidthConstraint;
 	protected final fun getMinWidth ()Lgg/essential/elementa/constraints/WidthConstraint;
 	protected final fun getPlaceholderWidth ()F
@@ -1090,13 +1032,13 @@ public class gg/essential/elementa/components/input/UITextInput : gg/essential/e
 public final class gg/essential/elementa/components/inspector/ArrowComponent : gg/essential/elementa/components/TreeArrowComponent {
 	public fun <init> (Z)V
 	public fun close ()V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public fun open ()V
 }
 
 public final class gg/essential/elementa/components/inspector/InfoBlock : gg/essential/elementa/components/UIContainer {
 	public fun <init> (Lgg/essential/elementa/components/inspector/Inspector;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public final class gg/essential/elementa/components/inspector/InfoBlockNode : gg/essential/elementa/components/TreeNode {
@@ -1121,7 +1063,7 @@ public final class gg/essential/elementa/components/inspector/Inspector : gg/ess
 	public fun <init> (Lgg/essential/elementa/UIComponent;Ljava/awt/Color;Ljava/awt/Color;FLgg/essential/elementa/constraints/HeightConstraint;)V
 	public synthetic fun <init> (Lgg/essential/elementa/UIComponent;Ljava/awt/Color;Ljava/awt/Color;FLgg/essential/elementa/constraints/HeightConstraint;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun animationFrame ()V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public final class gg/essential/elementa/components/inspector/Inspector$Companion {
@@ -1207,7 +1149,7 @@ public final class gg/essential/elementa/components/plot/Padding {
 public final class gg/essential/elementa/components/plot/PlotComponent : gg/essential/elementa/UIComponent {
 	public fun <init> (Ljava/util/List;Lgg/essential/elementa/components/plot/Bounds;Lgg/essential/elementa/components/plot/Bounds;Lgg/essential/elementa/components/plot/PlotStyle;)V
 	public synthetic fun <init> (Ljava/util/List;Lgg/essential/elementa/components/plot/Bounds;Lgg/essential/elementa/components/plot/Bounds;Lgg/essential/elementa/components/plot/PlotStyle;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public final class gg/essential/elementa/components/plot/PlotPoint {
@@ -2544,16 +2486,10 @@ public final class gg/essential/elementa/dsl/UtilitiesKt {
 public abstract class gg/essential/elementa/effects/Effect {
 	protected field boundComponent Lgg/essential/elementa/UIComponent;
 	public fun <init> ()V
-	public fun afterDraw ()V
-	public fun afterDraw (Lgg/essential/universal/UMatrixStack;)V
-	public final fun afterDrawCompat (Lgg/essential/universal/UMatrixStack;)V
+	public fun afterDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public fun animationFrame ()V
-	public fun beforeChildrenDraw ()V
-	public fun beforeChildrenDraw (Lgg/essential/universal/UMatrixStack;)V
-	public final fun beforeChildrenDrawCompat (Lgg/essential/universal/UMatrixStack;)V
-	public fun beforeDraw ()V
-	public fun beforeDraw (Lgg/essential/universal/UMatrixStack;)V
-	public final fun beforeDrawCompat (Lgg/essential/universal/UMatrixStack;)V
+	public fun beforeChildrenDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun beforeDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun bindComponent (Lgg/essential/elementa/UIComponent;)V
 	protected final fun getBoundComponent ()Lgg/essential/elementa/UIComponent;
 	protected final fun setBoundComponent (Lgg/essential/elementa/UIComponent;)V
@@ -2572,8 +2508,8 @@ public final class gg/essential/elementa/effects/OutlineEffect : gg/essential/el
 	public fun <init> (Ljava/awt/Color;FZZLjava/util/Set;)V
 	public synthetic fun <init> (Ljava/awt/Color;FZZLjava/util/Set;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun addSide (Lgg/essential/elementa/effects/OutlineEffect$Side;)Lgg/essential/elementa/effects/OutlineEffect;
-	public fun afterDraw (Lgg/essential/universal/UMatrixStack;)V
-	public fun beforeChildrenDraw (Lgg/essential/universal/UMatrixStack;)V
+	public fun afterDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun beforeChildrenDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun bindColor (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/effects/OutlineEffect;
 	public final fun bindWidth (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/effects/OutlineEffect;
 	public final fun getColor ()Ljava/awt/Color;
@@ -2617,8 +2553,8 @@ public final class gg/essential/elementa/effects/ScissorEffect : gg/essential/el
 	public fun <init> (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;)V
 	public fun <init> (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Z)V
 	public synthetic fun <init> (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun afterDraw (Lgg/essential/universal/UMatrixStack;)V
-	public fun beforeDraw (Lgg/essential/universal/UMatrixStack;)V
+	public fun afterDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun beforeDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public final class gg/essential/elementa/effects/ScissorEffect$Companion {
@@ -2646,9 +2582,9 @@ public final class gg/essential/elementa/effects/ScissorEffect$ScissorState {
 public final class gg/essential/elementa/effects/StencilEffect : gg/essential/elementa/effects/Effect {
 	public static final field Companion Lgg/essential/elementa/effects/StencilEffect$Companion;
 	public fun <init> ()V
-	public fun afterDraw (Lgg/essential/universal/UMatrixStack;)V
-	public fun beforeChildrenDraw (Lgg/essential/universal/UMatrixStack;)V
-	public fun beforeDraw (Lgg/essential/universal/UMatrixStack;)V
+	public fun afterDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun beforeChildrenDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun beforeDraw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public static final fun enableStencil ()V
 }
 
@@ -2706,7 +2642,8 @@ public final class gg/essential/elementa/events/UIScrollEvent : gg/essential/ele
 
 public final class gg/essential/elementa/font/BasicFontRenderer : gg/essential/elementa/font/FontProvider {
 	public fun <init> (Lgg/essential/elementa/font/data/Font;)V
-	public fun drawString (Lgg/essential/universal/UMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
+	public fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
+	public fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lnet/kyori/adventure/text/Component;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
 	public fun getBaseLineHeight ()F
 	public fun getBelowLineHeight ()F
 	public fun getCachedValue ()Lgg/essential/elementa/font/FontProvider;
@@ -2716,7 +2653,9 @@ public final class gg/essential/elementa/font/BasicFontRenderer : gg/essential/e
 	public fun getRecalculate ()Z
 	public fun getShadowHeight ()F
 	public fun getStringHeight (Ljava/lang/String;F)F
+	public fun getStringHeight (Lnet/kyori/adventure/text/Component;F)F
 	public fun getStringWidth (Ljava/lang/String;F)F
+	public fun getStringWidth (Lnet/kyori/adventure/text/Component;F)F
 	public fun setCachedValue (Lgg/essential/elementa/font/FontProvider;)V
 	public synthetic fun setCachedValue (Ljava/lang/Object;)V
 	public fun setConstrainTo (Lgg/essential/elementa/UIComponent;)V
@@ -2726,38 +2665,33 @@ public final class gg/essential/elementa/font/BasicFontRenderer : gg/essential/e
 
 public final class gg/essential/elementa/font/DefaultFonts {
 	public static final field INSTANCE Lgg/essential/elementa/font/DefaultFonts;
-	public static final fun getELEMENTA_MINECRAFT_FONT_RENDERER ()Lgg/essential/elementa/font/FontProvider;
 	public static final fun getJETBRAINS_MONO_FONT_RENDERER ()Lgg/essential/elementa/font/FontProvider;
-	public static final fun getMINECRAFT_FIVE ()Lgg/essential/elementa/font/FontProvider;
 	public static final fun getVANILLA_FONT_RENDERER ()Lgg/essential/elementa/font/FontProvider;
 }
 
 public final class gg/essential/elementa/font/ElementaFonts {
 	public static final field INSTANCE Lgg/essential/elementa/font/ElementaFonts;
 	public static final fun getJETBRAINS_MONO ()Lgg/essential/elementa/font/FontRenderer;
-	public static final fun getMINECRAFT ()Lgg/essential/elementa/font/FontRenderer;
-	public static final fun getMINECRAFT_BOLD ()Lgg/essential/elementa/font/FontRenderer;
-	public static final fun getMINECRAFT_FIVE ()Lgg/essential/elementa/font/BasicFontRenderer;
 }
 
 public abstract interface class gg/essential/elementa/font/FontProvider : gg/essential/elementa/constraints/SuperConstraint {
-	public fun drawString (Lgg/essential/universal/UMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
-	public fun drawString (Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
-	public static synthetic fun drawString$default (Lgg/essential/elementa/font/FontProvider;Lgg/essential/universal/UMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;ILjava/lang/Object;)V
-	public static synthetic fun drawString$default (Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;ILjava/lang/Object;)V
+	public abstract fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
+	public abstract fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lnet/kyori/adventure/text/Component;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
+	public static synthetic fun drawString$default (Lgg/essential/elementa/font/FontProvider;Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;ILjava/lang/Object;)V
+	public static synthetic fun drawString$default (Lgg/essential/elementa/font/FontProvider;Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lnet/kyori/adventure/text/Component;Ljava/awt/Color;FFFFZLjava/awt/Color;ILjava/lang/Object;)V
 	public abstract fun getBaseLineHeight ()F
 	public abstract fun getBelowLineHeight ()F
 	public abstract fun getShadowHeight ()F
 	public abstract fun getStringHeight (Ljava/lang/String;F)F
+	public abstract fun getStringHeight (Lnet/kyori/adventure/text/Component;F)F
 	public abstract fun getStringWidth (Ljava/lang/String;F)F
+	public abstract fun getStringWidth (Lnet/kyori/adventure/text/Component;F)F
 }
 
 public final class gg/essential/elementa/font/FontProvider$DefaultImpls {
 	public static fun animationFrame (Lgg/essential/elementa/font/FontProvider;)V
-	public static fun drawString (Lgg/essential/elementa/font/FontProvider;Lgg/essential/universal/UMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
-	public static fun drawString (Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
-	public static synthetic fun drawString$default (Lgg/essential/elementa/font/FontProvider;Lgg/essential/universal/UMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;ILjava/lang/Object;)V
-	public static synthetic fun drawString$default (Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;ILjava/lang/Object;)V
+	public static synthetic fun drawString$default (Lgg/essential/elementa/font/FontProvider;Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;ILjava/lang/Object;)V
+	public static synthetic fun drawString$default (Lgg/essential/elementa/font/FontProvider;Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lnet/kyori/adventure/text/Component;Ljava/awt/Color;FFFFZLjava/awt/Color;ILjava/lang/Object;)V
 	public static fun pauseIfSupported (Lgg/essential/elementa/font/FontProvider;)V
 	public static fun resumeIfSupported (Lgg/essential/elementa/font/FontProvider;)V
 	public static fun stopIfSupported (Lgg/essential/elementa/font/FontProvider;)V
@@ -2769,7 +2703,8 @@ public final class gg/essential/elementa/font/FontRenderer : gg/essential/elemen
 	public static final field Companion Lgg/essential/elementa/font/FontRenderer$Companion;
 	public fun <init> (Lgg/essential/elementa/font/data/Font;Lgg/essential/elementa/font/data/Font;)V
 	public synthetic fun <init> (Lgg/essential/elementa/font/data/Font;Lgg/essential/elementa/font/data/Font;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun drawString (Lgg/essential/universal/UMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
+	public fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
+	public fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lnet/kyori/adventure/text/Component;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
 	public fun getBaseLineHeight ()F
 	public fun getBelowLineHeight ()F
 	public fun getCachedValue ()Lgg/essential/elementa/font/FontProvider;
@@ -2779,7 +2714,9 @@ public final class gg/essential/elementa/font/FontRenderer : gg/essential/elemen
 	public fun getRecalculate ()Z
 	public fun getShadowHeight ()F
 	public fun getStringHeight (Ljava/lang/String;F)F
+	public fun getStringHeight (Lnet/kyori/adventure/text/Component;F)F
 	public fun getStringWidth (Ljava/lang/String;F)F
+	public fun getStringWidth (Lnet/kyori/adventure/text/Component;F)F
 	public fun setCachedValue (Lgg/essential/elementa/font/FontProvider;)V
 	public synthetic fun setCachedValue (Ljava/lang/Object;)V
 	public fun setConstrainTo (Lgg/essential/elementa/UIComponent;)V
@@ -2790,6 +2727,33 @@ public final class gg/essential/elementa/font/FontRenderer : gg/essential/elemen
 public final class gg/essential/elementa/font/FontRenderer$Companion {
 	public final fun areShadersInitialized ()Z
 	public final fun initShaders ()V
+}
+
+public final class gg/essential/elementa/font/VanillaFontRenderer : gg/essential/elementa/font/FontProvider {
+	public static final field Companion Lgg/essential/elementa/font/VanillaFontRenderer$Companion;
+	public static final field SHADOW_HEIGHT F
+	public fun <init> ()V
+	public fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/String;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
+	public fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lnet/kyori/adventure/text/Component;Ljava/awt/Color;FFFFZLjava/awt/Color;)V
+	public fun getBaseLineHeight ()F
+	public fun getBelowLineHeight ()F
+	public fun getCachedValue ()Lgg/essential/elementa/font/FontProvider;
+	public synthetic fun getCachedValue ()Ljava/lang/Object;
+	public fun getConstrainTo ()Lgg/essential/elementa/UIComponent;
+	public fun getRecalculate ()Z
+	public fun getShadowHeight ()F
+	public fun getStringHeight (Ljava/lang/String;F)F
+	public fun getStringHeight (Lnet/kyori/adventure/text/Component;F)F
+	public fun getStringWidth (Ljava/lang/String;F)F
+	public fun getStringWidth (Lnet/kyori/adventure/text/Component;F)F
+	public fun setCachedValue (Lgg/essential/elementa/font/FontProvider;)V
+	public synthetic fun setCachedValue (Ljava/lang/Object;)V
+	public fun setConstrainTo (Lgg/essential/elementa/UIComponent;)V
+	public fun setRecalculate (Z)V
+	public fun visitImpl (Lgg/essential/elementa/constraints/resolution/ConstraintVisitor;Lgg/essential/elementa/constraints/ConstraintType;)V
+}
+
+public final class gg/essential/elementa/font/VanillaFontRenderer$Companion {
 }
 
 public final class gg/essential/elementa/font/data/Atlas {
@@ -2836,7 +2800,7 @@ public final class gg/essential/elementa/font/data/Font {
 	public static final field Companion Lgg/essential/elementa/font/data/Font$Companion;
 	public fun <init> (Lgg/essential/elementa/font/data/FontInfo;Ljava/io/InputStream;)V
 	public final fun getFontInfo ()Lgg/essential/elementa/font/data/FontInfo;
-	public final fun getTexture ()Lgg/essential/universal/utils/ReleasedDynamicTexture;
+	public final fun getTexture ()Lgg/virtualclient/virtualminecraft/util/ReleasedDynamicTexture;
 }
 
 public final class gg/essential/elementa/font/data/Font$Companion {
@@ -3151,7 +3115,7 @@ public final class gg/essential/elementa/markdown/MarkdownComponent : gg/essenti
 	public synthetic fun <init> (Ljava/lang/String;Lgg/essential/elementa/markdown/MarkdownConfig;FLgg/essential/elementa/font/FontProvider;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun animationFrame ()V
 	public final fun bindText (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/markdown/MarkdownComponent;
-	public fun draw (Lgg/essential/universal/UMatrixStack;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 	public final fun getConfig ()Lgg/essential/elementa/markdown/MarkdownConfig;
 	public final fun getDrawables ()Lgg/essential/elementa/markdown/drawables/DrawableList;
 	public final fun getSectionOffsets ()Ljava/util/Map;
@@ -3311,7 +3275,7 @@ public final class gg/essential/elementa/markdown/drawables/BlockquoteDrawable :
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun getChildren ()Ljava/util/List;
 	public final fun getDrawables ()Lgg/essential/elementa/markdown/drawables/DrawableList;
 	public fun selectedText (Z)Ljava/lang/String;
@@ -3322,7 +3286,7 @@ public final class gg/essential/elementa/markdown/drawables/CodeBlockDrawable : 
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun selectedText (Z)Ljava/lang/String;
 }
 
@@ -3333,9 +3297,7 @@ public abstract class gg/essential/elementa/markdown/drawables/Drawable {
 	public abstract fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public abstract fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public abstract fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/elementa/markdown/DrawState;)V
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
-	public final fun drawCompat (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun getChildren ()Ljava/util/List;
 	public final fun getConfig ()Lgg/essential/elementa/markdown/MarkdownConfig;
 	public final fun getHeight ()F
@@ -3451,7 +3413,7 @@ public final class gg/essential/elementa/markdown/drawables/DrawableList : gg/es
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun get (I)Lgg/essential/elementa/markdown/drawables/Drawable;
 	public synthetic fun get (I)Ljava/lang/Object;
 	public fun getChildren ()Ljava/util/List;
@@ -3495,7 +3457,7 @@ public final class gg/essential/elementa/markdown/drawables/HardBreakDrawable : 
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun selectedText (Z)Ljava/lang/String;
 }
 
@@ -3504,7 +3466,7 @@ public final class gg/essential/elementa/markdown/drawables/HeaderDrawable : gg/
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun getChildren ()Ljava/util/List;
 	public fun selectedText (Z)Ljava/lang/String;
 }
@@ -3517,7 +3479,7 @@ public final class gg/essential/elementa/markdown/drawables/ImageDrawable : gg/e
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/ImageCursor;
 	public synthetic fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/ImageCursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public final fun getSelected ()Z
 	public final fun getUrl ()Ljava/net/URL;
 	public fun hasSelectedText ()Z
@@ -3536,7 +3498,7 @@ public final class gg/essential/elementa/markdown/drawables/ListDrawable : gg/es
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun getChildren ()Ljava/util/List;
 	public fun selectedText (Z)Ljava/lang/String;
 }
@@ -3546,7 +3508,7 @@ public final class gg/essential/elementa/markdown/drawables/ListDrawable$ListEnt
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun getChildren ()Ljava/util/List;
 	public final fun getDrawable ()Lgg/essential/elementa/markdown/drawables/Drawable;
 	public fun selectedText (Z)Ljava/lang/String;
@@ -3557,7 +3519,7 @@ public final class gg/essential/elementa/markdown/drawables/ParagraphDrawable : 
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun getChildren ()Ljava/util/List;
 	public final fun getDrawables ()Lgg/essential/elementa/markdown/drawables/DrawableList;
 	public final fun getScaleModifier ()F
@@ -3571,7 +3533,7 @@ public final class gg/essential/elementa/markdown/drawables/SoftBreakDrawable : 
 	public fun cursorAt (FFZI)Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public fun selectedText (Z)Ljava/lang/String;
 }
 
@@ -3585,7 +3547,7 @@ public final class gg/essential/elementa/markdown/drawables/TextDrawable : gg/es
 	public fun cursorAtEnd ()Lgg/essential/elementa/markdown/selection/TextCursor;
 	public synthetic fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public fun cursorAtStart ()Lgg/essential/elementa/markdown/selection/TextCursor;
-	public fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public final fun ensureTrimmed ()V
 	public final fun getFormattedText ()Ljava/lang/String;
 	public final fun getLinkedTexts ()Lgg/essential/elementa/markdown/drawables/TextDrawable$LinkedTexts;
@@ -3606,10 +3568,8 @@ public final class gg/essential/elementa/markdown/drawables/TextDrawable : gg/es
 }
 
 public final class gg/essential/elementa/markdown/drawables/TextDrawable$Companion {
-	public final fun drawString (Lgg/essential/elementa/markdown/MarkdownConfig;Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;FFZZZ)V
-	public final fun drawString (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/MarkdownConfig;Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;FFZZZLgg/essential/elementa/markdown/HeaderLevelConfig;)V
-	public static synthetic fun drawString$default (Lgg/essential/elementa/markdown/drawables/TextDrawable$Companion;Lgg/essential/elementa/markdown/MarkdownConfig;Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;FFZZZILjava/lang/Object;)V
-	public static synthetic fun drawString$default (Lgg/essential/elementa/markdown/drawables/TextDrawable$Companion;Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/MarkdownConfig;Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;FFZZZLgg/essential/elementa/markdown/HeaderLevelConfig;ILjava/lang/Object;)V
+	public final fun drawString (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/MarkdownConfig;Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;FFZZZLgg/essential/elementa/markdown/HeaderLevelConfig;)V
+	public static synthetic fun drawString$default (Lgg/essential/elementa/markdown/drawables/TextDrawable$Companion;Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/MarkdownConfig;Lgg/essential/elementa/font/FontProvider;Ljava/lang/String;FFZZZLgg/essential/elementa/markdown/HeaderLevelConfig;ILjava/lang/Object;)V
 }
 
 public final class gg/essential/elementa/markdown/drawables/TextDrawable$LinkedTexts {
@@ -3673,8 +3633,7 @@ public final class gg/essential/elementa/markdown/drawables/TextDrawable$Text {
 public abstract class gg/essential/elementa/markdown/selection/Cursor {
 	public fun <init> (Lgg/essential/elementa/markdown/drawables/Drawable;)V
 	public abstract fun compareTo (Lgg/essential/elementa/markdown/selection/Cursor;)I
-	public final fun draw (Lgg/essential/elementa/markdown/DrawState;)V
-	public final fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public final fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	protected final fun getHeight ()D
 	public final fun getTarget ()Lgg/essential/elementa/markdown/drawables/Drawable;
 	protected final fun getWidth ()D
@@ -3690,8 +3649,7 @@ public final class gg/essential/elementa/markdown/selection/ImageCursor : gg/ess
 public final class gg/essential/elementa/markdown/selection/Selection {
 	public static final field Companion Lgg/essential/elementa/markdown/selection/Selection$Companion;
 	public synthetic fun <init> (Lgg/essential/elementa/markdown/selection/Cursor;Lgg/essential/elementa/markdown/selection/Cursor;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun draw (Lgg/essential/elementa/markdown/DrawState;)V
-	public final fun draw (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
+	public final fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/markdown/DrawState;)V
 	public final fun getDrawables ()Ljava/util/List;
 	public final fun getEnd ()Lgg/essential/elementa/markdown/selection/Cursor;
 	public final fun getStart ()Lgg/essential/elementa/markdown/selection/Cursor;
@@ -3706,56 +3664,6 @@ public final class gg/essential/elementa/markdown/selection/TextCursor : gg/esse
 	public fun <init> (Lgg/essential/elementa/markdown/drawables/TextDrawable;I)V
 	public fun compareTo (Lgg/essential/elementa/markdown/selection/Cursor;)I
 	public final fun getOffset ()I
-}
-
-public final class gg/essential/elementa/shaders/FloatUniform : gg/essential/elementa/shaders/ShaderUniform {
-	public fun <init> (I)V
-	public fun setValue (F)V
-	public synthetic fun setValue (Ljava/lang/Object;)V
-}
-
-public final class gg/essential/elementa/shaders/IntUniform : gg/essential/elementa/shaders/ShaderUniform {
-	public fun <init> (I)V
-	public fun setValue (I)V
-	public synthetic fun setValue (Ljava/lang/Object;)V
-}
-
-public class gg/essential/elementa/shaders/Shader {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
-	public final fun bindIfUsable ()V
-	protected final fun getFragShader ()I
-	protected final fun getProgram ()I
-	public final fun getUniformLocation (Ljava/lang/String;)I
-	public final fun getUsable ()Z
-	protected final fun getVertShader ()I
-	protected final fun setFragShader (I)V
-	protected final fun setProgram (I)V
-	public final fun setUsable (Z)V
-	protected final fun setVertShader (I)V
-	public final fun unbindIfUsable ()V
-}
-
-public abstract class gg/essential/elementa/shaders/ShaderUniform {
-	public fun <init> (I)V
-	public final fun getLocation ()I
-	public abstract fun setValue (Ljava/lang/Object;)V
-}
-
-public final class gg/essential/elementa/shaders/Shaders {
-	public static final field INSTANCE Lgg/essential/elementa/shaders/Shaders;
-	public final fun getNewShaders ()Z
-}
-
-public final class gg/essential/elementa/shaders/Vec2Uniform : gg/essential/elementa/shaders/ShaderUniform {
-	public fun <init> (I)V
-	public fun setValue (Lgg/essential/elementa/utils/Vector2f;)V
-	public synthetic fun setValue (Ljava/lang/Object;)V
-}
-
-public final class gg/essential/elementa/shaders/Vec4Uniform : gg/essential/elementa/shaders/ShaderUniform {
-	public fun <init> (I)V
-	public fun setValue (Lgg/essential/elementa/utils/Vector4f;)V
-	public synthetic fun setValue (Ljava/lang/Object;)V
 }
 
 public class gg/essential/elementa/state/BasicState : gg/essential/elementa/state/State {
@@ -4311,13 +4219,52 @@ public final class gg/essential/elementa/utils/ImageKt {
 	public static synthetic fun decodeBlurHash$default (Ljava/lang/String;IIFILjava/lang/Object;)Ljava/awt/image/BufferedImage;
 }
 
+public final class gg/essential/elementa/utils/LegacyColorCode : java/lang/Enum {
+	public static final field AQUA Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field BLACK Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field BLUE Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field BOLD Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field COLOR_CHAR C
+	public static final field Companion Lgg/essential/elementa/utils/LegacyColorCode$Companion;
+	public static final field DARK_AQUA Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field DARK_BLUE Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field DARK_GRAY Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field DARK_GREEN Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field DARK_PURPLE Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field DARK_RED Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field GOLD Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field GRAY Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field GREEN Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field ITALIC Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field LIGHT_PURPLE Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field MAGIC Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field RED Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field RESET Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field STRIKETHROUGH Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field UNDERLINE Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field WHITE Lgg/essential/elementa/utils/LegacyColorCode;
+	public static final field YELLOW Lgg/essential/elementa/utils/LegacyColorCode;
+	public final fun getChar ()C
+	public final fun getColor ()Ljava/awt/Color;
+	public final fun isColor ()Z
+	public final fun isFormat ()Z
+	public final fun plus (Ljava/lang/String;)Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lgg/essential/elementa/utils/LegacyColorCode;
+	public static fun values ()[Lgg/essential/elementa/utils/LegacyColorCode;
+}
+
+public final class gg/essential/elementa/utils/LegacyColorCode$Companion {
+	public final fun getFORMATTING_CODE_PATTERN ()Lkotlin/text/Regex;
+	public final fun stripControlCodes (Ljava/lang/String;)Ljava/lang/String;
+	public final fun translateAlternateColorCodes (CLjava/lang/String;)Ljava/lang/String;
+}
+
 public final class gg/essential/elementa/utils/LineUtils {
 	public static final field INSTANCE Lgg/essential/elementa/utils/LineUtils;
-	public static final fun drawLine (Lgg/essential/elementa/components/UIPoint;Lgg/essential/elementa/components/UIPoint;Ljava/awt/Color;F)V
-	public static final fun drawLine (Lgg/essential/universal/UMatrixStack;Lgg/essential/elementa/components/UIPoint;Lgg/essential/elementa/components/UIPoint;Ljava/awt/Color;F)V
-	public static final fun drawLine (Lgg/essential/universal/UMatrixStack;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/awt/Color;F)V
-	public static final fun drawLine (Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/awt/Color;F)V
-	public static final fun drawLineStrip (Lgg/essential/universal/UMatrixStack;Ljava/util/List;Ljava/awt/Color;F)V
+	public static final fun drawLine (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Lgg/essential/elementa/components/UIPoint;Lgg/essential/elementa/components/UIPoint;Ljava/awt/Color;F)V
+	public static final fun drawLine (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/lang/Number;Ljava/awt/Color;F)V
+	public static final fun drawLineStrip (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;Ljava/util/List;Ljava/awt/Color;F)V
 }
 
 public class gg/essential/elementa/utils/Matrix2 {
@@ -4423,6 +4370,8 @@ public final class gg/essential/elementa/utils/ResourceCache {
 }
 
 public final class gg/essential/elementa/utils/TextKt {
+	public static final fun getComponentSplitToWidth (Lnet/kyori/adventure/text/Component;FFZLgg/essential/elementa/font/FontProvider;)Ljava/util/List;
+	public static synthetic fun getComponentSplitToWidth$default (Lnet/kyori/adventure/text/Component;FFZLgg/essential/elementa/font/FontProvider;ILjava/lang/Object;)Ljava/util/List;
 	public static final fun getStringSplitToWidth (Ljava/lang/String;FFZZLgg/essential/elementa/font/FontProvider;)Ljava/util/List;
 	public static synthetic fun getStringSplitToWidth$default (Ljava/lang/String;FFZZLgg/essential/elementa/font/FontProvider;ILjava/lang/Object;)Ljava/util/List;
 	public static final fun getStringSplitToWidthTruncated (Ljava/lang/String;FFIZZLgg/essential/elementa/font/FontProvider;Ljava/lang/String;)Ljava/util/List;

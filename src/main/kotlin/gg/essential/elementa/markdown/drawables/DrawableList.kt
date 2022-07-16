@@ -2,10 +2,8 @@ package gg.essential.elementa.markdown.drawables
 
 import gg.essential.elementa.markdown.DrawState
 import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.elementa.markdown.MarkdownConfig
 import gg.essential.elementa.markdown.selection.Cursor
-import gg.essential.elementa.markdown.selection.TextCursor
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 /**
  * Represents a list of drawables.
@@ -99,8 +97,8 @@ class DrawableList(
 
     override fun cursorAtEnd() = drawables.last().cursorAtEnd()
 
-    override fun draw(matrixStack: UMatrixStack, state: DrawState) {
-        forEach { it.drawCompat(matrixStack, state) }
+    override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
+        forEach { it.draw(matrixStack, state) }
     }
 
     override fun selectedText(asMarkdown: Boolean): String {

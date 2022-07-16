@@ -4,11 +4,11 @@ import gg.essential.elementa.UIComponent
 import gg.essential.elementa.dsl.toConstraint
 import gg.essential.elementa.dsl.pixels
 import gg.essential.elementa.utils.readFromLegacyShader
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.shader.BlendState
-import gg.essential.universal.shader.Float2Uniform
-import gg.essential.universal.shader.FloatUniform
-import gg.essential.universal.shader.UShader
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.shader.BlendState
+import gg.virtualclient.virtualminecraft.shader.Float2Uniform
+import gg.virtualclient.virtualminecraft.shader.FloatUniform
+import gg.virtualclient.virtualminecraft.shader.VirtualShader
 import java.awt.Color
 
 /**
@@ -46,7 +46,7 @@ class UICircle @JvmOverloads constructor(radius: Float = 0f, color: Color = Colo
         return true
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         beforeDraw(matrixStack)
 
         val x = constraints.getX()
@@ -62,7 +62,7 @@ class UICircle @JvmOverloads constructor(radius: Float = 0f, color: Color = Colo
     }
 
     companion object {
-        private lateinit var shader: UShader
+        private lateinit var shader: VirtualShader
         private lateinit var shaderRadiusUniform: FloatUniform
         private lateinit var shaderCenterPositionUniform: Float2Uniform
 
@@ -70,7 +70,7 @@ class UICircle @JvmOverloads constructor(radius: Float = 0f, color: Color = Colo
             if (::shader.isInitialized)
                 return
 
-            shader = UShader.readFromLegacyShader("rect", "circle", BlendState.NORMAL)
+            shader = VirtualShader.readFromLegacyShader("rect", "circle", BlendState.NORMAL)
             if (!shader.usable) {
                 println("Failed to load Elementa UICircle shader")
                 return
@@ -79,14 +79,7 @@ class UICircle @JvmOverloads constructor(radius: Float = 0f, color: Color = Colo
             shaderCenterPositionUniform = shader.getFloat2Uniform("u_CenterPos")
         }
 
-        @Deprecated(
-            UMatrixStack.Compat.DEPRECATED,
-            ReplaceWith("drawCircle(matrixStack, centerX, centerY, radius, color)"),
-        )
-        fun drawCircle(centerX: Float, centerY: Float, radius: Float, color: Color) =
-            drawCircle(UMatrixStack(), centerX, centerY, radius, color)
-
-        fun drawCircle(matrixStack: UMatrixStack, centerX: Float, centerY: Float, radius: Float, color: Color) {
+        fun drawCircle(matrixStack: VirtualMatrixStack, centerX: Float, centerY: Float, radius: Float, color: Color) {
             if (!::shader.isInitialized || !shader.usable)
                 return
 

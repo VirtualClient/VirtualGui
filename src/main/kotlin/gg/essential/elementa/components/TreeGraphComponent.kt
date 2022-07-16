@@ -5,7 +5,7 @@ import gg.essential.elementa.constraints.RelativeConstraint
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.ScissorEffect
 import gg.essential.elementa.utils.LineUtils
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 import kotlin.math.max
 import kotlin.properties.Delegates
@@ -16,8 +16,8 @@ data class TreeGraphStyle(
     val lineColor: Color = Color.WHITE,
     val lineWidth: Float = 2f,
     val isHorizontal: Boolean = false,
-    val lineDrawer: (UIPoint, UIPoint) -> Unit = { p0, p1 ->
-        LineUtils.drawLine(p0, p1, lineColor, lineWidth)
+    val lineDrawer: (VirtualMatrixStack, UIPoint, UIPoint) -> Unit = { matrix, p0, p1 ->
+        LineUtils.drawLine(matrix, p0, p1, lineColor, lineWidth)
     }
 )
 
@@ -248,8 +248,8 @@ class TreeGraphComponent(
         }
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
-        beforeDrawCompat(matrixStack)
+    override fun draw(matrixStack: VirtualMatrixStack) {
+        beforeDraw(matrixStack)
 
         if (!layedOut) {
             rootNode.layoutChildren(style)
@@ -261,7 +261,7 @@ class TreeGraphComponent(
             layedOut = true
         }
 
-        lines.forEach { style.lineDrawer(it.first, it.second) }
+        lines.forEach { style.lineDrawer(matrixStack, it.first, it.second) }
 
         super.draw(matrixStack)
     }

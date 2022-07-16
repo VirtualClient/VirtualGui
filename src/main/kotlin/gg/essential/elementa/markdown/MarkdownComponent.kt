@@ -18,9 +18,9 @@ import gg.essential.elementa.font.ElementaFonts
 import gg.essential.elementa.font.FontProvider
 import gg.essential.elementa.markdown.drawables.HeaderDrawable
 import gg.essential.elementa.utils.elementaDebug
-import gg.essential.universal.UDesktop
-import gg.essential.universal.UKeyboard
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.keyboard.Key
+import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 
 /**
  * Component that parses a string as Markdown and renders it.
@@ -107,8 +107,9 @@ class MarkdownComponent(
             }
 
             onKeyType { _, keyCode ->
-                if (selection != null && keyCode == UKeyboard.KEY_C && UKeyboard.isCtrlKeyDown()) {
-                    UDesktop.setClipboardString(drawables.selectedText(UKeyboard.isShiftKeyDown()))
+                if (selection != null && keyCode == Key.KEY_C.getKeyCode() && VirtualKeyboard.isControlKeyDown()) {
+                    //TODO(VirtualMinecraft): UDesktop in VirtualMinecraft
+//                    UDesktop.setClipboardString(drawables.selectedText(VirtualKeyboard.isShiftKeyDown()))
                 }
             }
         }
@@ -199,7 +200,7 @@ class MarkdownComponent(
         return TreeListComponent(nodes)
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         if (needsInitialLayout) {
             animationFrame()
         }

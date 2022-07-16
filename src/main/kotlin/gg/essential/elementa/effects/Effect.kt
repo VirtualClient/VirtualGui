@@ -1,7 +1,7 @@
 package gg.essential.elementa.effects
 
 import gg.essential.elementa.UIComponent
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 /**
  * Basic interface all effects need to follow.
@@ -30,41 +30,16 @@ abstract class Effect {
     /**
      * Set up all drawing, turn on shaders, etc.
      */
-    open fun beforeDraw(matrixStack: UMatrixStack) {}
+    open fun beforeDraw(matrixStack: VirtualMatrixStack) {}
 
     /**
      * Called after this component draws but before it's children are drawn.
      */
-    open fun beforeChildrenDraw(matrixStack: UMatrixStack) {}
+    open fun beforeChildrenDraw(matrixStack: VirtualMatrixStack) {}
 
     /**
      * Clean up all of this feature's GL states, etc.
      */
-    open fun afterDraw(matrixStack: UMatrixStack) {}
+    open fun afterDraw(matrixStack: VirtualMatrixStack) {}
 
-
-    @Deprecated(
-        UMatrixStack.Compat.DEPRECATED,
-        ReplaceWith("beforeDraw(matrixStack)")
-    )
-    open fun beforeDraw() = beforeDraw(UMatrixStack.Compat.get())
-
-    @Deprecated(
-        UMatrixStack.Compat.DEPRECATED,
-        ReplaceWith("beforeChildrenDraw(matrixStack)")
-    )
-    open fun beforeChildrenDraw() = beforeChildrenDraw(UMatrixStack.Compat.get())
-
-    @Deprecated(
-        UMatrixStack.Compat.DEPRECATED,
-        ReplaceWith("afterDraw(matrixStack)")
-    )
-    open fun afterDraw() = afterDraw(UMatrixStack.Compat.get())
-
-    @Suppress("DEPRECATION")
-    fun beforeDrawCompat(matrixStack: UMatrixStack) = UMatrixStack.Compat.runLegacyMethod(matrixStack) { beforeDraw() }
-    @Suppress("DEPRECATION")
-    fun beforeChildrenDrawCompat(matrixStack: UMatrixStack) = UMatrixStack.Compat.runLegacyMethod(matrixStack) { beforeChildrenDraw() }
-    @Suppress("DEPRECATION")
-    fun afterDrawCompat(matrixStack: UMatrixStack) = UMatrixStack.Compat.runLegacyMethod(matrixStack) { afterDraw() }
 }

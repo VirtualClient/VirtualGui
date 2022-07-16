@@ -4,7 +4,7 @@ import gg.essential.elementa.components.UIBlock
 import gg.essential.elementa.markdown.DrawState
 import gg.essential.elementa.markdown.MarkdownComponent
 import gg.essential.elementa.markdown.drawables.Drawable
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 
 abstract class Cursor<T : Drawable>(val target: T) {
@@ -13,10 +13,7 @@ abstract class Cursor<T : Drawable>(val target: T) {
     protected val height = target.height.toDouble()
     protected val width = height / 9.0
 
-    @Deprecated(UMatrixStack.Compat.DEPRECATED, ReplaceWith("draw(matrixStack, state)"))
-    fun draw(state: DrawState) = draw(UMatrixStack(), state)
-
-    fun draw(matrixStack: UMatrixStack, state: DrawState) {
+    fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
         if (!MarkdownComponent.DEBUG)
             return
 

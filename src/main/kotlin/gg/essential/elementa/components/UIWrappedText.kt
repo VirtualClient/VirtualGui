@@ -11,8 +11,9 @@ import gg.essential.elementa.state.State
 import gg.essential.elementa.state.pixels
 import gg.essential.elementa.utils.getStringSplitToWidth
 import gg.essential.elementa.utils.getStringSplitToWidthTruncated
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualRenderSystem
+import gg.virtualclient.virtualminecraft.VirtualTextRenderer
 import java.awt.Color
 
 /**
@@ -57,7 +58,7 @@ open class UIWrappedText @JvmOverloads constructor(
         text.width(textScale, fontProvider) / textScale
     }
 
-    private val charWidth = UGraphics.getCharWidth('x')
+    private val charWidth = VirtualTextRenderer.getInstance().getWidth("x")
 
     /** Guess on whether we should be trying to center or top-align this component. See [BELOW_LINE_HEIGHT]. */
     private val verticallyCenteredState = constraints.asState { y is CenterConstraint }
@@ -120,8 +121,8 @@ open class UIWrappedText @JvmOverloads constructor(
      */
     fun getTextWidth() = textWidthState.get()
 
-    override fun draw(matrixStack: UMatrixStack) {
-        beforeDrawCompat(matrixStack)
+    override fun draw(matrixStack: VirtualMatrixStack) {
+        beforeDraw(matrixStack)
 
         val textScale = getTextScale()
         val x = getLeft()
@@ -140,7 +141,7 @@ open class UIWrappedText @JvmOverloads constructor(
             return super.draw(matrixStack)
         }
 
-        UGraphics.enableBlend()
+        VirtualRenderSystem.enableBlend()
 
         val lines = if (trimText) {
             getStringSplitToWidthTruncated(

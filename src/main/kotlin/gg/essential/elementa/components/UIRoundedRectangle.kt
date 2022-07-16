@@ -3,11 +3,11 @@ package gg.essential.elementa.components
 import gg.essential.elementa.UIComponent
 import gg.essential.elementa.dsl.pixels
 import gg.essential.elementa.utils.readFromLegacyShader
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.shader.BlendState
-import gg.essential.universal.shader.Float4Uniform
-import gg.essential.universal.shader.FloatUniform
-import gg.essential.universal.shader.UShader
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.shader.BlendState
+import gg.virtualclient.virtualminecraft.shader.Float4Uniform
+import gg.virtualclient.virtualminecraft.shader.FloatUniform
+import gg.virtualclient.virtualminecraft.shader.VirtualShader
 import java.awt.Color
 
 /**
@@ -20,8 +20,8 @@ open class UIRoundedRectangle(radius: Float) : UIComponent() {
         setRadius(radius.pixels())
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
-        beforeDrawCompat(matrixStack)
+    override fun draw(matrixStack: VirtualMatrixStack) {
+        beforeDraw(matrixStack)
 
         val radius = getRadius()
 
@@ -33,7 +33,7 @@ open class UIRoundedRectangle(radius: Float) : UIComponent() {
     }
 
     companion object {
-        private lateinit var shader: UShader
+        private lateinit var shader: VirtualShader
         private lateinit var shaderRadiusUniform: FloatUniform
         private lateinit var shaderInnerRectUniform: Float4Uniform
 
@@ -41,7 +41,7 @@ open class UIRoundedRectangle(radius: Float) : UIComponent() {
             if (::shader.isInitialized)
                 return
 
-            shader = UShader.readFromLegacyShader("rect", "rounded_rect", BlendState.NORMAL)
+            shader = VirtualShader.readFromLegacyShader("rect", "rounded_rect", BlendState.NORMAL)
             if (!shader.usable) {
                 println("Failed to load Elementa UIRoundedRectangle shader")
                 return
@@ -50,17 +50,10 @@ open class UIRoundedRectangle(radius: Float) : UIComponent() {
             shaderInnerRectUniform = shader.getFloat4Uniform("u_InnerRect")
         }
 
-        @Deprecated(
-            UMatrixStack.Compat.DEPRECATED,
-            ReplaceWith("drawRoundedRectangle(matrixStack, left, top, right, bottom, radius, color)"),
-        )
-        fun drawRoundedRectangle(left: Float, top: Float, right: Float, bottom: Float, radius: Float, color: Color) =
-            drawRoundedRectangle(UMatrixStack(), left, top, right, bottom, radius, color)
-
         /**
          * Draws a rounded rectangle
          */
-        fun drawRoundedRectangle(matrixStack: UMatrixStack, left: Float, top: Float, right: Float, bottom: Float, radius: Float, color: Color) {
+        fun drawRoundedRectangle(matrixStack: VirtualMatrixStack, left: Float, top: Float, right: Float, bottom: Float, radius: Float, color: Color) {
             if (!::shader.isInitialized || !shader.usable)
                 return
 

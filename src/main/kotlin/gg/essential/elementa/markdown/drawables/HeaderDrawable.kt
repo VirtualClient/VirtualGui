@@ -3,7 +3,7 @@ package gg.essential.elementa.markdown.drawables
 import gg.essential.elementa.components.UIBlock
 import gg.essential.elementa.markdown.DrawState
 import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class HeaderDrawable(
     md: MarkdownComponent,
@@ -50,8 +50,8 @@ class HeaderDrawable(
         )
     }
 
-    override fun draw(matrixStack: UMatrixStack, state: DrawState) {
-        paragraph.drawCompat(matrixStack, state)
+    override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
+        paragraph.draw(matrixStack, state)
 
         if (headerConfig.hasDivider) {
             val y = layout.bottom - layout.margin.bottom - headerConfig.dividerWidth

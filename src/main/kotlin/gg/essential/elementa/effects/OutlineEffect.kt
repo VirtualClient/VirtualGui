@@ -4,7 +4,7 @@ import gg.essential.elementa.components.UIBlock
 import gg.essential.elementa.state.BasicState
 import gg.essential.elementa.state.MappedState
 import gg.essential.elementa.state.State
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 
 /**
@@ -72,17 +72,17 @@ class OutlineEffect @JvmOverloads constructor(
         sides = sides - side
     }
 
-    override fun beforeChildrenDraw(matrixStack: UMatrixStack) {
+    override fun beforeChildrenDraw(matrixStack: VirtualMatrixStack) {
         if (!drawAfterChildren)
             drawOutline(matrixStack)
     }
 
-    override fun afterDraw(matrixStack: UMatrixStack) {
+    override fun afterDraw(matrixStack: VirtualMatrixStack) {
         if (drawAfterChildren)
             drawOutline(matrixStack)
     }
 
-    private fun drawOutline(matrixStack: UMatrixStack) {
+    private fun drawOutline(matrixStack: VirtualMatrixStack) {
         val color = colorState.get()
         val width = widthState.get()
 

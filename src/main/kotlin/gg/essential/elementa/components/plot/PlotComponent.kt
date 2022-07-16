@@ -5,7 +5,7 @@ import gg.essential.elementa.components.UIContainer
 import gg.essential.elementa.components.UIText
 import gg.essential.elementa.constraints.*
 import gg.essential.elementa.dsl.*
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class PlotComponent(
     private val points: List<PlotPoint>,
@@ -148,7 +148,7 @@ class PlotComponent(
         return PlotPoint(newX, newY)
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         super.draw(matrixStack)
 
         drawWidth = if (yBounds.showLabels) {

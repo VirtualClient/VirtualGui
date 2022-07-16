@@ -1,11 +1,12 @@
-package gg.essential.elementa
+package gg.essential.elementa.font
 
+import gg.essential.elementa.UIComponent
 import gg.essential.elementa.constraints.ConstraintType
 import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.font.FontProvider
 import gg.essential.elementa.utils.roundToRealPixels
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualTextRenderer
+import net.kyori.adventure.text.Component
 import java.awt.Color
 
 class VanillaFontRenderer : FontProvider {
@@ -17,13 +18,20 @@ class VanillaFontRenderer : FontProvider {
     }
 
     override fun getStringWidth(string: String, pointSize: Float): Float =
-        UGraphics.getStringWidth(string).toFloat()
+        VirtualTextRenderer.getInstance().getWidth(string).toFloat()
+
+
+    override fun getStringWidth(string: Component, pointSize: Float): Float =
+        VirtualTextRenderer.getInstance().getWidth(string).toFloat()
 
     override fun getStringHeight(string: String, pointSize: Float): Float =
-        UGraphics.getFontHeight().toFloat()
+        VirtualTextRenderer.getInstance().fontHeight.toFloat()
+
+    override fun getStringHeight(string: Component, pointSize: Float): Float =
+        VirtualTextRenderer.getInstance().fontHeight.toFloat()
 
     override fun drawString(
-        matrixStack: UMatrixStack,
+        matrixStack: VirtualMatrixStack,
         string: String,
         color: Color,
         x: Float,
@@ -38,9 +46,42 @@ class VanillaFontRenderer : FontProvider {
 
         matrixStack.scale(scale, scale, 1f)
         if (shadowColor == null) {
-            UGraphics.drawString(matrixStack, string, scaledX, scaledY, color.rgb, shadow)
+            if(shadow) {
+                VirtualTextRenderer.getInstance().drawWithShadow(matrixStack, string, scaledX, scaledY, color.rgb)
+            } else {
+                VirtualTextRenderer.getInstance().draw(matrixStack, string, scaledX, scaledY, color.rgb)
+            }
         } else {
-            UGraphics.drawString(matrixStack, string, scaledX, scaledY, color.rgb, shadowColor.rgb)
+            VirtualTextRenderer.getInstance().draw(matrixStack, string, scaledX + 1f, scaledY + 1f, shadowColor.rgb)
+            VirtualTextRenderer.getInstance().draw(matrixStack, string, scaledX, scaledY, color.rgb)
+        }
+        matrixStack.scale(1 / scale, 1 / scale, 1f)
+    }
+
+    override fun drawString(
+        matrixStack: VirtualMatrixStack,
+        string: Component,
+        color: Color,
+        x: Float,
+        y: Float,
+        originalPointSize: Float,
+        scale: Float,
+        shadow: Boolean,
+        shadowColor: Color?
+    ) {
+        val scaledX = x.roundToRealPixels() / scale
+        val scaledY = y.roundToRealPixels() / scale
+
+        matrixStack.scale(scale, scale, 1f)
+        if (shadowColor == null) {
+            if(shadow) {
+                VirtualTextRenderer.getInstance().drawWithShadow(matrixStack, string, scaledX, scaledY, color.rgb)
+            } else {
+                VirtualTextRenderer.getInstance().draw(matrixStack, string, scaledX, scaledY, color.rgb)
+            }
+        } else {
+            VirtualTextRenderer.getInstance().draw(matrixStack, string, scaledX + 1f, scaledY + 1f, shadowColor.rgb)
+            VirtualTextRenderer.getInstance().draw(matrixStack, string, scaledX, scaledY, color.rgb)
         }
         matrixStack.scale(1 / scale, 1 / scale, 1f)
     }

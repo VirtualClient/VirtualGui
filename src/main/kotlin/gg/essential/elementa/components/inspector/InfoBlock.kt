@@ -11,7 +11,7 @@ import gg.essential.elementa.constraints.animation.*
 import gg.essential.elementa.constraints.debug.CycleSafeConstraintDebugger
 import gg.essential.elementa.constraints.debug.withDebugger
 import gg.essential.elementa.dsl.*
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 
 class InfoBlock(private val inspector: Inspector) : UIContainer() {
@@ -275,7 +275,7 @@ class InfoBlock(private val inspector: Inspector) : UIContainer() {
         }
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         super.draw(matrixStack)
 
         if (cachedComponent != inspector.selectedNode?.targetComponent) {

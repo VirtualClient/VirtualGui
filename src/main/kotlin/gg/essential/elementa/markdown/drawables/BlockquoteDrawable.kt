@@ -3,8 +3,7 @@ package gg.essential.elementa.markdown.drawables
 import gg.essential.elementa.components.UIBlock
 import gg.essential.elementa.markdown.DrawState
 import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.elementa.markdown.MarkdownConfig
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class BlockquoteDrawable(md: MarkdownComponent, val drawables: DrawableList) : Drawable(md) {
     private var dividerHeight: Float = -1f
@@ -48,7 +47,7 @@ class BlockquoteDrawable(md: MarkdownComponent, val drawables: DrawableList) : D
         )
     }
 
-    override fun draw(matrixStack: UMatrixStack, state: DrawState) {
+    override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
         UIBlock.drawBlockSized(
             matrixStack,
             config.blockquoteConfig.dividerColor,
@@ -58,7 +57,7 @@ class BlockquoteDrawable(md: MarkdownComponent, val drawables: DrawableList) : D
             dividerHeight.toDouble()
         )
 
-        drawables.forEach { it.drawCompat(matrixStack, state) }
+        drawables.forEach { it.draw(matrixStack, state) }
     }
 
     override fun cursorAt(mouseX: Float, mouseY: Float, dragged: Boolean, mouseButton: Int) = drawables.cursorAt(mouseX, mouseY, dragged, mouseButton)

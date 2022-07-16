@@ -1,0 +1,189 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.12.2-forge)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.12.2-forge/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.12.2-forge\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.minecraft.launchwrapper.Launch\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.12.2-forge"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.15.2-forge)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.15.2-forge/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.15.2-forge\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.minecraftforge.userdev.LaunchTesting\"",
+      "args": "",
+      "env": {
+        "MOD_CLASSES": "main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.15.2-forge\\build\\resources\\main;main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.15.2-forge\\build\\classes\\java\\main;main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.15.2-forge\\build\\classes\\kotlin\\main",
+        "MCP_MAPPINGS": "loom.stub",
+        "MCP_VERSION": "20200122.131323",
+        "FORGE_VERSION": "31.1.18",
+        "assetIndex": "1.15.2-1.15",
+        "assetDirectory": "C:\\Users\\david\\.gradle\\caches\\essential-loom\\assets",
+        "nativesDirectory": "C:\\Users\\david\\.gradle\\caches\\essential-loom\\1.15.2\\natives",
+        "FORGE_GROUP": "net.minecraftforge",
+        "target": "fmluserdevclient",
+        "MC_VERSION": "1.15.2"
+      },
+      "projectName": "platform:1.15.2-forge"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.16.2-forge)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.16.2-forge/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.16.2-forge\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.minecraftforge.userdev.LaunchTesting\"",
+      "args": "",
+      "env": {
+        "MOD_CLASSES": "main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.16.2-forge\\build\\resources\\main;main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.16.2-forge\\build\\classes\\java\\main;main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.16.2-forge\\build\\classes\\kotlin\\main",
+        "MCP_MAPPINGS": "loom.stub",
+        "MCP_VERSION": "20200812.004259",
+        "FORGE_VERSION": "33.0.61",
+        "assetIndex": "1.16.2-1.16",
+        "assetDirectory": "C:\\Users\\david\\.gradle\\caches\\essential-loom\\assets",
+        "nativesDirectory": "C:\\Users\\david\\.gradle\\caches\\essential-loom\\1.16.2\\natives",
+        "FORGE_GROUP": "net.minecraftforge",
+        "target": "fmluserdevclient",
+        "MC_VERSION": "1.16.2"
+      },
+      "projectName": "platform:1.16.2-forge"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.16.2-fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.16.2-fabric/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.16.2-fabric\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.fabricmc.loader.impl.launch.knot.KnotClient\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.16.2-fabric"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.17.1-fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.17.1-fabric/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.17.1-fabric\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.fabricmc.loader.impl.launch.knot.KnotClient\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.17.1-fabric"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.17.1-forge)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.17.1-forge/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.17.1-forge\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-p\" \"C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\cpw.mods\\securejarhandler\\0.9.54\\24b670f2c026ec9777e64a2c2126ebc8635dbe8d\\securejarhandler-0.9.54.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm-commons\\9.1\\8b971b182eb5cf100b9e8d4119152d83e00e0fdd\\asm-commons-9.1.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm-util\\9.1\\36464a45d871779f3383a8a9aba2b26562a86729\\asm-util-9.1.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm-analysis\\9.1\\4f61b83b81d8b659958f4bcc48907e93ecea55a0\\asm-analysis-9.1.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm-tree\\9.1\\c333f2a855069cb8eb17a40a3eb8b1b67755d0eb\\asm-tree-9.1.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm\\9.1\\a99500cf6eea30535eeac6be73899d048f8d12a8\\asm-9.1.jar\" \"--add-modules\" \"ALL-MODULE-PATH\" \"--add-opens\" \"java.base/java.util.jar\u003dcpw.mods.securejarhandler\" \"--add-exports\" \"java.base/sun.security.util\u003dcpw.mods.securejarhandler\" \"--add-exports\" \"jdk.naming.dns/com.sun.jndi.dns\u003djava.naming\" \"-Dfabric.dli.main\u003dcpw.mods.bootstraplauncher.BootstrapLauncher\"",
+      "args": "",
+      "env": {
+        "MOD_CLASSES": "main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.17.1-forge\\build\\resources\\main;main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.17.1-forge\\build\\classes\\java\\main;main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.17.1-forge\\build\\classes\\kotlin\\main",
+        "MCP_MAPPINGS": "loom.stub"
+      },
+      "projectName": "platform:1.17.1-forge"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.18.1-fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.18.1-fabric/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.18.1-fabric\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.fabricmc.loader.impl.launch.knot.KnotClient\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.18.1-fabric"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.18.1-forge)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.18.1-forge/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.18.1-forge\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-p\" \"C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\cpw.mods\\securejarhandler\\1.0.1\\cefd70d447a84ea4949fda0ee654f9a95f72d4da\\securejarhandler-1.0.1.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm-commons\\9.2\\f4d7f0fc9054386f2893b602454d48e07d4fbead\\asm-commons-9.2.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm-util\\9.2\\fbc178fc5ba3dab50fd7e8a5317b8b647c8e8946\\asm-util-9.2.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm-analysis\\9.2\\7487dd756daf96cab9986e44b9d7bcb796a61c10\\asm-analysis-9.2.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm-tree\\9.2\\d96c99a30f5e1a19b0e609dbb19a44d8518ac01e\\asm-tree-9.2.jar;C:\\Users\\david\\.gradle\\caches\\modules-2\\files-2.1\\org.ow2.asm\\asm\\9.2\\81a03f76019c67362299c40e0ba13405f5467bff\\asm-9.2.jar\" \"--add-modules\" \"ALL-MODULE-PATH\" \"--add-opens\" \"java.base/java.util.jar\u003dcpw.mods.securejarhandler\" \"--add-exports\" \"java.base/sun.security.util\u003dcpw.mods.securejarhandler\" \"--add-exports\" \"jdk.naming.dns/com.sun.jndi.dns\u003djava.naming\" \"-Dfabric.dli.main\u003dcpw.mods.bootstraplauncher.BootstrapLauncher\"",
+      "args": "",
+      "env": {
+        "MOD_CLASSES": "main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.18.1-forge\\build\\resources\\main;main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.18.1-forge\\build\\classes\\java\\main;main%%F:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.18.1-forge\\build\\classes\\kotlin\\main",
+        "MCP_MAPPINGS": "loom.stub"
+      },
+      "projectName": "platform:1.18.1-forge"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.8.9-forge)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.8.9-forge/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.8.9-forge\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.minecraft.launchwrapper.Launch\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.8.9-forge"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.18.2-fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.18.2-fabric/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.18.2-fabric\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.fabricmc.loader.impl.launch.knot.KnotClient\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.18.2-fabric"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.16.4-fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.16.4-fabric/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.16.4-fabric\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.fabricmc.loader.impl.launch.knot.KnotClient\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.16.4-fabric"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.19-fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.19-fabric/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.19-fabric\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.fabricmc.loader.impl.launch.knot.KnotClient\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.19-fabric"
+    }
+  ]
+}

@@ -5,8 +5,8 @@ import gg.essential.elementa.dsl.coerceAtMost
 import gg.essential.elementa.dsl.pixels
 import gg.essential.elementa.dsl.width
 import gg.essential.elementa.utils.getStringSplitToWidthTruncated
-import gg.essential.universal.UKeyboard
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import java.awt.Color
 
 class UIMultilineTextInput @JvmOverloads constructor(
@@ -64,7 +64,7 @@ class UIMultilineTextInput @JvmOverloads constructor(
     }
 
     override fun onEnterPressed() {
-        if (UKeyboard.isShiftKeyDown()) {
+        if (VirtualKeyboard.isShiftKeyDown()) {
             commitTextAddition("\n")
             updateAction(getText())
         } else {
@@ -72,7 +72,7 @@ class UIMultilineTextInput @JvmOverloads constructor(
         }
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         beforeDraw(matrixStack)
 
         val textScale = getTextScale()

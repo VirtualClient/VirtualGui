@@ -6,8 +6,11 @@ import gg.essential.elementa.constraints.ColorConstraint
 import gg.essential.elementa.dsl.toConstraint
 import gg.essential.elementa.state.State
 import gg.essential.elementa.state.toConstraint
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualRenderSystem
+import gg.virtualclient.virtualminecraft.vertex.CommonVertexFormats
+import gg.virtualclient.virtualminecraft.vertex.DrawMode
+import gg.virtualclient.virtualminecraft.vertex.VirtualBufferBuilder
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 
@@ -23,8 +26,8 @@ open class UIBlock(colorConstraint: ColorConstraint = Color.WHITE.toConstraint()
         setColor(colorConstraint)
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
-        beforeDrawCompat(matrixStack)
+    override fun draw(matrixStack: VirtualMatrixStack) {
+        beforeDraw(matrixStack)
 
         val x = this.getLeft().toDouble()
         val y = this.getTop().toDouble()
@@ -36,7 +39,7 @@ open class UIBlock(colorConstraint: ColorConstraint = Color.WHITE.toConstraint()
         super.draw(matrixStack)
     }
 
-    internal open fun drawBlock(matrixStack: UMatrixStack, x: Double, y: Double, x2: Double, y2: Double) {
+    internal open fun drawBlock(matrixStack: VirtualMatrixStack, x: Double, y: Double, x2: Double, y2: Double) {
         val color = getColor()
         if (color.alpha == 0)
             return
@@ -45,65 +48,55 @@ open class UIBlock(colorConstraint: ColorConstraint = Color.WHITE.toConstraint()
     }
 
     companion object {
-        @Deprecated(
-            "Pass UMatrixStack as first argument, required for 1.17",
-            ReplaceWith("drawBlock(matrixStack, color, x1, y1, x2, y2)")
-        )
-        fun drawBlock(color: Color, x1: Double, y1: Double, x2: Double, y2: Double) =
-            drawBlock(UMatrixStack(), color, x1, y1, x2, y2)
 
-        fun drawBlock(matrixStack: UMatrixStack, color: Color, x1: Double, y1: Double, x2: Double, y2: Double) {
-            UGraphics.enableBlend()
-            UGraphics.tryBlendFuncSeparate(770, 771, 1, 0)
+        fun drawBlock(matrixStack: VirtualMatrixStack, color: Color, x1: Double, y1: Double, x2: Double,
+                      y2: Double, useDepth: Boolean = true) {
+            VirtualRenderSystem.enableBlend()
+            VirtualRenderSystem.tryBlendFuncSeparate(770, 771, 1, 0)
 
-            val buffer = UGraphics.getFromTessellator()
-            buffer.beginWithDefaultShader(UGraphics.DrawMode.QUADS, UGraphics.CommonVertexFormats.POSITION_COLOR)
-            drawBlock(buffer, matrixStack, color, x1, y1, x2, y2)
+            val buffer = VirtualBufferBuilder.getFromTessellator()
+            buffer.beginWithDefaultShader(DrawMode.QUADS, CommonVertexFormats.POSITION_COLOR)
+            drawBlock(buffer, matrixStack, color, x1, y1, x2, y2, useDepth)
 
-            UGraphics.disableBlend()
+            VirtualRenderSystem.disableBlend()
         }
 
-        fun drawBlockWithActiveShader(matrixStack: UMatrixStack, color: Color, x1: Double, y1: Double, x2: Double, y2: Double) {
-            val buffer = UGraphics.getFromTessellator()
-            buffer.beginWithActiveShader(UGraphics.DrawMode.QUADS, UGraphics.CommonVertexFormats.POSITION_COLOR)
-            drawBlock(buffer, matrixStack, color, x1, y1, x2, y2)
+        fun drawBlockWithActiveShader(matrixStack: VirtualMatrixStack, color: Color, x1: Double,
+                                      y1: Double, x2: Double, y2: Double, useDepth: Boolean = true) {
+            val buffer = VirtualBufferBuilder.getFromTessellator()
+            buffer.beginWithActiveShader(DrawMode.QUADS, CommonVertexFormats.POSITION_COLOR)
+            drawBlock(buffer, matrixStack, color, x1, y1, x2, y2, useDepth)
         }
 
-        private fun drawBlock(worldRenderer: UGraphics, matrixStack: UMatrixStack, color: Color, x1: Double, y1: Double, x2: Double, y2: Double) {
+        private fun drawBlock(worldRenderer: VirtualBufferBuilder, matrixStack: VirtualMatrixStack,
+                              color: Color, x1: Double, y1: Double, x2: Double, y2: Double, useDepth: Boolean = true) {
             val red = color.red.toFloat() / 255f
             val green = color.green.toFloat() / 255f
             val blue = color.blue.toFloat() / 255f
             val alpha = color.alpha.toFloat() / 255f
 
-            worldRenderer.pos(matrixStack, x1, y2, 0.0).color(red, green, blue, alpha).endVertex()
-            worldRenderer.pos(matrixStack, x2, y2, 0.0).color(red, green, blue, alpha).endVertex()
-            worldRenderer.pos(matrixStack, x2, y1, 0.0).color(red, green, blue, alpha).endVertex()
-            worldRenderer.pos(matrixStack, x1, y1, 0.0).color(red, green, blue, alpha).endVertex()
+            worldRenderer.vertex(matrixStack, x1, y2, 0.0).color(red, green, blue, alpha).next()
+            worldRenderer.vertex(matrixStack, x2, y2, 0.0).color(red, green, blue, alpha).next()
+            worldRenderer.vertex(matrixStack, x2, y1, 0.0).color(red, green, blue, alpha).next()
+            worldRenderer.vertex(matrixStack, x1, y1, 0.0).color(red, green, blue, alpha).next()
 
-            if (ElementaVersion.active >= ElementaVersion.v1) {
+            if (ElementaVersion.active >= ElementaVersion.v1 && useDepth) {
                 // At some point MC started enabling its depth test during font rendering but all GUI code is
                 // essentially flat and has depth tests disabled. This can cause stuff rendered in the background of the
                 // GUI to interfere with text rendered in the foreground because none of the blocks rendered in between
                 // will actually write to the depth buffer.
                 // So that's what we're doing, resetting the depth buffer in the area where we draw the block.
-                UGraphics.enableDepth()
-                UGraphics.depthFunc(GL11.GL_ALWAYS)
-                worldRenderer.drawDirect()
-                UGraphics.disableDepth()
-                UGraphics.depthFunc(GL11.GL_LEQUAL)
+                VirtualRenderSystem.enableDepth()
+                VirtualRenderSystem.depthFunc(GL11.GL_ALWAYS)
+                VirtualBufferBuilder.drawTessellator()
+                VirtualRenderSystem.disableDepth()
+                VirtualRenderSystem.depthFunc(GL11.GL_LEQUAL)
             } else {
-                worldRenderer.drawDirect()
+                VirtualBufferBuilder.drawTessellator()
             }
         }
 
-        @Deprecated(
-            "Pass UMatrixStack as first argument, required for 1.17",
-            ReplaceWith("drawBlock(matrixStack, color, x1, y1, x2, y2)")
-        )
-        fun drawBlockSized(color: Color, x: Double, y: Double, width: Double, height: Double) =
-            drawBlockSized(UMatrixStack(), color, x, y, width, height)
-
-        fun drawBlockSized(matrixStack: UMatrixStack, color: Color, x: Double, y: Double, width: Double, height: Double) {
+        fun drawBlockSized(matrixStack: VirtualMatrixStack, color: Color, x: Double, y: Double, width: Double, height: Double) {
             drawBlock(matrixStack, color, x, y, x + width, y + height)
         }
     }

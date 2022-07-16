@@ -8,10 +8,8 @@ import gg.essential.elementa.components.image.ImageProvider
 import gg.essential.elementa.svg.SVGParser
 import gg.essential.elementa.utils.ResourceCache
 import gg.essential.elementa.utils.drawTexture
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.UMinecraft
-import gg.essential.universal.utils.ReleasedDynamicTexture
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 import java.awt.image.BufferedImage
@@ -59,9 +57,9 @@ open class UIImage @JvmOverloads constructor(
             // first call to uploadTexture or getGlTextureId
             // Same for 1.15+ actually, except that it is not getRGB but serialization to byte[] (so we can re-parse it
             // as a NativeImage) which is slow.
-            val texture = UGraphics.getTexture(it)
+            val texture = ReleasedDynamicTexture.getTexture(it)
             Window.enqueueRenderOperation {
-                texture?.uploadTexture()
+                texture.uploadTexture()
                 this.texture = texture
                 while (waiting.isEmpty().not())
                     waiting.poll().applyTexture(texture)
@@ -76,16 +74,16 @@ open class UIImage @JvmOverloads constructor(
     )
     constructor(imageFunction: () -> BufferedImage) : this(CompletableFuture.supplyAsync(imageFunction))
 
-    override fun drawImage(matrixStack: UMatrixStack, x: Double, y: Double, width: Double, height: Double, color: Color) {
+    override fun drawImage(matrixStack: VirtualMatrixStack, x: Double, y: Double, width: Double, height: Double, color: Color) {
         when {
             texture != null -> drawTexture(matrixStack, texture!!, color, x, y, width, height, textureMinFilter.glMode, textureMagFilter.glMode)
-            imageFuture.isCompletedExceptionally -> failureImage.drawImageCompat(matrixStack, x, y, width, height, color)
-            else -> loadingImage.drawImageCompat(matrixStack, x, y, width, height, color)
+            imageFuture.isCompletedExceptionally -> failureImage.drawImage(matrixStack, x, y, width, height, color)
+            else -> loadingImage.drawImage(matrixStack, x, y, width, height, color)
         }
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
-        beforeDrawCompat(matrixStack)
+    override fun draw(matrixStack: VirtualMatrixStack) {
+        beforeDraw(matrixStack)
 
         val x = this.getLeft().toDouble()
         val y = this.getTop().toDouble()

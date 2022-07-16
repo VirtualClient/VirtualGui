@@ -28,6 +28,12 @@ val common = registerStripReferencesAttribute("common") {
     excludes.add("net.minecraft")
 }
 
+repositories {
+    maven {
+        url = uri("https://repo.virtualclient.gg/artifactory/virtualclient-public/")
+    }
+}
+
 dependencies {
     compileOnly(libs.kotlin.stdlib.jdk8)
     compileOnly(libs.kotlin.reflect)
@@ -41,10 +47,12 @@ dependencies {
 
     // Depending on LWJGL3 instead of 2 so we can choose opengl bindings only
     compileOnly("org.lwjgl:lwjgl-opengl:3.3.1")
-    // Depending on 1.8.9 for all of these because that's the oldest version we support
-    compileOnly(libs.versions.universalcraft.map { "gg.essential:universalcraft-1.8.9-forge:$it" }) {
+
+    compileOnly("gg.virtualclient:virtualminecraft:1.0.0-11604-SNAPSHOT") {
         attributes { attribute(common, true) }
     }
+    api("net.kyori:adventure-api:4.10.1")
+
     compileOnly("com.google.code.gson:gson:2.2.4")
 }
 

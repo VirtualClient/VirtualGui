@@ -8,8 +8,8 @@ import gg.essential.elementa.state.BasicState
 import gg.essential.elementa.state.MappedState
 import gg.essential.elementa.state.State
 import gg.essential.elementa.state.pixels
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import java.awt.Color
 
 /**
@@ -95,12 +95,12 @@ constructor(
         return super.getHeight() * getTextScale()
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         val text = textState.get()
         if (text.isEmpty())
             return
 
-        beforeDrawCompat(matrixStack)
+        beforeDraw(matrixStack)
 
         val scale = getWidth() / textWidthState.get()
         val x = getLeft()
@@ -112,7 +112,7 @@ constructor(
             return super.draw(matrixStack)
         }
 
-        UGraphics.enableBlend()
+        VirtualRenderSystem.enableBlend()
 
         val shadow = shadowState.get()
         val shadowColor = shadowColorState.get()

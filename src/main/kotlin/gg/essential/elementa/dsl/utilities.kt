@@ -3,10 +3,10 @@ package gg.essential.elementa.dsl
 import gg.essential.elementa.constraints.*
 import gg.essential.elementa.font.DefaultFonts
 import gg.essential.elementa.font.FontProvider
-import gg.essential.universal.UGraphics
+import gg.virtualclient.virtualminecraft.VirtualTextRenderer
 import java.awt.Color
 
-fun Char.width(textScale: Float = 1f) = UGraphics.getCharWidth(this) * textScale
+fun Char.width(textScale: Float = 1f) = VirtualTextRenderer.getInstance().getWidth(this.toString()) * textScale
 
 fun String.width(textScale: Float = 1f, fontProvider: FontProvider = DefaultFonts.VANILLA_FONT_RENDERER) =
     fontProvider.getStringWidth(this, 10f) * textScale

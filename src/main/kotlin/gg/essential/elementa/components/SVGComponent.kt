@@ -5,8 +5,8 @@ import gg.essential.elementa.components.image.ImageProvider
 import gg.essential.elementa.impl.Platform.Companion.platform
 import gg.essential.elementa.svg.SVGParser
 import gg.essential.elementa.svg.data.SVG
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import org.lwjgl.BufferUtils
 import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL15
@@ -36,7 +36,7 @@ class SVGComponent(private var svg: SVG) : UIComponent(), ImageProvider {
         needsReload = true
     }
 
-    override fun drawImage(matrixStack: UMatrixStack, x: Double, y: Double, width: Double, height: Double, color: Color) {
+    override fun drawImage(matrixStack: VirtualMatrixStack, x: Double, y: Double, width: Double, height: Double, color: Color) {
         if (platform.mcVersion >= 11700) {
             // TODO heavily relies on legacy gl, at least need to use per-vertex color and convert lines/points to tris
             return
@@ -53,9 +53,9 @@ class SVGComponent(private var svg: SVG) : UIComponent(), ImageProvider {
 
         matrixStack.push()
 
-        UGraphics.enableBlend()
+        VirtualRenderSystem.enableBlend()
         @Suppress("DEPRECATION")
-        UGraphics.disableTexture2D()
+        VirtualRenderSystem.disableTexture2D()
 
         GL11.glColor4f(color.red / 255f, color.green / 255f, color.blue / 255f, 1f)
         matrixStack.translate(x, y, 0.0)
@@ -84,12 +84,12 @@ class SVGComponent(private var svg: SVG) : UIComponent(), ImageProvider {
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0)
 
         @Suppress("DEPRECATION")
-        UGraphics.enableTexture2D()
+        VirtualRenderSystem.enableTexture2D()
 
         matrixStack.pop()
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         beforeDraw(matrixStack)
 
         val x = this.getLeft().toDouble()

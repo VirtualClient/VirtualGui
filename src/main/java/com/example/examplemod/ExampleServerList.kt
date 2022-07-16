@@ -9,7 +9,6 @@ import gg.essential.elementa.constraints.*
 import gg.essential.elementa.constraints.animation.Animations
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.ScissorEffect
-import gg.essential.universal.UScreen
 import java.awt.Color
 import java.net.URL
 

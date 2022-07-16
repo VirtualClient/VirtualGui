@@ -15,9 +15,9 @@ import gg.essential.elementa.font.FontProvider
 import gg.essential.elementa.utils.*
 import gg.essential.elementa.utils.requireMainThread
 import gg.essential.elementa.utils.requireState
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.UMouse
-import gg.essential.universal.UResolution
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMouse
+import gg.virtualclient.virtualminecraft.VirtualWindow
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 import java.util.*
@@ -370,13 +370,13 @@ abstract class UIComponent : Observable() {
     }
 
     protected fun getMousePosition(): Pair<Float, Float> {
-        return pixelCoordinatesToPixelCenter(UMouse.Scaled.x, UMouse.Scaled.y).let { (x, y) -> x.toFloat() to y.toFloat() }
+        return pixelCoordinatesToPixelCenter(VirtualMouse.scaledX, VirtualMouse.scaledY).let { (x, y) -> x.toFloat() to y.toFloat() }
     }
 
     internal fun pixelCoordinatesToPixelCenter(mouseX: Double, mouseY: Double): Pair<Double, Double> {
         // Move the position of a click to the center of a pixel. See [ElementaVersion.v2] for more info
         return if ((Window.ofOrNull(this)?.version ?: ElementaVersion.v0) >= ElementaVersion.v2) {
-            val halfPixel = 0.5 / UResolution.scaleFactor
+            val halfPixel = 0.5 / VirtualWindow.scaleFactor
             mouseX + halfPixel to mouseY + halfPixel
         } else {
             mouseX to mouseY
@@ -423,17 +423,11 @@ abstract class UIComponent : Observable() {
         effects.forEach { it.setup() }
     }
 
-    @Deprecated(UMatrixStack.Compat.DEPRECATED, ReplaceWith("draw(matrixStack)"))
-    open fun draw() = draw(UMatrixStack.Compat.get())
-
-    @Suppress("DEPRECATION")
-    fun drawCompat(matrixStack: UMatrixStack) = UMatrixStack.Compat.runLegacyMethod(matrixStack) { draw() }
-
     /**
      * Does the actual drawing for this component, meant to be overridden by specific components.
      * Also does some housekeeping dealing with hovering and effects.
      */
-    open fun draw(matrixStack: UMatrixStack) {
+    open fun draw(matrixStack: VirtualMatrixStack) {
         if (!isInitialized) {
             isInitialized = true
             afterInitialization()
@@ -456,7 +450,7 @@ abstract class UIComponent : Observable() {
             )
         }
 
-        beforeChildrenDrawCompat(matrixStack)
+        beforeChildrenDraw(matrixStack)
 
         val parentWindow = Window.of(this)
 
@@ -472,16 +466,16 @@ abstract class UIComponent : Observable() {
                 )
             ) return@forEachChild
 
-            child.drawCompat(matrixStack)
+            child.draw(matrixStack)
         }
 
         if (this is Window)
             drawFloatingComponents(matrixStack)
 
-        afterDrawCompat(matrixStack)
+        afterDraw(matrixStack)
     }
 
-    open fun beforeDraw(matrixStack: UMatrixStack) {
+    open fun beforeDraw(matrixStack: VirtualMatrixStack) {
         if (didCallBeforeDraw && !warnedAboutBeforeDraw) {
             warnedAboutBeforeDraw = true
             val advice = if (this is UIContainer) {
@@ -496,31 +490,13 @@ abstract class UIComponent : Observable() {
         effects.forEach { it.beforeDraw(matrixStack) }
     }
 
-    open fun afterDraw(matrixStack: UMatrixStack) {
+    open fun afterDraw(matrixStack: VirtualMatrixStack) {
         effects.forEach { it.afterDraw(matrixStack) }
     }
 
-    open fun beforeChildrenDraw(matrixStack: UMatrixStack) {
+    open fun beforeChildrenDraw(matrixStack: VirtualMatrixStack) {
         effects.forEach { it.beforeChildrenDraw(matrixStack) }
     }
-
-    @Deprecated(UMatrixStack.Compat.DEPRECATED, ReplaceWith("beforeDraw(matrixStack)"))
-    open fun beforeDraw() = beforeDraw(UMatrixStack.Compat.get())
-
-    @Deprecated(UMatrixStack.Compat.DEPRECATED, ReplaceWith("afterDraw(matrixStack)"))
-    open fun afterDraw() = afterDraw(UMatrixStack.Compat.get())
-
-    @Deprecated(UMatrixStack.Compat.DEPRECATED, ReplaceWith("beforeChildrenDraw(matrixStack)"))
-    open fun beforeChildrenDraw() = beforeChildrenDraw(UMatrixStack.Compat.get())
-
-    @Suppress("DEPRECATION")
-    fun beforeDrawCompat(matrixStack: UMatrixStack) = UMatrixStack.Compat.runLegacyMethod(matrixStack) { beforeDraw() }
-
-    @Suppress("DEPRECATION")
-    fun afterDrawCompat(matrixStack: UMatrixStack) = UMatrixStack.Compat.runLegacyMethod(matrixStack) { afterDraw() }
-
-    @Suppress("DEPRECATION")
-    fun beforeChildrenDrawCompat(matrixStack: UMatrixStack) = UMatrixStack.Compat.runLegacyMethod(matrixStack) { beforeChildrenDraw() }
 
     open fun mouseMove(window: Window) {
         val hovered = isHovered() && window.hoveredFloatingComponent.let {
@@ -1171,7 +1147,7 @@ abstract class UIComponent : Observable() {
         /**
          * Draws a colored outline around a given area
          */
-        internal fun drawDebugOutline(matrixStack: UMatrixStack,left: Double, top: Double, right: Double, bottom: Double, component: UIComponent) {
+        internal fun drawDebugOutline(matrixStack: VirtualMatrixStack, left: Double, top: Double, right: Double, bottom: Double, component: UIComponent) {
             if (ScissorEffect.currentScissorState != null) {
                 GL11.glDisable(GL11.GL_SCISSOR_TEST)
             }
@@ -1222,7 +1198,7 @@ abstract class UIComponent : Observable() {
          * Hints a number with respect to the current GUI scale.
          */
         fun guiHint(number: Float, roundDown: Boolean): Float {
-            val factor = UResolution.scaleFactor.toFloat()
+            val factor = VirtualWindow.scaleFactor.toFloat()
             return (number * factor).let {
                 if (roundDown) floor(it) else ceil(it)
             } / factor
@@ -1232,18 +1208,18 @@ abstract class UIComponent : Observable() {
          * Hints a number with respect to the current GUI scale.
          */
         fun guiHint(number: Double, roundDown: Boolean): Double {
-            val factor = UResolution.scaleFactor
+            val factor = VirtualWindow.scaleFactor
             return (number * factor).let {
                 if (roundDown) floor(it) else ceil(it)
             } / factor
         }
 
         internal fun getMouseX(): Float {
-            return UMouse.Scaled.x.toFloat()
+            return VirtualMouse.scaledX.toFloat()
         }
 
         internal fun getMouseY(): Float {
-            return UMouse.Scaled.y.toFloat()
+            return VirtualMouse.scaledY.toFloat()
         }
     }
 }

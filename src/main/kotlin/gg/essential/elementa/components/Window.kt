@@ -10,7 +10,8 @@ import gg.essential.elementa.font.FontRenderer
 import gg.essential.elementa.impl.Platform.Companion.platform
 import gg.essential.elementa.utils.elementaDev
 import gg.essential.elementa.utils.requireMainThread
-import gg.essential.universal.*
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualWindow
 import org.lwjgl.opengl.GL11
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.TimeUnit
@@ -20,7 +21,7 @@ import java.util.concurrent.TimeUnit
  * or animating.
  */
 class Window @JvmOverloads constructor(
-    internal val version: ElementaVersion,
+    internal val version: ElementaVersion = ElementaVersion.V2,
     val animationFPS: Int = 244
 ) : UIComponent() {
     private var systemTime = -1L
@@ -37,10 +38,6 @@ class Window @JvmOverloads constructor(
 
     internal var clickInterceptor: ((mouseX: Double, mouseY: Double, button: Int) -> Boolean)? = null
 
-    @Deprecated("Add ElementaVersion as the first argument to opt-in to improved behavior.")
-    @JvmOverloads
-    constructor(animationFPS: Int = 244) : this(ElementaVersion.v0, animationFPS)
-
     init {
         super.parent = this
     }
@@ -53,10 +50,10 @@ class Window @JvmOverloads constructor(
         }
     }
 
-    override fun draw(matrixStack: UMatrixStack) =
+    override fun draw(matrixStack: VirtualMatrixStack) =
         version.enableFor { doDraw(matrixStack) }
 
-    private fun doDraw(matrixStack: UMatrixStack) {
+    private fun doDraw(matrixStack: VirtualMatrixStack) {
         if (cancelDrawing)
             return
 
@@ -132,21 +129,17 @@ class Window @JvmOverloads constructor(
                     ConstraintResolutionGui(guiName, this, cyclicNodes)
                 }
                 else -> {
-                    UChat.chat("§cElementa encountered an error while drawing a GUI. Check your logs for more information.")
                     null
                 }
             }
         }
     }
 
-    internal fun drawEmbedded(matrixStack: UMatrixStack) {
+    internal fun drawEmbedded(matrixStack: VirtualMatrixStack) {
         super.draw(matrixStack)
     }
 
-    @Deprecated(UMatrixStack.Compat.DEPRECATED, ReplaceWith("drawFloatingComponents(matrixStack)"))
-    fun drawFloatingComponents() = drawFloatingComponents(UMatrixStack())
-
-    fun drawFloatingComponents(matrixStack: UMatrixStack) {
+    fun drawFloatingComponents(matrixStack: VirtualMatrixStack) {
         requireMainThread()
 
         val it = floatingComponents.iterator()
@@ -156,7 +149,7 @@ class Window @JvmOverloads constructor(
                 it.remove()
                 continue
             }
-            component.drawCompat(matrixStack)
+            component.draw(matrixStack)
         }
     }
 
@@ -269,11 +262,11 @@ class Window @JvmOverloads constructor(
     }
 
     override fun getWidth(): Float {
-        return UResolution.scaledWidth.toFloat()
+        return VirtualWindow.scaledWidth.toFloat()
     }
 
     override fun getHeight(): Float {
-        return UResolution.scaledHeight.toFloat()
+        return VirtualWindow.scaledHeight.toFloat()
     }
 
     override fun getRight() = getWidth()
@@ -287,12 +280,12 @@ class Window @JvmOverloads constructor(
         ) return false
 
         val currentScissor = ScissorEffect.currentScissorState ?: return true
-        val sf = UResolution.scaleFactor
+        val sf = VirtualWindow.scaleFactor
 
         val realX = currentScissor.x / sf
         val realWidth = currentScissor.width / sf
 
-        val bottomY = ((UResolution.scaledHeight * sf) - currentScissor.y) / sf
+        val bottomY = ((VirtualWindow.scaledHeight * sf) - currentScissor.y) / sf
         val realHeight = currentScissor.height / sf
 
         return right > realX &&

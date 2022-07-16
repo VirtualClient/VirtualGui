@@ -3,7 +3,6 @@ package gg.essential.elementa.constraints
 import gg.essential.elementa.UIComponent
 import gg.essential.elementa.components.UIText
 import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.universal.UGraphics
 import java.lang.UnsupportedOperationException
 
 /**
@@ -20,12 +19,12 @@ class TextAspectConstraint : WidthConstraint, HeightConstraint {
 
     override fun getWidthImpl(component: UIComponent): Float {
         val text = (component as? UIText)?.getText() ?: throw IllegalStateException("TextAspectConstraint can only be used in UIText components")
-        return UGraphics.getStringWidth(text) * component.getHeight() / 9
+        return component.getFontProvider().getStringWidth(text, 10f) * component.getHeight() / 9
     }
 
     override fun getHeightImpl(component: UIComponent): Float {
         val text = (component as? UIText)?.getText() ?: throw IllegalStateException("TextAspectConstraint can only be used in UIText components")
-        return 9 * component.getWidth() / UGraphics.getStringWidth(text)
+        return 9 * component.getWidth() / component.getFontProvider().getStringWidth(text, 10f)
     }
 
     override fun to(component: UIComponent) = apply {

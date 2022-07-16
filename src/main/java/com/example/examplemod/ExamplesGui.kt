@@ -7,7 +7,7 @@ import gg.essential.elementa.constraints.*
 import gg.essential.elementa.constraints.animation.Animations
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.impl.Platform.Companion.platform
-import gg.essential.universal.UScreen
+import gg.virtualclient.virtualminecraft.VirtualScreen
 import java.awt.Color
 
 /**
@@ -53,7 +53,7 @@ class ExamplesGui : WindowScreen(ElementaVersion.V2) {
     }
 
     companion object {
-        val examples = mutableMapOf<String, () -> UScreen>(
+        val examples = mutableMapOf<String, () -> VirtualScreen>(
             "ExampleGui" to ::ExampleGui,
             "ComponentsGui" to ::ComponentsGui,
         )

@@ -11,9 +11,12 @@ import gg.essential.elementa.font.FontRenderer.Companion.sdfTexel
 import gg.essential.elementa.font.FontRenderer.Companion.shader
 import gg.essential.elementa.font.FontRenderer.Companion.subpixelAmountUniform
 import gg.essential.elementa.utils.ResourceCache
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.utils.ReleasedDynamicTexture
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualRenderSystem
+import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
+import gg.virtualclient.virtualminecraft.vertex.CommonVertexFormats
+import gg.virtualclient.virtualminecraft.vertex.DrawMode
+import gg.virtualclient.virtualminecraft.vertex.VirtualBufferBuilder
 import org.lwjgl.opengl.GL11
 import java.awt.image.BufferedImage
 import java.io.File
@@ -45,7 +48,7 @@ open class MSDFComponent constructor(
             imageFuture.obtrudeValue(null)
 
             Window.enqueueRenderOperation {
-                texture = UGraphics.getTexture(it)
+                texture = ReleasedDynamicTexture.getTexture(it)
                 while (waiting.isEmpty().not())
                     waiting.poll().applyTexture(texture)
             }
@@ -60,8 +63,8 @@ open class MSDFComponent constructor(
     constructor(imageFunction: () -> BufferedImage) : this(CompletableFuture.supplyAsync(imageFunction))
 
 
-    override fun draw(matrixStack: UMatrixStack) {
-        beforeDrawCompat(matrixStack)
+    override fun draw(matrixStack: VirtualMatrixStack) {
+        beforeDraw(matrixStack)
 
         val x = this.getLeft().toDouble()
         val y = this.getTop().toDouble()
@@ -77,8 +80,8 @@ open class MSDFComponent constructor(
             waiting.poll().applyTexture(texture)
 
         initShaders()
-        UGraphics.enableBlend()
-        UGraphics.tryBlendFuncSeparate(
+        VirtualRenderSystem.enableBlend()
+        VirtualRenderSystem.tryBlendFuncSeparate(
             GL11.GL_SRC_ALPHA,
             GL11.GL_ONE_MINUS_SRC_ALPHA,
             GL11.GL_SRC_ALPHA,
@@ -87,7 +90,7 @@ open class MSDFComponent constructor(
         shader.bind()
 
         samplerUniform.setValue(tex.dynamicGlId)
-        UGraphics.configureTexture(tex.dynamicGlId) {
+        VirtualRenderSystem.configureTexture(tex.dynamicGlId) {
             GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR)
             GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR)
         }
@@ -110,16 +113,14 @@ open class MSDFComponent constructor(
             current.blue / 255F,
             1f
         )
-        val worldRenderer = UGraphics.getFromTessellator()
-        worldRenderer.beginWithActiveShader(UGraphics.DrawMode.QUADS, UGraphics.CommonVertexFormats.POSITION_TEXTURE)
-        val doubleX = x.toDouble()
-        val doubleY = y.toDouble()
-        worldRenderer.pos(matrixStack, doubleX, doubleY + height, 0.0).tex(textureLeft, textureBottom).endVertex()
-        worldRenderer.pos(matrixStack, doubleX + width, doubleY + height, 0.0).tex(textureRight, textureBottom)
-            .endVertex()
-        worldRenderer.pos(matrixStack, doubleX + width, doubleY, 0.0).tex(textureRight, textureTop).endVertex()
-        worldRenderer.pos(matrixStack, doubleX, doubleY, 0.0).tex(textureLeft, textureTop).endVertex()
-        worldRenderer.drawDirect()
+        val worldRenderer = VirtualBufferBuilder.getFromTessellator()
+        worldRenderer.beginWithActiveShader(DrawMode.QUADS, CommonVertexFormats.POSITION_TEXTURE)
+        worldRenderer.vertex(matrixStack, x, y + height, 0.0).texture(textureLeft.toFloat(), textureBottom.toFloat()).next()
+        worldRenderer.vertex(matrixStack, x + width, y + height, 0.0).texture(textureRight.toFloat(), textureBottom.toFloat())
+            .next()
+        worldRenderer.vertex(matrixStack, x + width, y, 0.0).texture(textureRight.toFloat(), textureTop.toFloat()).next()
+        worldRenderer.vertex(matrixStack, x, y, 0.0).texture(textureLeft.toFloat(), textureTop.toFloat()).next()
+        VirtualBufferBuilder.drawTessellator()
 
         shader.unbind()
         super.draw(matrixStack)

@@ -1,15 +1,15 @@
 package gg.essential.elementa.components
 
 import gg.essential.elementa.UIComponent
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 /**
  * Bare-bones component that does no rendering and simply offers a bounding box.
  */
 open class UIContainer : UIComponent() {
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         // This is necessary because if it isn't here, effects will never be applied.
-        beforeDrawCompat(matrixStack)
+        beforeDraw(matrixStack)
 
         // no-op
 

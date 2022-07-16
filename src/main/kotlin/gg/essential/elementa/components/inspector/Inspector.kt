@@ -11,8 +11,8 @@ import gg.essential.elementa.utils.ObservableAddEvent
 import gg.essential.elementa.utils.ObservableClearEvent
 import gg.essential.elementa.utils.ObservableRemoveEvent
 import gg.essential.elementa.utils.elementaDebug
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 import java.text.NumberFormat
@@ -243,7 +243,7 @@ class Inspector @JvmOverloads constructor(
         }
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         // If we got removed from our parent, we need to un-float ourselves
         if (!isMounted()) {
             Window.enqueueRenderOperation { setFloating(false) }
@@ -270,7 +270,7 @@ class Inspector @JvmOverloads constructor(
             val y2 = component.getBottom().toDouble()
 
             // Clear the depth buffer cause we will be using it to draw our outside-of-scissor-bounds block
-            UGraphics.glClear(GL11.GL_DEPTH_BUFFER_BIT)
+            GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT)
 
             // Draw a highlight on the element respecting its scissor effects
             scissors.forEach { it.beforeDraw(matrixStack) }
@@ -280,13 +280,11 @@ class Inspector @JvmOverloads constructor(
             // Then draw another highlight (with depth testing such that we do not overwrite the previous one)
             // which does not respect the scissor effects and thereby indicates where the element is drawn outside of
             // its scissor bounds.
-            UGraphics.enableDepth()
-            UGraphics.depthFunc(GL11.GL_LESS)
-            ElementaVersion.v0.enableFor { // need the custom depth testing
-                UIBlock.drawBlock(matrixStack, Color(255, 100, 100, 100), x1, y1, x2, y2)
-            }
-            UGraphics.depthFunc(GL11.GL_LEQUAL)
-            UGraphics.disableDepth()
+            VirtualRenderSystem.enableDepth()
+            VirtualRenderSystem.depthFunc(GL11.GL_LESS)
+            UIBlock.drawBlock(matrixStack, Color(255, 100, 100, 100), x1, y1, x2, y2, useDepth = false)
+            VirtualRenderSystem.depthFunc(GL11.GL_LEQUAL)
+            VirtualRenderSystem.disableDepth()
         }
 
         val debugState = elementaDebug

@@ -1,8 +1,11 @@
 package gg.essential.elementa.utils
 
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.utils.ReleasedDynamicTexture
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualRenderSystem
+import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
+import gg.virtualclient.virtualminecraft.vertex.CommonVertexFormats
+import gg.virtualclient.virtualminecraft.vertex.DrawMode
+import gg.virtualclient.virtualminecraft.vertex.VirtualBufferBuilder
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 import java.awt.image.BufferedImage
@@ -12,7 +15,7 @@ import kotlin.math.pow
 import kotlin.math.withSign
 
 internal fun drawTexture(
-    matrixStack: UMatrixStack,
+    matrixStack: VirtualMatrixStack,
     texture: ReleasedDynamicTexture,
     color: Color,
     x: Double,
@@ -24,28 +27,28 @@ internal fun drawTexture(
 ) {
     matrixStack.push()
 
-    UGraphics.enableBlend()
-    UGraphics.enableAlpha()
+    VirtualRenderSystem.enableBlend()
+    VirtualRenderSystem.enableAlpha()
     matrixStack.scale(1f, 1f, 50f)
     val glId = texture.dynamicGlId
-    UGraphics.bindTexture(0, glId)
+    VirtualRenderSystem.bindTexture(0, glId)
     val red = color.red.toFloat() / 255f
     val green = color.green.toFloat() / 255f
     val blue = color.blue.toFloat() / 255f
     val alpha = color.alpha.toFloat() / 255f
-    val worldRenderer = UGraphics.getFromTessellator()
-    UGraphics.configureTexture(glId) {
+    val worldRenderer = VirtualBufferBuilder.getFromTessellator()
+    VirtualRenderSystem.configureTexture(glId) {
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, textureMinFilter)
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, textureMagFilter)
     }
 
-    worldRenderer.beginWithDefaultShader(UGraphics.DrawMode.QUADS, UGraphics.CommonVertexFormats.POSITION_TEXTURE_COLOR)
+    worldRenderer.beginWithDefaultShader(DrawMode.QUADS, CommonVertexFormats.POSITION_TEXTURE_COLOR)
 
-    worldRenderer.pos(matrixStack, x, y + height, 0.0).tex(0.0, 1.0).color(red, green, blue, alpha).endVertex()
-    worldRenderer.pos(matrixStack, x + width, y + height, 0.0).tex(1.0, 1.0).color(red, green, blue, alpha).endVertex()
-    worldRenderer.pos(matrixStack, x + width, y, 0.0).tex(1.0, 0.0).color(red, green, blue, alpha).endVertex()
-    worldRenderer.pos(matrixStack, x, y, 0.0).tex(0.0, 0.0).color(red, green, blue, alpha).endVertex()
-    worldRenderer.drawDirect()
+    worldRenderer.vertex(matrixStack, x, y + height, 0.0).texture(0.0F, 1.0F).color(red, green, blue, alpha).next()
+    worldRenderer.vertex(matrixStack, x + width, y + height, 0.0).texture(1.0F, 1.0F).color(red, green, blue, alpha).next()
+    worldRenderer.vertex(matrixStack, x + width, y, 0.0).texture(1.0F, 0.0F).color(red, green, blue, alpha).next()
+    worldRenderer.vertex(matrixStack, x, y, 0.0).texture(0.0F, 0.0F).color(red, green, blue, alpha).next()
+    VirtualBufferBuilder.drawTessellator()
 
     matrixStack.pop()
 }

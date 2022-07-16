@@ -2,10 +2,11 @@ package gg.essential.elementa
 
 import gg.essential.elementa.components.Window
 import gg.essential.elementa.constraints.animation.*
-import gg.essential.universal.UKeyboard
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.UMouse
-import gg.essential.universal.UScreen
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMouse
+import gg.virtualclient.virtualminecraft.VirtualScreen
+import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
+import net.kyori.adventure.text.Component
 
 import java.awt.Color
 import kotlin.math.floor
@@ -16,42 +17,31 @@ import kotlin.reflect.KMutableProperty0
  * functions for Elementa Gui programming.
  */
 abstract class WindowScreen @JvmOverloads constructor(
-    private val version: ElementaVersion,
+    private val version: ElementaVersion = ElementaVersion.V2,
     private val enableRepeatKeys: Boolean = true,
     private val drawDefaultBackground: Boolean = true,
-    restoreCurrentGuiOnClose: Boolean = false,
-    newGuiScale: Int = -1
-) : UScreen(restoreCurrentGuiOnClose, newGuiScale) {
+) : VirtualScreen(Component.empty()) {
     val window = Window(version)
     private var isInitialized = false
 
-    @Deprecated("Add ElementaVersion as the first argument to opt-in to improved behavior.")
-    @JvmOverloads
-    constructor(
-        enableRepeatKeys: Boolean = true,
-        drawDefaultBackground: Boolean = true,
-        restoreCurrentGuiOnClose: Boolean = false,
-        newGuiScale: Int = -1
-    ) : this(ElementaVersion.v0, enableRepeatKeys, drawDefaultBackground, restoreCurrentGuiOnClose, newGuiScale)
-
     init {
-        window.onKeyType { typedChar, keyCode ->
-            defaultKeyBehavior(typedChar, keyCode)
-        }
+//        window.onKeyType { typedChar, keyCode ->
+//            defaultKeyBehavior(typedChar, keyCode)
+//        }
     }
 
     open fun afterInitialization() { }
 
-    override fun onDrawScreen(matrixStack: UMatrixStack, mouseX: Int, mouseY: Int, partialTicks: Float) {
+    override fun render(matrixStack: VirtualMatrixStack, mouseX: Int, mouseY: Int, partialTicks: Float) {
         if (!isInitialized) {
             isInitialized = true
             afterInitialization()
         }
 
-        super.onDrawScreen(matrixStack, mouseX, mouseY, partialTicks)
+        super.render(matrixStack, mouseX, mouseY, partialTicks)
 
         if (drawDefaultBackground)
-            super.onDrawBackground(matrixStack, 0)
+            renderBackground(matrixStack)
 
         // Now, we need to hook up Elementa to this GuiScreen. In practice, Elementa
         // is not constrained to being used solely inside of a GuiScreen, all the programmer
@@ -60,15 +50,15 @@ abstract class WindowScreen @JvmOverloads constructor(
         window.draw(matrixStack)
     }
 
-    override fun onMouseClicked(mouseX: Double, mouseY: Double, mouseButton: Int) {
-        super.onMouseClicked(mouseX, mouseY, mouseButton)
+    override fun mouseClicked(mouseX: Double, mouseY: Double, mouseButton: Int): Boolean {
+        super.mouseClicked(mouseX, mouseY, mouseButton)
 
         // Restore decimal value to mouse locations if not present.
         // See [ElementaVersion.V2] for more info
         val (adjustedMouseX, adjustedMouseY) =
             if (version >= ElementaVersion.v2 && (mouseX == floor(mouseX) && mouseY == floor(mouseY))) {
-                val x = UMouse.Scaled.x
-                val y = UMouse.Scaled.y
+                val x = VirtualMouse.scaledX
+                val y = VirtualMouse.scaledY
 
                 mouseX + (x - floor(x)) to mouseY + (y - floor(y))
             } else {
@@ -77,50 +67,64 @@ abstract class WindowScreen @JvmOverloads constructor(
 
         // We also need to pass along clicks
         window.mouseClick(adjustedMouseX, adjustedMouseY, mouseButton)
+        return true
     }
 
-    override fun onMouseReleased(mouseX: Double, mouseY: Double, state: Int) {
-        super.onMouseReleased(mouseX, mouseY, state)
+    override fun mouseReleased(mouseX: Double, mouseY: Double, state: Int): Boolean {
+        super.mouseReleased(mouseX, mouseY, state)
 
         // We also need to pass along mouse releases
         window.mouseRelease()
+        return true
     }
 
-    override fun onMouseScrolled(delta: Double) {
-        super.onMouseScrolled(delta)
+    override fun mouseScrolled(mouseX: Double, mouseY: Double, amount: Double): Boolean {
+        super.mouseScrolled(mouseX, mouseY, amount)
 
         // We also need to pass along scrolling
-        window.mouseScroll(delta.coerceIn(-1.0, 1.0))
+        window.mouseScroll(amount.coerceIn(-1.0, 1.0))
+        return true
     }
 
-    override fun onKeyPressed(keyCode: Int, typedChar: Char, modifiers: UKeyboard.Modifiers?) {
+    override fun keyPressed(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
+        super.keyPressed(keyCode, scanCode, modifiers)
         // We also need to pass along typed keys
-        window.keyType(typedChar, keyCode)
+        window.keyType(0.toChar(), keyCode)
+        return true
     }
 
-    override fun initScreen(width: Int, height: Int) {
+    override fun charTyped(chr: Char, modifiers: Int): Boolean {
+        super.charTyped(chr, modifiers)
+
+        window.keyType(chr, 0)
+
+        return true
+    }
+
+
+    override fun init() {
         window.onWindowResize()
 
-        super.initScreen(width, height)
+        super.init()
 
         // Since we want our users to be able to hold a key
         // to type. This is a wrapper around a base LWJGL function.
         // - Keyboard.enableRepeatEvents in <= 1.12.2
         if (enableRepeatKeys)
-            UKeyboard.allowRepeatEvents(true)
+            VirtualKeyboard.setRepeatEvents(true)
     }
 
-    override fun onScreenClose() {
-        super.onScreenClose()
+    override fun onClose() {
+        super.onClose()
 
         // We need to disable repeat events when leaving the gui.
         if (enableRepeatKeys)
-            UKeyboard.allowRepeatEvents(false)
+            VirtualKeyboard.setRepeatEvents(false)
     }
 
-    fun defaultKeyBehavior(typedChar: Char, keyCode: Int) {
-        super.onKeyPressed(keyCode, typedChar, UKeyboard.getModifiers())
-    }
+//    fun defaultKeyBehavior(typedChar: Char, keyCode: Int) {
+//        super.onKeyPressed(keyCode, typedChar, UKeyboard.getModifiers())
+//    }
 
     /**
      * Field animation API

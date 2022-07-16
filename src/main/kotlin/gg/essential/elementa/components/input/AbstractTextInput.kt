@@ -8,9 +8,9 @@ import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.ScissorEffect
 import gg.essential.elementa.impl.Platform.Companion.platform
 import gg.essential.elementa.utils.getStringSplitToWidth
-import gg.essential.universal.UDesktop
-import gg.essential.universal.UKeyboard
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.keyboard.Key
+import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import java.awt.Color
 import java.util.*
 import kotlin.math.abs
@@ -81,24 +81,25 @@ abstract class AbstractTextInput(
         onKeyType { typedChar, keyCode ->
             if (!active) return@onKeyType
 
-            if (keyCode == UKeyboard.KEY_ESCAPE) {
+            if (keyCode == Key.KEY_ESCAPE.getKeyCode()) {
                 releaseWindowFocus()
-            } else if (UKeyboard.isKeyComboCtrlA(keyCode)) {
+            } else if (VirtualKeyboard.isKeyComboCtrlA(keyCode)) {
                 selectAll()
-            } else if (UKeyboard.isKeyComboCtrlC(keyCode) && hasSelection()) {
+            } else if (VirtualKeyboard.isKeyComboCtrlC(keyCode) && hasSelection()) {
                 copySelection()
-            } else if (UKeyboard.isKeyComboCtrlX(keyCode) && hasSelection()) {
+            } else if (VirtualKeyboard.isKeyComboCtrlX(keyCode) && hasSelection()) {
                 copySelection()
                 deleteSelection()
-            } else if (UKeyboard.isKeyComboCtrlV(keyCode)) {
-                commitTextAddition(UDesktop.getClipboardString())
-            } else if (UKeyboard.isKeyComboCtrlZ(keyCode)) {
+            } else if (VirtualKeyboard.isKeyComboCtrlV(keyCode)) {
+                //TODO(VirtualMinecraft):
+//                commitTextAddition(UDesktop.getClipboardString())
+            } else if (VirtualKeyboard.isKeyComboCtrlZ(keyCode)) {
                 if (undoStack.isEmpty())
                     return@onKeyType
                 val operationToUndo = undoStack.pop()
                 operationToUndo.undo()
                 redoStack.push(operationToUndo)
-            } else if (UKeyboard.isKeyComboCtrlShiftZ(keyCode) || UKeyboard.isKeyComboCtrlY(keyCode)) {
+            } else if (VirtualKeyboard.isKeyComboCtrlShiftZ(keyCode) || VirtualKeyboard.isKeyComboCtrlY(keyCode)) {
                 if (redoStack.isEmpty())
                     return@onKeyType
                 val operationToRedo = redoStack.pop()
@@ -106,9 +107,9 @@ abstract class AbstractTextInput(
                 undoStack.push(operationToRedo)
             } else if (platform.isAllowedInChat(typedChar)) { // Most of the ASCII characters
                 commitTextAddition(typedChar.toString())
-            } else if (keyCode == UKeyboard.KEY_LEFT) {
-                val holdingShift = UKeyboard.isShiftKeyDown()
-                val holdingCtrl = UKeyboard.isCtrlKeyDown()
+            } else if (keyCode == Key.KEY_LEFT.getKeyCode()) {
+                val holdingShift = VirtualKeyboard.isShiftKeyDown()
+                val holdingCtrl = VirtualKeyboard.isControlKeyDown()
 
                 val newCursorPosition = when {
                     holdingCtrl -> getNearestWordBoundary(cursor, Direction.Left)
@@ -123,9 +124,9 @@ abstract class AbstractTextInput(
 
                 cursor = newCursorPosition
                 cursorNeedsRefocus = true
-            } else if (keyCode == UKeyboard.KEY_RIGHT) {
-                val holdingShift = UKeyboard.isShiftKeyDown()
-                val holdingCtrl = UKeyboard.isCtrlKeyDown()
+            } else if (keyCode == Key.KEY_RIGHT.getKeyCode()) {
+                val holdingShift = VirtualKeyboard.isShiftKeyDown()
+                val holdingCtrl = VirtualKeyboard.isControlKeyDown()
 
                 val newCursorPosition = when {
                     holdingCtrl -> getNearestWordBoundary(cursor, Direction.Right)
@@ -140,7 +141,7 @@ abstract class AbstractTextInput(
 
                 cursor = newCursorPosition
                 cursorNeedsRefocus = true
-            } else if (keyCode == UKeyboard.KEY_UP) {
+            } else if (keyCode == Key.KEY_UP.getKeyCode()) {
                 val newVisualPos = if (cursor.line == 0) {
                     LinePosition(0, 0, isVisual = true)
                 } else {
@@ -148,13 +149,13 @@ abstract class AbstractTextInput(
                     screenPosToVisualPos(currX, currY - lineHeight)
                 }
 
-                if (UKeyboard.isShiftKeyDown()) {
+                if (VirtualKeyboard.isShiftKeyDown()) {
                     cursor = newVisualPos
                     cursorNeedsRefocus = true
                 } else {
                     setCursorPosition(newVisualPos)
                 }
-            } else if (keyCode == UKeyboard.KEY_DOWN) {
+            } else if (keyCode == Key.KEY_DOWN.getKeyCode()) {
                 val newVisualPos = if (cursor.line == visualLines.lastIndex) {
                     LinePosition(visualLines.lastIndex, visualLines.last().length, isVisual = true)
                 } else {
@@ -162,51 +163,51 @@ abstract class AbstractTextInput(
                     screenPosToVisualPos(currX, currY + lineHeight)
                 }
 
-                if (UKeyboard.isShiftKeyDown()) {
+                if (VirtualKeyboard.isShiftKeyDown()) {
                     cursor = newVisualPos
                     cursorNeedsRefocus = true
                 } else {
                     setCursorPosition(newVisualPos)
                 }
-            } else if (keyCode == UKeyboard.KEY_BACKSPACE) {
+            } else if (keyCode == Key.KEY_BACKSPACE.getKeyCode()) {
                 if (hasSelection()) {
                     deleteSelection()
                 } else if (!cursor.isAtAbsoluteStart) {
-                    val startPos = if (UKeyboard.isCtrlKeyDown()) {
+                    val startPos = if (VirtualKeyboard.isControlKeyDown()) {
                         getNearestWordBoundary(cursor, Direction.Left)
                     } else cursor.offsetColumn(-1).toTextualPos()
                     val endPos = cursor.toTextualPos()
 
                     commitTextRemoval(startPos, endPos, selectAfterUndo = false)
                 }
-            } else if (keyCode == UKeyboard.KEY_DELETE) {
+            } else if (keyCode == Key.KEY_DELETE.getKeyCode()) {
                 if (hasSelection()) {
                     deleteSelection()
                 } else if (!cursor.isAtAbsoluteEnd) {
                     val startPos = cursor.toTextualPos()
-                    val endPos = if (UKeyboard.isCtrlKeyDown()) {
+                    val endPos = if (VirtualKeyboard.isControlKeyDown()) {
                         getNearestWordBoundary(cursor, Direction.Right)
                     } else cursor.offsetColumn(1).toTextualPos()
 
                     commitTextRemoval(startPos, endPos, selectAfterUndo = false)
                 }
-            } else if (keyCode == UKeyboard.KEY_HOME) {
-                if (UKeyboard.isShiftKeyDown()) {
+            } else if (keyCode == Key.KEY_HOME.getKeyCode()) {
+                if (VirtualKeyboard.isShiftKeyDown()) {
                     cursor = cursor.withColumn(0)
                     cursorNeedsRefocus = true
                 } else {
                     setCursorPosition(cursor.withColumn(0))
                 }
-            } else if (keyCode == UKeyboard.KEY_END) {
+            } else if (keyCode == Key.KEY_END.getKeyCode()) {
                 cursor.withColumn(visualLines[cursor.line].length).also {
-                    if (UKeyboard.isShiftKeyDown()) {
+                    if (VirtualKeyboard.isShiftKeyDown()) {
                         cursor = it
                         cursorNeedsRefocus = true
                     } else {
                         setCursorPosition(it)
                     }
                 }
-            } else if (keyCode == UKeyboard.KEY_ENTER) { // Enter
+            } else if (keyCode == Key.KEY_ENTER.getKeyCode()) { // Enter
                 onEnterPressed()
             }
         }
@@ -350,7 +351,7 @@ abstract class AbstractTextInput(
         enableEffect(ScissorEffect())
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         cursorComponent.setHeight(
             (lineHeight * getTextScale()).pixels()
         )
@@ -560,8 +561,8 @@ abstract class AbstractTextInput(
         val (visualSelectionStart, visualSelectionEnd) = getSelection()
         if (visualSelectionStart == visualSelectionEnd)
             return
-
-        UDesktop.setClipboardString(getTextBetween(visualSelectionStart, visualSelectionEnd))
+        //TODO(VirtualMinecraft):
+//        UDesktop.setClipboardString(getTextBetween(visualSelectionStart, visualSelectionEnd))
     }
 
     protected open fun charBefore(pos: LinePosition) = pos.toTextualPos().let {
@@ -686,15 +687,7 @@ abstract class AbstractTextInput(
 
     protected open fun hasText() = textualLines.size > 1 || textualLines[0].text.isNotEmpty()
 
-    @Deprecated(UMatrixStack.Compat.DEPRECATED, ReplaceWith("drawUnselectedText(matrixStack, text, left, row)"))
-    protected open fun drawUnselectedText(text: String, left: Float, row: Int) =
-        drawUnselectedText(UMatrixStack.Compat.get(), text, left, row)
-
-    @Suppress("DEPRECATION")
-    protected fun drawUnselectedTextCompat(matrixStack: UMatrixStack, text: String, left: Float, row: Int) =
-        UMatrixStack.Compat.runLegacyMethod(matrixStack) { drawUnselectedText(text, left, row) }
-
-    protected open fun drawUnselectedText(matrixStack: UMatrixStack, text: String, left: Float, row: Int) {
+    protected open fun drawUnselectedText(matrixStack: VirtualMatrixStack, text: String, left: Float, row: Int) {
         // TODO: Shadow color
         getFontProvider().drawString(
             matrixStack,
@@ -708,15 +701,7 @@ abstract class AbstractTextInput(
         )
     }
 
-    @Deprecated(UMatrixStack.Compat.DEPRECATED, ReplaceWith("drawSelectedText(matrixStack, text, left, right, row)"))
-    protected open fun drawSelectedText(text: String, left: Float, right: Float, row: Int) =
-        drawSelectedText(UMatrixStack.Compat.get(), text, left, right, row)
-
-    @Suppress("DEPRECATION")
-    protected fun drawSelectedTextCompat(matrixStack: UMatrixStack, text: String, left: Float, right: Float, row: Int) =
-        UMatrixStack.Compat.runLegacyMethod(matrixStack) { drawSelectedText(text, left, right, row) }
-
-    protected open fun drawSelectedText(matrixStack: UMatrixStack, text: String, left: Float, right: Float, row: Int) {
+    protected open fun drawSelectedText(matrixStack: VirtualMatrixStack, text: String, left: Float, right: Float, row: Int) {
         UIBlock.drawBlock(
             matrixStack,
             if (active) selectionBackgroundColor else inactiveSelectionBackgroundColor,

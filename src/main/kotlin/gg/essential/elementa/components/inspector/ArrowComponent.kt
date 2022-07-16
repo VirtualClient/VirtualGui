@@ -6,7 +6,7 @@ import gg.essential.elementa.constraints.CenterConstraint
 import gg.essential.elementa.dsl.childOf
 import gg.essential.elementa.dsl.constrain
 import gg.essential.elementa.dsl.pixels
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class ArrowComponent(private val empty: Boolean) : TreeArrowComponent() {
     private val closedIcon = UIImage.ofResourceCached("/textures/inspector/square_plus.png").constrain {
@@ -42,7 +42,7 @@ class ArrowComponent(private val empty: Boolean) : TreeArrowComponent() {
             replaceChild(closedIcon, openIcon)
     }
 
-    override fun draw(matrixStack: UMatrixStack) {
+    override fun draw(matrixStack: VirtualMatrixStack) {
         beforeDraw(matrixStack)
         super.draw(matrixStack)
     }

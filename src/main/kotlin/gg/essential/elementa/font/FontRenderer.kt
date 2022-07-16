@@ -6,15 +6,15 @@ import gg.essential.elementa.constraints.resolution.ConstraintVisitor
 import gg.essential.elementa.font.data.Font
 import gg.essential.elementa.font.data.Glyph
 import gg.essential.elementa.utils.readFromLegacyShader
-import gg.essential.universal.UGraphics
-import gg.essential.universal.UMatrixStack
-import gg.essential.universal.UResolution
-import gg.essential.universal.shader.BlendState
-import gg.essential.universal.shader.Float2Uniform
-import gg.essential.universal.shader.Float4Uniform
-import gg.essential.universal.shader.FloatUniform
-import gg.essential.universal.shader.SamplerUniform
-import gg.essential.universal.shader.UShader
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualRenderSystem
+import gg.virtualclient.virtualminecraft.VirtualWindow
+import gg.virtualclient.virtualminecraft.shader.*
+import gg.virtualclient.virtualminecraft.vertex.CommonVertexFormats
+import gg.virtualclient.virtualminecraft.vertex.DrawMode
+import gg.virtualclient.virtualminecraft.vertex.VirtualBufferBuilder
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 import kotlin.math.ceil
@@ -45,8 +45,17 @@ class FontRenderer(
         return getStringInformation(string, pointSize).first
     }
 
+    override fun getStringWidth(string: Component, pointSize: Float): Float {
+        //TODO Component support for the future?
+        return getStringWidth(LegacyComponentSerializer.legacySection().serialize(string), pointSize)
+    }
+
     override fun getStringHeight(string: String, pointSize: Float): Float {
         return getStringInformation(string, pointSize).second
+    }
+
+    override fun getStringHeight(string: Component, pointSize: Float): Float {
+        return getStringHeight(LegacyComponentSerializer.legacySection().serialize(string), pointSize)
     }
 
     private fun getStringInformation(string: String, pointSize: Float): Pair<Float, Float> {
@@ -111,7 +120,7 @@ class FontRenderer(
         samplerUniform.setValue(activeFont.getTexture().dynamicGlId)
 
         if (activeFont != tmp) { //Font context switch
-            UGraphics.configureTexture(activeFont.getTexture().dynamicGlId) {
+            VirtualRenderSystem.configureTexture(activeFont.getTexture().dynamicGlId) {
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR)
                 GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR)
             }
@@ -120,7 +129,7 @@ class FontRenderer(
     }
 
     override fun drawString(
-        matrixStack: UMatrixStack,
+        matrixStack: VirtualMatrixStack,
         string: String,
         color: Color,
         x: Float,
@@ -153,6 +162,20 @@ class FontRenderer(
         drawStringNow(matrixStack, string, color, x, adjustedY, effectiveSize)
     }
 
+    override fun drawString(
+        matrixStack: VirtualMatrixStack,
+        string: Component,
+        color: Color,
+        x: Float,
+        y: Float,
+        originalPointSize: Float,
+        scale: Float,
+        shadow: Boolean,
+        shadowColor: Color?
+    ) {
+        TODO("Not yet implemented")
+    }
+
     override fun visitImpl(visitor: ConstraintVisitor, type: ConstraintType) {
 
     }
@@ -181,7 +204,7 @@ class FontRenderer(
 //        }
     }
 
-    private fun drawStringNow(matrixStack: UMatrixStack, string: String, color: Color, x: Float, y: Float, originalPointSize: Float) {
+    private fun drawStringNow(matrixStack: VirtualMatrixStack, string: String, color: Color, x: Float, y: Float, originalPointSize: Float) {
         if (!areShadersInitialized() || !shader.usable)
             return
 
@@ -194,7 +217,7 @@ class FontRenderer(
         doffsetUniform.setValue(3.5f / currentPointSize)
 
 
-        val guiScale = UResolution.scaleFactor.toFloat()
+        val guiScale = VirtualWindow.scaleFactor.toFloat()
 
         //Reset
         obfuscated = false
@@ -276,7 +299,7 @@ class FontRenderer(
                 for (iter in 1..100) { //100 tries max
 
                     val tmp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".random()
-                    if (advance == activeFont.fontInfo.glyphs[tmp.code]?.advance ?: continue) {
+                    if (advance == (activeFont.fontInfo.glyphs[tmp.code]?.advance ?: continue)) {
                         glyph = activeFont.fontInfo.glyphs[tmp.code]
                         break
                     }
@@ -320,13 +343,13 @@ class FontRenderer(
     }
 
 
-    private fun drawGlyph(matrixStack: UMatrixStack, glyph: Glyph, color: Color, x: Float, y: Float, width: Float, height: Float) {
+    private fun drawGlyph(matrixStack: VirtualMatrixStack, glyph: Glyph, color: Color, x: Float, y: Float, width: Float, height: Float) {
         val atlasBounds = glyph.atlasBounds ?: return
         val atlas = activeFont.fontInfo.atlas
         val textureTop = 1.0 - (atlasBounds.top / atlas.height)
         val textureBottom = 1.0 - (atlasBounds.bottom / atlas.height)
-        val textureLeft = (atlasBounds.left / atlas.width).toDouble()
-        val textureRight = (atlasBounds.right / atlas.width).toDouble()
+        val textureLeft = (atlasBounds.left / atlas.width)
+        val textureRight = (atlasBounds.right / atlas.width)
 
         val drawColor = if (drawingShadow) (shadowColor ?: color) else (textColor ?: color)
         fgColorUniform.setValue(
@@ -335,15 +358,15 @@ class FontRenderer(
             drawColor.blue / 255f,
             1f
         )
-        val worldRenderer = UGraphics.getFromTessellator()
-        worldRenderer.beginWithActiveShader(UGraphics.DrawMode.QUADS, UGraphics.CommonVertexFormats.POSITION_TEXTURE)
+        val worldRenderer = VirtualBufferBuilder.getFromTessellator()
+        worldRenderer.beginWithActiveShader(DrawMode.QUADS, CommonVertexFormats.POSITION_TEXTURE)
         val doubleX = x.toDouble()
         val doubleY = y.toDouble()
-        worldRenderer.pos(matrixStack, doubleX, doubleY + height, 0.0).tex(textureLeft, textureBottom).endVertex()
-        worldRenderer.pos(matrixStack, doubleX + width, doubleY + height, 0.0).tex(textureRight, textureBottom).endVertex()
-        worldRenderer.pos(matrixStack, doubleX + width, doubleY, 0.0).tex(textureRight, textureTop).endVertex()
-        worldRenderer.pos(matrixStack, doubleX, doubleY, 0.0).tex(textureLeft, textureTop).endVertex()
-        worldRenderer.drawDirect()
+        worldRenderer.vertex(matrixStack, doubleX, doubleY + height, 0.0).texture(textureLeft, textureBottom.toFloat()).next()
+        worldRenderer.vertex(matrixStack, doubleX + width, doubleY + height, 0.0).texture(textureRight, textureBottom.toFloat()).next()
+        worldRenderer.vertex(matrixStack, doubleX + width, doubleY, 0.0).texture(textureRight, textureTop.toFloat()).next()
+        worldRenderer.vertex(matrixStack, doubleX, doubleY, 0.0).texture(textureLeft, textureTop.toFloat()).next()
+        VirtualBufferBuilder.drawTessellator()
 
 //        if (underline) {
 //            TODO()
@@ -394,7 +417,7 @@ class FontRenderer(
             31 to Color(63, 63, 63)
         )
 
-        internal lateinit var shader: UShader
+        internal lateinit var shader: VirtualShader
         internal lateinit var samplerUniform: SamplerUniform
         internal lateinit var doffsetUniform: FloatUniform
         internal lateinit var hintAmountUniform: FloatUniform
@@ -409,7 +432,7 @@ class FontRenderer(
             if (areShadersInitialized())
                 return
 
-            shader = UShader.readFromLegacyShader("font", "font", BlendState.NORMAL)
+            shader = VirtualShader.readFromLegacyShader("font", "font", BlendState.NORMAL)
             if (!shader.usable) {
                 println("Failed to load Elementa font shader")
                 return

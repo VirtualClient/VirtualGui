@@ -2,10 +2,8 @@ package gg.essential.elementa.markdown.drawables
 
 import gg.essential.elementa.markdown.DrawState
 import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.elementa.markdown.MarkdownConfig
 import gg.essential.elementa.markdown.selection.Cursor
-import gg.essential.elementa.markdown.selection.TextCursor
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 /**
  * A soft break is one line break between lines of markdown text.
@@ -15,7 +13,7 @@ class SoftBreakDrawable(md: MarkdownComponent) : Drawable(md) {
         TODO("Not yet implemented")
     }
 
-    override fun draw(matrixStack: UMatrixStack, state: DrawState) {
+    override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
         TODO("Not yet implemented")
     }
 

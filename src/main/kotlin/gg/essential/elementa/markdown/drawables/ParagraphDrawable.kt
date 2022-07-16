@@ -9,8 +9,7 @@ import gg.essential.elementa.markdown.selection.Cursor
 import gg.essential.elementa.markdown.selection.ImageCursor
 import gg.essential.elementa.markdown.selection.TextCursor
 import gg.essential.elementa.utils.withAlpha
-import gg.essential.universal.UDesktop
-import gg.essential.universal.UMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 import java.net.URI
 import java.net.URISyntaxException
@@ -266,9 +265,9 @@ class ParagraphDrawable(
         )
     }
 
-    override fun draw(matrixStack: UMatrixStack, state: DrawState) {
+    override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
         drawables.filterIsInstance<TextDrawable>().forEach { it.beforeDraw(state) }
-        drawables.forEach { it.drawCompat(matrixStack, state) }
+        drawables.forEach { it.draw(matrixStack, state) }
 
         // TODO: Remove
         if (MarkdownComponent.DEBUG) {
@@ -367,7 +366,8 @@ class ParagraphDrawable(
         currentDrawable.style.linkLocation?.takeIf { !dragged && mouseButton == 0 }?.let { linkLocation ->
             if (md.fireLinkClickEvent(MarkdownComponent.LinkClickEvent(linkLocation))) {
                 try {
-                    UDesktop.browse(URI(linkLocation))
+                    //TODO(VirtualMinecraft): UDesktop in VirtualMinecraft
+//                    UDesktop.browse(URI(linkLocation))
                 } catch (e: URISyntaxException) {
                     // Ignored, if the link is invalid we just do nothing
                 }
