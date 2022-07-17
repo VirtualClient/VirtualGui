@@ -10,6 +10,7 @@ import gg.essential.elementa.constraints.PixelConstraint;
 import gg.essential.elementa.constraints.animation.AnimatingConstraints;
 import gg.essential.elementa.constraints.animation.Animations;
 import gg.essential.elementa.effects.ScissorEffect;
+import net.kyori.adventure.text.Component;
 
 public class JavaTestGui extends WindowScreen {
     UIComponent box = new UIBlock()
@@ -21,7 +22,7 @@ public class JavaTestGui extends WindowScreen {
         .enableEffect(new ScissorEffect());
 
     public JavaTestGui() {
-        super(ElementaVersion.V2);
+        super(Component.empty(), ElementaVersion.V2);
         box.onMouseEnterRunnable(() -> {
             // Animate, set color, etc.
             AnimatingConstraints anim = box.makeAnimation();

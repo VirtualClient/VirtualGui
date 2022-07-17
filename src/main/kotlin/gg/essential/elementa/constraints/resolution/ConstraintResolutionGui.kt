@@ -14,13 +14,14 @@ import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.OutlineEffect
 import gg.essential.elementa.effects.ScissorEffect
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import net.kyori.adventure.text.Component
 import java.awt.Color
 
 class ConstraintResolutionGui(
     private val guiName: String,
     private val gui: UIComponent,
     private val nodes: List<ResolverNode>?
-) : WindowScreen(ElementaVersion.V2) {
+) : WindowScreen(Component.empty(), ElementaVersion.V2) {
 
     private val guiView by GuiView().constrain {
         width = 100.percent

@@ -18,11 +18,13 @@ import kotlin.reflect.KMutableProperty0
  * functions for Elementa Gui programming.
  */
 abstract class WindowScreen @JvmOverloads constructor(
+    component: Component,
     private val version: ElementaVersion = ElementaVersion.V2,
     private val enableRepeatKeys: Boolean = true,
     private val drawDefaultBackground: Boolean = true,
     val scaleHelper: ScaleHelper = VanillaScaleHelper
-) : VirtualScreen(Component.empty()) {
+) : VirtualScreen(component) {
+
     val window = Window(version, scaleHelper = scaleHelper)
     private var isInitialized = false
 

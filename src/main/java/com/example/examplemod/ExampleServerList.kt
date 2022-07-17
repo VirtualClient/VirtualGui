@@ -9,10 +9,11 @@ import gg.essential.elementa.constraints.*
 import gg.essential.elementa.constraints.animation.Animations
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.ScissorEffect
+import net.kyori.adventure.text.Component
 import java.awt.Color
 import java.net.URL
 
-class ExampleServerList : WindowScreen(ElementaVersion.V2) {
+class ExampleServerList : WindowScreen(Component.empty(), ElementaVersion.V2) {
 //    val serverList = (ScrollComponent().constrain {
 //        y = 30.pixels()
 //        width = RelativeConstraint()

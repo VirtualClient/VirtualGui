@@ -8,13 +8,14 @@ import gg.essential.elementa.constraints.animation.Animations
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.impl.Platform.Companion.platform
 import gg.virtualclient.virtualminecraft.VirtualScreen
+import net.kyori.adventure.text.Component
 import java.awt.Color
 
 /**
  * List of buttons to open a specific example gui.
  * See ExampleGui (singular) for a well-commented example gui.
  */
-class ExamplesGui : WindowScreen(ElementaVersion.V2) {
+class ExamplesGui : WindowScreen(Component.empty(), ElementaVersion.V2) {
     private val container by ScrollComponent().constrain {
         y = 3.pixels()
         width = 100.percent()

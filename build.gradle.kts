@@ -51,7 +51,7 @@ dependencies {
     compileOnly("gg.virtualclient:virtualminecraft:1.0.0-11604-SNAPSHOT") {
         attributes { attribute(common, true) }
     }
-    api("net.kyori:adventure-api:4.10.1")
+    compileOnly("net.kyori:adventure-api:4.10.1")
 
     compileOnly("com.google.code.gson:gson:2.2.4")
 }

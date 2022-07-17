@@ -1,0 +1,5 @@
+public final class gg/essential/elementa/dsl/PlatformUtil {
+	public static final fun getUIImageFromIdentifier (Lnet/minecraft/util/Identifier;)Lgg/essential/elementa/components/UIImage;
+	public static final fun ofResource (Lgg/essential/elementa/components/UIImage$Companion;Lnet/minecraft/util/Identifier;)Lgg/essential/elementa/components/UIImage;
+}
+

@@ -11,10 +11,11 @@ import gg.essential.elementa.constraints.*
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.OutlineEffect
 import gg.essential.elementa.markdown.MarkdownComponent
+import net.kyori.adventure.text.Component
 import java.awt.Color
 import java.net.URL
 
-class ComponentsGui : WindowScreen(ElementaVersion.V2) {
+class ComponentsGui : WindowScreen(Component.empty(), ElementaVersion.V2) {
     init {
         ComponentType("UIContainer") {
             val bar = UIBlock().constrain {

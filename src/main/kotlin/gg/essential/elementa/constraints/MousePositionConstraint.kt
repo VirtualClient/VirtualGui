@@ -9,11 +9,11 @@ class MousePositionConstraint : PositionConstraint {
     override var constrainTo: UIComponent? = null
 
     override fun getXPositionImpl(component: UIComponent): Float {
-        return UIComponent.getMouseX()
+        return component.getMouseX()
     }
 
     override fun getYPositionImpl(component: UIComponent): Float {
-        return UIComponent.getMouseY()
+        return component.getMouseY()
     }
 
     override fun visitImpl(visitor: ConstraintVisitor, type: ConstraintType) { }

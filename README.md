@@ -11,24 +11,24 @@ instead you simply have to describe _what_ you want.
 
 ## Dependency
 
-It's recommended that you include [Essential](link eventually) instead of adding it yourself.
-
 In your repository block, add:
 
 Groovy
 ```groovy
 maven {
-    url = "https://repo.essential.gg/repository/maven-public"
+    url = "https://repo.virtualclient.gg/artifactory/virtualclient-public/"
 }
 ```
 Kotlin
 ```kotlin
-maven(url = "https://repo.essential.gg/repository/maven-public")
+maven(url = "https://repo.virtualclient.gg/artifactory/virtualclient-public/")
 ```
 
 To use the latest builds, use the following dependency:
 
 <details><summary>Forge</summary>
+
+TODO: Update this
 
 ```kotlin
 implementation("gg.essential:elementa-$mcVersion-$mcPlatform:$buildNumber")

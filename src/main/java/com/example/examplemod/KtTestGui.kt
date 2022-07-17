@@ -13,9 +13,10 @@ import gg.essential.elementa.effects.ScissorEffect
 import gg.essential.elementa.font.DefaultFonts
 import gg.essential.elementa.font.ElementaFonts
 import gg.essential.elementa.utils.withAlpha
+import net.kyori.adventure.text.Component
 import java.awt.Color
 
-class KtTestGui : WindowScreen(ElementaVersion.V2) {
+class KtTestGui : WindowScreen(Component.empty(), ElementaVersion.V2) {
     private val myTextBox = UIBlock(Color(0, 0, 0, 255))
 
     init {

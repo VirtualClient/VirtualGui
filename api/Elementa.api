@@ -71,6 +71,7 @@ public abstract class gg/essential/elementa/UIComponent : java/util/Observable {
 	public fun getParent ()Lgg/essential/elementa/UIComponent;
 	public fun getRadius ()F
 	public fun getRight ()F
+	public fun getScaleHelper ()Lgg/essential/elementa/scale/ScaleHelper;
 	public fun getTextScale ()F
 	public fun getTop ()F
 	public fun getWidth ()F
@@ -194,11 +195,12 @@ public class gg/essential/elementa/UIConstraints : java/util/Observable {
 }
 
 public abstract class gg/essential/elementa/WindowScreen : gg/virtualclient/virtualminecraft/VirtualScreen {
-	public fun <init> ()V
-	public fun <init> (Lgg/essential/elementa/ElementaVersion;)V
-	public fun <init> (Lgg/essential/elementa/ElementaVersion;Z)V
-	public fun <init> (Lgg/essential/elementa/ElementaVersion;ZZ)V
-	public synthetic fun <init> (Lgg/essential/elementa/ElementaVersion;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lnet/kyori/adventure/text/Component;)V
+	public fun <init> (Lnet/kyori/adventure/text/Component;Lgg/essential/elementa/ElementaVersion;)V
+	public fun <init> (Lnet/kyori/adventure/text/Component;Lgg/essential/elementa/ElementaVersion;Z)V
+	public fun <init> (Lnet/kyori/adventure/text/Component;Lgg/essential/elementa/ElementaVersion;ZZ)V
+	public fun <init> (Lnet/kyori/adventure/text/Component;Lgg/essential/elementa/ElementaVersion;ZZLgg/essential/elementa/scale/ScaleHelper;)V
+	public synthetic fun <init> (Lnet/kyori/adventure/text/Component;Lgg/essential/elementa/ElementaVersion;ZZLgg/essential/elementa/scale/ScaleHelper;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun afterInitialization ()V
 	public final fun animate (Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FDF)V
 	public final fun animate (Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FFF)V
@@ -211,6 +213,7 @@ public abstract class gg/essential/elementa/WindowScreen : gg/virtualclient/virt
 	public static synthetic fun animate$default (Lgg/essential/elementa/WindowScreen;Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FJFILjava/lang/Object;)V
 	public static synthetic fun animate$default (Lgg/essential/elementa/WindowScreen;Lkotlin/reflect/KMutableProperty0;Lgg/essential/elementa/constraints/animation/AnimationStrategy;FLjava/awt/Color;FILjava/lang/Object;)V
 	public fun charTyped (CI)Z
+	public final fun getScaleHelper ()Lgg/essential/elementa/scale/ScaleHelper;
 	public final fun getWindow ()Lgg/essential/elementa/components/Window;
 	protected fun init ()V
 	public fun keyPressed (III)Z
@@ -592,13 +595,23 @@ public final class gg/essential/elementa/components/UIPoint : gg/essential/eleme
 
 public class gg/essential/elementa/components/UIRoundedRectangle : gg/essential/elementa/UIComponent {
 	public static final field Companion Lgg/essential/elementa/components/UIRoundedRectangle$Companion;
+	public static field shader Lgg/virtualclient/virtualminecraft/shader/VirtualShader;
+	public static field shaderInnerRectUniform Lgg/virtualclient/virtualminecraft/shader/Float4Uniform;
+	public static field shaderRadiusUniform Lgg/virtualclient/virtualminecraft/shader/FloatUniform;
 	public fun <init> (F)V
 	public fun draw (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
 }
 
 public final class gg/essential/elementa/components/UIRoundedRectangle$Companion {
 	public final fun drawRoundedRectangle (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;FFFFFLjava/awt/Color;)V
+	public final fun getShader ()Lgg/virtualclient/virtualminecraft/shader/VirtualShader;
+	public final fun getShaderInnerRectUniform ()Lgg/virtualclient/virtualminecraft/shader/Float4Uniform;
+	public final fun getShaderRadiusUniform ()Lgg/virtualclient/virtualminecraft/shader/FloatUniform;
 	public final fun initShaders ()V
+	public final fun isShaderInitialized ()Z
+	public final fun setShader (Lgg/virtualclient/virtualminecraft/shader/VirtualShader;)V
+	public final fun setShaderInnerRectUniform (Lgg/virtualclient/virtualminecraft/shader/Float4Uniform;)V
+	public final fun setShaderRadiusUniform (Lgg/virtualclient/virtualminecraft/shader/FloatUniform;)V
 }
 
 public class gg/essential/elementa/components/UIShape : gg/essential/elementa/UIComponent {
@@ -617,10 +630,12 @@ public class gg/essential/elementa/components/UIText : gg/essential/elementa/UIC
 	public fun <init> ()V
 	public fun <init> (Lgg/essential/elementa/state/State;Lgg/essential/elementa/state/State;Lgg/essential/elementa/state/State;)V
 	public synthetic fun <init> (Lgg/essential/elementa/state/State;Lgg/essential/elementa/state/State;Lgg/essential/elementa/state/State;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun <init> (Ljava/lang/String;)V
-	public fun <init> (Ljava/lang/String;Z)V
 	public fun <init> (Ljava/lang/String;ZLjava/awt/Color;)V
 	public synthetic fun <init> (Ljava/lang/String;ZLjava/awt/Color;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lnet/kyori/adventure/text/Component;)V
+	public fun <init> (Lnet/kyori/adventure/text/Component;Z)V
+	public fun <init> (Lnet/kyori/adventure/text/Component;ZLjava/awt/Color;)V
+	public synthetic fun <init> (Lnet/kyori/adventure/text/Component;ZLjava/awt/Color;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun bindShadow (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIText;
 	public final fun bindShadowColor (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIText;
 	public final fun bindText (Lgg/essential/elementa/state/State;)Lgg/essential/elementa/components/UIText;
@@ -629,12 +644,13 @@ public class gg/essential/elementa/components/UIText : gg/essential/elementa/UIC
 	public final fun getShadow ()Z
 	public final synthetic fun getShadowColor ()Lgg/essential/elementa/state/State;
 	public final fun getShadowColor ()Ljava/awt/Color;
-	public final fun getText ()Ljava/lang/String;
+	public final fun getText ()Lnet/kyori/adventure/text/Component;
 	public final fun getTextWidth ()F
 	public fun getWidth ()F
 	public final fun setShadow (Z)Lgg/essential/elementa/components/UIText;
 	public final fun setShadowColor (Ljava/awt/Color;)Lgg/essential/elementa/components/UIText;
 	public final fun setText (Ljava/lang/String;)Lgg/essential/elementa/components/UIText;
+	public final fun setText (Lnet/kyori/adventure/text/Component;)Lgg/essential/elementa/components/UIText;
 }
 
 public class gg/essential/elementa/components/UIWrappedText : gg/essential/elementa/UIComponent {
@@ -674,7 +690,8 @@ public final class gg/essential/elementa/components/Window : gg/essential/elemen
 	public fun <init> ()V
 	public fun <init> (Lgg/essential/elementa/ElementaVersion;)V
 	public fun <init> (Lgg/essential/elementa/ElementaVersion;I)V
-	public synthetic fun <init> (Lgg/essential/elementa/ElementaVersion;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lgg/essential/elementa/ElementaVersion;ILgg/essential/elementa/scale/ScaleHelper;)V
+	public synthetic fun <init> (Lgg/essential/elementa/ElementaVersion;ILgg/essential/elementa/scale/ScaleHelper;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun addFloatingComponent (Lgg/essential/elementa/UIComponent;)V
 	public fun afterInitialization ()V
 	public fun animationFrame ()V
@@ -688,6 +705,7 @@ public final class gg/essential/elementa/components/Window : gg/essential/elemen
 	public final fun getHoveredFloatingComponent ()Lgg/essential/elementa/UIComponent;
 	public fun getLeft ()F
 	public fun getRight ()F
+	public fun getScaleHelper ()Lgg/essential/elementa/scale/ScaleHelper;
 	public fun getTop ()F
 	public fun getWidth ()F
 	public fun hitTest (FF)Lgg/essential/elementa/UIComponent;
@@ -696,6 +714,7 @@ public final class gg/essential/elementa/components/Window : gg/essential/elemen
 	public fun mouseClick (DDI)V
 	public fun mouseRelease ()V
 	public fun mouseScroll (D)V
+	public fun onWindowResize ()V
 	public final fun removeFloatingComponent (Lgg/essential/elementa/UIComponent;)V
 	public final fun setHoveredFloatingComponent (Lgg/essential/elementa/UIComponent;)V
 	public final fun unfocus ()V
@@ -2479,8 +2498,10 @@ public final class gg/essential/elementa/dsl/UtilitiesKt {
 	public static final fun toConstraint (Ljava/awt/Color;)Lgg/essential/elementa/constraints/ConstantColorConstraint;
 	public static final fun width (CF)F
 	public static final fun width (Ljava/lang/String;FLgg/essential/elementa/font/FontProvider;)F
+	public static final fun width (Lnet/kyori/adventure/text/Component;FLgg/essential/elementa/font/FontProvider;)F
 	public static synthetic fun width$default (CFILjava/lang/Object;)F
 	public static synthetic fun width$default (Ljava/lang/String;FLgg/essential/elementa/font/FontProvider;ILjava/lang/Object;)F
+	public static synthetic fun width$default (Lnet/kyori/adventure/text/Component;FLgg/essential/elementa/font/FontProvider;ILjava/lang/Object;)F
 }
 
 public abstract class gg/essential/elementa/effects/Effect {
@@ -3666,6 +3687,54 @@ public final class gg/essential/elementa/markdown/selection/TextCursor : gg/esse
 	public final fun getOffset ()I
 }
 
+public final class gg/essential/elementa/scale/CustomScaleHelper : gg/essential/elementa/scale/ScaleHelper {
+	public static final field Companion Lgg/essential/elementa/scale/CustomScaleHelper$Companion;
+	public fun <init> (Lkotlin/jvm/functions/Function0;)V
+	public fun drawScreen (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun getScaleFactor ()D
+	public fun getScaledHeight ()I
+	public fun getScaledWidth ()I
+	public fun init ()V
+	public fun postDrawScreen (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+}
+
+public final class gg/essential/elementa/scale/CustomScaleHelper$Companion {
+	public final fun scaleForScreenSize (I)Lgg/essential/elementa/scale/CustomScaleHelper;
+	public static synthetic fun scaleForScreenSize$default (Lgg/essential/elementa/scale/CustomScaleHelper$Companion;IILjava/lang/Object;)Lgg/essential/elementa/scale/CustomScaleHelper;
+}
+
+public abstract interface class gg/essential/elementa/scale/ScaleHelper {
+	public static final field Companion Lgg/essential/elementa/scale/ScaleHelper$Companion;
+	public abstract fun drawScreen (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun getMouseX ()F
+	public fun getMouseY ()F
+	public abstract fun getScaleFactor ()D
+	public abstract fun getScaledHeight ()I
+	public abstract fun getScaledWidth ()I
+	public abstract fun init ()V
+	public abstract fun postDrawScreen (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+}
+
+public final class gg/essential/elementa/scale/ScaleHelper$Companion {
+	public final fun getActiveScaleHelper ()Lgg/essential/elementa/scale/ScaleHelper;
+	public final fun setActiveScaleHelper (Lgg/essential/elementa/scale/ScaleHelper;)V
+}
+
+public final class gg/essential/elementa/scale/ScaleHelper$DefaultImpls {
+	public static fun getMouseX (Lgg/essential/elementa/scale/ScaleHelper;)F
+	public static fun getMouseY (Lgg/essential/elementa/scale/ScaleHelper;)F
+}
+
+public final class gg/essential/elementa/scale/VanillaScaleHelper : gg/essential/elementa/scale/ScaleHelper {
+	public static final field INSTANCE Lgg/essential/elementa/scale/VanillaScaleHelper;
+	public fun drawScreen (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+	public fun getScaleFactor ()D
+	public fun getScaledHeight ()I
+	public fun getScaledWidth ()I
+	public fun init ()V
+	public fun postDrawScreen (Lgg/virtualclient/virtualminecraft/VirtualMatrixStack;)V
+}
+
 public class gg/essential/elementa/state/BasicState : gg/essential/elementa/state/State {
 	public fun <init> (Ljava/lang/Object;)V
 	public fun get ()Ljava/lang/Object;
@@ -4212,6 +4281,29 @@ public final class gg/essential/elementa/utils/ExtensionsKt {
 	public static final fun roundToRealPixels (F)F
 	public static final fun withAlpha (Ljava/awt/Color;F)Ljava/awt/Color;
 	public static final fun withAlpha (Ljava/awt/Color;I)Ljava/awt/Color;
+}
+
+public final class gg/essential/elementa/utils/GuiScale : java/lang/Enum {
+	public static final field Auto Lgg/essential/elementa/utils/GuiScale;
+	public static final field Companion Lgg/essential/elementa/utils/GuiScale$Companion;
+	public static final field Large Lgg/essential/elementa/utils/GuiScale;
+	public static final field Medium Lgg/essential/elementa/utils/GuiScale;
+	public static final field Small Lgg/essential/elementa/utils/GuiScale;
+	public static final field VeryLarge Lgg/essential/elementa/utils/GuiScale;
+	public static final fun fromNumber (I)Lgg/essential/elementa/utils/GuiScale;
+	public static final fun scaleForScreenSize ()Lgg/essential/elementa/utils/GuiScale;
+	public static final fun scaleForScreenSize (I)Lgg/essential/elementa/utils/GuiScale;
+	public static fun valueOf (Ljava/lang/String;)Lgg/essential/elementa/utils/GuiScale;
+	public static fun values ()[Lgg/essential/elementa/utils/GuiScale;
+}
+
+public final class gg/essential/elementa/utils/GuiScale$Companion {
+	public final fun fromNumber (I)Lgg/essential/elementa/utils/GuiScale;
+	public final fun getGuiScaleOverride ()I
+	public final fun scaleForScreenSize ()Lgg/essential/elementa/utils/GuiScale;
+	public final fun scaleForScreenSize (I)Lgg/essential/elementa/utils/GuiScale;
+	public static synthetic fun scaleForScreenSize$default (Lgg/essential/elementa/utils/GuiScale$Companion;IILjava/lang/Object;)Lgg/essential/elementa/utils/GuiScale;
+	public final fun setGuiScaleOverride (I)V
 }
 
 public final class gg/essential/elementa/utils/ImageKt {

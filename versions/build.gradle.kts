@@ -7,7 +7,7 @@ plugins {
     id("org.jetbrains.dokka")
     id("gg.essential.multi-version")
     id("gg.essential.defaults")
-    id("gg.essential.defaults.maven-publish")
+    id("maven-publish")
 }
 
 group = "gg.essential"
@@ -92,6 +92,25 @@ tasks.jar {
     exclude("kotlin/**")
     manifest {
         attributes(mapOf("FMLModType" to "LIBRARY"))
+    }
+}
+
+configure<PublishingExtension> {
+    repositories {
+        maven {
+            name = "virtualclientRepository"
+            credentials(PasswordCredentials::class)
+            url = uri("https://repo.virtualclient.gg/artifactory/virtualclient-public/")
+        }
+    }
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "gg.virtualclient"
+            artifactId = "virtualgui"
+            version = "1.0.0-${platform.mcVersion}-SNAPSHOT"
+            from(components["java"])
+            artifact(tasks.jar)
+        }
     }
 }
 

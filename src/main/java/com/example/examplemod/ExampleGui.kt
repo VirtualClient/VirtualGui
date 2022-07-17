@@ -8,6 +8,7 @@ import gg.essential.elementa.constraints.*
 import gg.essential.elementa.constraints.animation.Animations
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.ScissorEffect
+import net.kyori.adventure.text.Component
 import java.awt.Color
 
 /**
@@ -18,7 +19,7 @@ import java.awt.Color
  * The example won't look particularly pretty, but that is up to the programmer
  * to design their GUIs how they wish.
  */
-class ExampleGui : WindowScreen(ElementaVersion.V2) {
+class ExampleGui : WindowScreen(Component.empty(), ElementaVersion.V2) {
     // Our ExampleGui class will extend from WindowScreen
     // which is a subclass of GuiScreen that will call all mouse/keyboard
     // events for us.
