@@ -46,11 +46,17 @@ class Window @JvmOverloads constructor(
 
     override fun onWindowResize() {
         //So the components that will be initialized/reinitialized here all have the scale helper applied.
-        val prevScaleHelper = ScaleHelper.activeScaleHelper
-        ScaleHelper.activeScaleHelper = scaleHelper
+        val prevScaleHelper = ScaleHelper.getActiveScaleHelper()
+        ScaleHelper.setActiveScaleHelper(scaleHelper)
         scaleHelper.init()
+
+        enqueueRenderOperation {
+            //Reinit again on next render call
+            scaleHelper.init()
+        }
+
         super.onWindowResize()
-        ScaleHelper.activeScaleHelper = prevScaleHelper
+        ScaleHelper.setActiveScaleHelper(prevScaleHelper)
     }
 
     override fun getScaleHelper(): ScaleHelper {
@@ -74,10 +80,10 @@ class Window @JvmOverloads constructor(
 
         requireMainThread()
 
-        val prevScaleHelper = ScaleHelper.activeScaleHelper
+        val prevScaleHelper = ScaleHelper.getActiveScaleHelper()
 
         //Just to make sure it is set
-        ScaleHelper.activeScaleHelper = this.scaleHelper
+        ScaleHelper.setActiveScaleHelper(this.scaleHelper)
         scaleHelper.drawScreen(matrixStack)
 
         val startTime = System.nanoTime()
@@ -155,7 +161,7 @@ class Window @JvmOverloads constructor(
             }
         }
         scaleHelper.postDrawScreen(matrixStack)
-        ScaleHelper.activeScaleHelper = prevScaleHelper
+        ScaleHelper.setActiveScaleHelper(prevScaleHelper)
     }
 
     internal fun drawEmbedded(matrixStack: VirtualMatrixStack) {
@@ -305,12 +311,12 @@ class Window @JvmOverloads constructor(
         ) return false
 
         val currentScissor = ScissorEffect.currentScissorState ?: return true
-        val sf = ScaleHelper.activeScaleHelper.getScaleFactor()
+        val sf = ScaleHelper.getActiveScaleHelper().getScaleFactor()
 
         val realX = currentScissor.x / sf
         val realWidth = currentScissor.width / sf
 
-        val bottomY = ((ScaleHelper.activeScaleHelper.getScaledHeight() * sf) - currentScissor.y) / sf
+        val bottomY = ((ScaleHelper.getActiveScaleHelper().getScaledHeight() * sf) - currentScissor.y) / sf
         val realHeight = currentScissor.height / sf
 
         return right > realX &&

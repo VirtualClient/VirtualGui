@@ -36,69 +36,79 @@ abstract class WindowScreen @JvmOverloads constructor(
 
     open fun afterInitialization() { }
 
-    override fun render(matrixStack: VirtualMatrixStack, mouseX: Int, mouseY: Int, partialTicks: Float) {
+    override fun render(matrices: VirtualMatrixStack, mouseX: Int, mouseY: Int, delta: Float) {
         if (!isInitialized) {
             isInitialized = true
             afterInitialization()
         }
+        val mX = scaleHelper.getMouseX().toInt()
+        val mY = scaleHelper.getMouseY().toInt()
 
-        super.render(matrixStack, mouseX, mouseY, partialTicks)
+        super.render(matrices, mX, mY, delta)
 
         if (drawDefaultBackground)
-            renderBackground(matrixStack)
+            renderBackground(matrices)
 
         // Now, we need to hook up Elementa to this GuiScreen. In practice, Elementa
         // is not constrained to being used solely inside of a GuiScreen, all the programmer
         // needs to do is call the [Window] events when appropriate, whenever that may be.
         // In our example, it is in the overridden [GuiScreen#drawScreen] method.
-        window.draw(matrixStack)
+        window.draw(matrices)
     }
 
-    override fun mouseClicked(mouseX: Double, mouseY: Double, mouseButton: Int): Boolean {
-        super.mouseClicked(mouseX, mouseY, mouseButton)
+    override fun onMouseClicked(mouseX: Double, mouseY: Double, button: Int): Boolean {
+        //I think this clashes with elementa v2 but without it our scale helper breaks
+        val mX = scaleHelper.getMouseX().toDouble()
+        val mY = scaleHelper.getMouseY().toDouble()
+
+        super.onMouseClicked(mX, mY, button)
 
         // Restore decimal value to mouse locations if not present.
         // See [ElementaVersion.V2] for more info
         val (adjustedMouseX, adjustedMouseY) =
-            if (version >= ElementaVersion.v2 && (mouseX == floor(mouseX) && mouseY == floor(mouseY))) {
+            if (version >= ElementaVersion.v2 && (mX == floor(mX) && mY == floor(mY))) {
                 val x = window.getMouseX()
                 val y = window.getMouseY()
 
-                mouseX + (x - floor(x)) to mouseY + (y - floor(y))
+                mX + (x - floor(x)) to mY + (y - floor(y))
             } else {
-                mouseX to mouseY
+                mX to mY
             }
 
         // We also need to pass along clicks
-        window.mouseClick(adjustedMouseX, adjustedMouseY, mouseButton)
+        window.mouseClick(adjustedMouseX, adjustedMouseY, button)
         return true
     }
 
-    override fun mouseReleased(mouseX: Double, mouseY: Double, state: Int): Boolean {
-        super.mouseReleased(mouseX, mouseY, state)
+    override fun onMouseReleased(mouseX: Double, mouseY: Double, state: Int): Boolean {
+        val mX = scaleHelper.getMouseX().toDouble()
+        val mY = scaleHelper.getMouseY().toDouble()
+        super.onMouseReleased(mX, mY, state)
 
         // We also need to pass along mouse releases
         window.mouseRelease()
         return true
     }
 
-    override fun mouseScrolled(mouseX: Double, mouseY: Double, amount: Double): Boolean {
-        super.mouseScrolled(mouseX, mouseY, amount)
+    override fun onMouseScrolled(mouseX: Double, mouseY: Double, amount: Double): Boolean {
+        val mX = scaleHelper.getMouseX().toDouble()
+        val mY = scaleHelper.getMouseY().toDouble()
+        super.onMouseScrolled(mX, mY, amount)
 
         // We also need to pass along scrolling
         window.mouseScroll(amount.coerceIn(-1.0, 1.0))
         return true
     }
 
-    override fun keyPressed(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
-        super.keyPressed(keyCode, scanCode, modifiers)
+    override fun onKeyPressed(keyCode: Int, scanCode: Int, modifiers: Int): Boolean {
+        super.onKeyPressed(keyCode, scanCode, modifiers)
         // We also need to pass along typed keys
         window.keyType(0.toChar(), keyCode)
         return true
     }
 
-    override fun charTyped(chr: Char, modifiers: Int): Boolean {
-        super.charTyped(chr, modifiers)
+    override fun onCharTyped(chr: Char, modifiers: Int): Boolean {
+        super.onCharTyped(chr, modifiers)
 
         window.keyType(chr, 0)
 
@@ -106,10 +116,10 @@ abstract class WindowScreen @JvmOverloads constructor(
     }
 
 
-    override fun init() {
+    override fun onScreenInit() {
         window.onWindowResize()
 
-        super.init()
+        super.onScreenInit()
 
         // Since we want our users to be able to hold a key
         // to type. This is a wrapper around a base LWJGL function.
@@ -118,8 +128,8 @@ abstract class WindowScreen @JvmOverloads constructor(
             VirtualKeyboard.setRepeatEvents(true)
     }
 
-    override fun onClose() {
-        super.onClose()
+    override fun onScreenClosed() {
+        super.onScreenClosed()
 
         // We need to disable repeat events when leaving the gui.
         if (enableRepeatKeys)

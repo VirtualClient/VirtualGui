@@ -46,7 +46,7 @@ class ScissorEffect @JvmOverloads constructor(
 
     override fun beforeDraw(matrixStack: VirtualMatrixStack) {
         val bounds = customBoundingBox?.getScissorBounds() ?: scissorBounds ?: boundComponent.getScissorBounds()
-        val scaleFactor = ScaleHelper.activeScaleHelper.getScaleFactor().toInt()
+        val scaleFactor = ScaleHelper.getActiveScaleHelper().getScaleFactor().toInt()
 
         if (currentScissorState == null) {
             glEnable(GL_SCISSOR_TEST)

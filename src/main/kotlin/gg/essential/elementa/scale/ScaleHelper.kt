@@ -25,7 +25,15 @@ interface ScaleHelper {
     }
 
     companion object {
-        var activeScaleHelper: ScaleHelper = VanillaScaleHelper
+        private var activeScaleHelper: ScaleHelper? = null
+
+        fun getActiveScaleHelper(): ScaleHelper {
+            return activeScaleHelper ?: VanillaScaleHelper
+        }
+
+        fun setActiveScaleHelper(scaleHelper: ScaleHelper?) {
+            activeScaleHelper = scaleHelper
+        }
     }
 
 }

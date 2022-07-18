@@ -218,7 +218,7 @@ class FontRenderer(
         doffsetUniform.setValue(3.5f / currentPointSize)
 
 
-        val guiScale = ScaleHelper.activeScaleHelper.getScaleFactor().toFloat()
+        val guiScale = ScaleHelper.getActiveScaleHelper().getScaleFactor().toFloat()
 
         //Reset
         obfuscated = false

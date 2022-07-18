@@ -1142,7 +1142,7 @@ abstract class UIComponent : Observable() {
     }
 
     open fun getScaleHelper(): ScaleHelper {
-        return Window.ofOrNull(this)?.getScaleHelper() ?: ScaleHelper.activeScaleHelper
+        return Window.ofOrNull(this)?.getScaleHelper() ?: ScaleHelper.getActiveScaleHelper()
     }
 
     internal fun getMouseX(): Float {
@@ -1210,7 +1210,7 @@ abstract class UIComponent : Observable() {
          * Hints a number with respect to the current GUI scale.
          */
         fun guiHint(number: Float, roundDown: Boolean): Float {
-            val factor = ScaleHelper.activeScaleHelper.getScaleFactor().toFloat()
+            val factor = ScaleHelper.getActiveScaleHelper().getScaleFactor().toFloat()
             return (number * factor).let {
                 if (roundDown) floor(it) else ceil(it)
             } / factor
@@ -1220,7 +1220,7 @@ abstract class UIComponent : Observable() {
          * Hints a number with respect to the current GUI scale.
          */
         fun guiHint(number: Double, roundDown: Boolean): Double {
-            val factor = ScaleHelper.activeScaleHelper.getScaleFactor()
+            val factor = ScaleHelper.getActiveScaleHelper().getScaleFactor()
             return (number * factor).let {
                 if (roundDown) floor(it) else ceil(it)
             } / factor
