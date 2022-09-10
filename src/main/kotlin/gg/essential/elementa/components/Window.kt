@@ -354,11 +354,7 @@ class Window @JvmOverloads constructor(
     fun isFloating(component: UIComponent): Boolean {
         if(isComponentFloating(component))
             return true
-        component.children.forEach {
-            if(isFloating(it))
-                return true
-        }
-        return false
+        return isFloating(component.parent)
     }
 
     /**

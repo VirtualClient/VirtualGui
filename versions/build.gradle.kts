@@ -107,7 +107,7 @@ configure<PublishingExtension> {
         create<MavenPublication>("maven") {
             groupId = "gg.virtualclient"
             artifactId = "virtualgui"
-            version = "1.0.0-${platform.mcVersion}-SNAPSHOT"
+            version = "1.0.1-${platform.mcVersion}-SNAPSHOT"
             from(components["java"])
             artifact(tasks.jar)
         }
