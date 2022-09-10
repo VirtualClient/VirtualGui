@@ -218,7 +218,7 @@ class Window @JvmOverloads constructor(
         }
 
         for (floatingComponent in floatingComponents.reversed()) {
-            if (floatingComponent.isPointInside(mouseX.toFloat(), mouseY.toFloat())) {
+            if (floatingComponent.isPointInside(mouseX.toFloat(), mouseY.toFloat()) && !floatingComponent.ignoreInteractions) {
                 floatingComponent.mouseClick(mouseX, mouseY, button)
                 dealWithFocusRequests()
                 return
@@ -345,6 +345,20 @@ class Window @JvmOverloads constructor(
         }
 
         floatingComponents.remove(component)
+    }
+
+    fun isComponentFloating(component: UIComponent): Boolean {
+        return floatingComponents.contains(component)
+    }
+
+    fun isFloating(component: UIComponent): Boolean {
+        if(isComponentFloating(component))
+            return true
+        component.children.forEach {
+            if(isFloating(it))
+                return true
+        }
+        return false
     }
 
     /**

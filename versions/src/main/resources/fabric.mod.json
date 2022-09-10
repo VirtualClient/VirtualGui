@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "elementa",
-  "name": "Elementa",
+  "id": "virtualgui",
+  "name": "VirtualGui",
   "version": "${version}",
   "environment": "client",
   "entrypoints": {

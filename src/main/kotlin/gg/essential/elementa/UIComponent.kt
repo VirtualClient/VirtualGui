@@ -38,6 +38,9 @@ abstract class UIComponent : Observable() {
     val effects = mutableListOf<Effect>()
 
     private var childrenLocked = 0
+
+    var ignoreInteractions: Boolean = false
+
     init {
         children.addObserver { _, _ -> requireChildrenUnlocked() }
         children.addObserver { _, event -> setWindowCacheOnChangedChild(event) }
@@ -394,7 +397,7 @@ abstract class UIComponent : Observable() {
         for (i in children.lastIndex downTo 0) {
             val child = children[i]
 
-            if (child.isPointInside(x, y)) {
+            if (child.isPointInside(x, y) && !child.ignoreInteractions) {
                 return child.hitTest(x, y)
             }
         }
