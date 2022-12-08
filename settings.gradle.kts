@@ -6,12 +6,13 @@ pluginManagement {
         maven("https://maven.architectury.dev/")
         maven("https://maven.minecraftforge.net")
         maven("https://repo.essential.gg/repository/maven-public")
+        maven("https://repo.virtualclient.gg/artifactory/virtualclient-public/")
     }
     plugins {
-        val egtVersion = "0.1.10"
-        id("gg.essential.defaults") version egtVersion
-        id("gg.essential.multi-version.root") version egtVersion
-        id("gg.essential.multi-version.api-validation") version egtVersion
+        val egtVersion = "0.1.16"
+        id("gg.virtualclient.defaults") version egtVersion
+        id("gg.virtualclient.multi-version.root") version egtVersion
+        id("gg.virtualclient.multi-version.api-validation") version egtVersion
     }
 }
 

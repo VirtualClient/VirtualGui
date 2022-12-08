@@ -22,8 +22,8 @@ public class PlatformImpl implements Platform {
         //$$ return 11802;
         //#elseif MC==11701
         //$$ return 11701;
-        //#elseif MC==11604
-        //$$ return 11604;
+        //#elseif MC==11605
+        //$$ return 11605;
         //#elseif MC==11502
         //$$ return 11502;
         //#elseif MC==11202

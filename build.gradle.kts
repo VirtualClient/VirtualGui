@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm") version "1.6.10"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.8.0"
     id("org.jetbrains.dokka") version "1.6.10" apply false
-    id("gg.essential.defaults")
+    id("gg.virtualclient.defaults")
 }
 
 kotlin.jvmToolchain {
@@ -32,6 +32,7 @@ repositories {
     maven {
         url = uri("https://repo.virtualclient.gg/artifactory/virtualclient-public/")
     }
+    mavenCentral()
 }
 
 dependencies {
@@ -48,10 +49,10 @@ dependencies {
     // Depending on LWJGL3 instead of 2 so we can choose opengl bindings only
     compileOnly("org.lwjgl:lwjgl-opengl:3.3.1")
 
-    compileOnly("gg.virtualclient:virtualminecraft:1.0.0-11604-SNAPSHOT") {
+    compileOnly("gg.virtualclient:virtualminecraft:1.0.0-11605-SNAPSHOT") {
         attributes { attribute(common, true) }
     }
-    compileOnly("net.kyori:adventure-api:4.10.1")
+    compileOnly("net.kyori:adventure-api:4.12.0")
 
     compileOnly("com.google.code.gson:gson:2.2.4")
 }

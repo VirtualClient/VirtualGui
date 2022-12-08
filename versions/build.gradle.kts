@@ -5,8 +5,8 @@ import gg.essential.gradle.util.*
 plugins {
     kotlin("jvm")
     id("org.jetbrains.dokka")
-    id("gg.essential.multi-version")
-    id("gg.essential.defaults")
+    id("gg.virtualclient.multi-version")
+    id("gg.virtualclient.defaults")
     id("maven-publish")
 }
 
@@ -42,7 +42,7 @@ dependencies {
 
     if (platform.isFabric) {
         val fabricApiVersion = when(platform.mcVersion) {
-            11604 -> "0.23.0+build.410-1.16"
+            11605 -> "0.23.0+build.410-1.16"
             11701 -> "0.39.2+1.17"
             11802 -> "0.57.0+1.18.2"
             11900 -> "0.57.0+1.19"
