@@ -79,15 +79,26 @@ open class UIWrappedText @JvmOverloads constructor(
     init {
         setWidth(textWidthState.pixels())
         setHeight(basicHeightConstraint {
+            val fontProvider = super.getFontProvider()
+
             val lines = getStringSplitToWidth(
                 getText(),
                 getWidth(),
                 getTextScale(),
                 ensureSpaceAtEndOfLines = false,
-                fontProvider = super.getFontProvider()
+                fontProvider = fontProvider,
             )
+            if (lines.isEmpty()) {
+                return@basicHeightConstraint 0f
+            }
 
-            (lines.size * lineSpacing + extraHeightState.get()) * getTextScale()
+            // The height of the last line of text should be equal the size of that text
+            // independent of the lineSpacing property. Otherwise, when lineSpacing is greater
+            // than the text height the component's size will be larger than the area the text
+            // is rendered
+            ((lines.size - 1) * lineSpacing + extraHeightState.get() // All lines but last
+                + (fontProvider.getBaseLineHeight() + fontProvider.getBelowLineHeight() + fontProvider.getShadowHeight()) // Last line
+                ) * getTextScale()
         })
     }
 
@@ -148,7 +159,7 @@ open class UIWrappedText @JvmOverloads constructor(
                 textState.get(),
                 width,
                 textScale,
-                ((getHeight() / textScale - extraHeightState.get()) / lineSpacing).toInt(),
+                getMaxLines(),
                 ensureSpaceAtEndOfLines = false,
                 fontProvider = getFontProvider(),
                 trimmedTextSuffix = trimmedTextSuffix
@@ -185,5 +196,17 @@ open class UIWrappedText @JvmOverloads constructor(
         }
 
         super.draw(matrixStack)
+    }
+
+    private fun getMaxLines(): Int {
+        val fontProvider = getFontProvider()
+        val height = getHeight() / getTextScale() - extraHeightState.get()
+        val baseLineHeight = fontProvider.getBaseLineHeight() + fontProvider.getBelowLineHeight() + fontProvider.getShadowHeight()
+
+        if (height < baseLineHeight) {
+            return 0
+        }
+
+        return 1 + ((height - baseLineHeight) / lineSpacing).toInt()
     }
 }
