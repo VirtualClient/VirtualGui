@@ -1,4 +1,4 @@
-import gg.essential.gradle.util.*
+import gg.virtualclient.gradle.util.*
 
 plugins {
     id("gg.virtualclient.multi-version.root")

@@ -25,7 +25,7 @@ project(":platform").apply {
 }
 
 listOf(
-    "1.16.4-fabric",
+    "1.16.5-fabric",
     "1.17.1-fabric",
     "1.18.2-fabric",
     "1.19-fabric",

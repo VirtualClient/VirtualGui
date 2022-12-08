@@ -1,6 +1,6 @@
-import gg.essential.gradle.multiversion.StripReferencesTransform.Companion.registerStripReferencesAttribute
-import gg.essential.gradle.util.*
-import gg.essential.gradle.util.RelocationTransform.Companion.registerRelocationAttribute
+import gg.virtualclient.gradle.multiversion.StripReferencesTransform.Companion.registerStripReferencesAttribute
+import gg.virtualclient.gradle.util.*
+import gg.virtualclient.gradle.util.RelocationTransform.Companion.registerRelocationAttribute
 
 plugins {
     kotlin("jvm") version "1.6.10"

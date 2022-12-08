@@ -1,6 +1,6 @@
-import gg.essential.gradle.multiversion.excludeKotlinDefaultImpls
-import gg.essential.gradle.multiversion.mergePlatformSpecifics
-import gg.essential.gradle.util.*
+import gg.virtualclient.gradle.multiversion.excludeKotlinDefaultImpls
+import gg.virtualclient.gradle.multiversion.mergePlatformSpecifics
+import gg.virtualclient.gradle.util.*
 
 plugins {
     kotlin("jvm")
