@@ -261,6 +261,15 @@ abstract class UIComponent : Observable() {
      */
     open fun <T> childrenOfType(clazz: Class<T>) = children.filterIsInstance(clazz)
 
+    open fun getChildrenRecursive(): List<UIComponent> {
+        val children = mutableListOf<UIComponent>()
+        forEachChild { child ->
+            children.add(child)
+            children.addAll(child.getChildrenRecursive())
+        }
+        return children
+    }
+
     /**
      * Constructs an animation object specific to this component.
      *
