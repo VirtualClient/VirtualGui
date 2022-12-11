@@ -16,7 +16,9 @@ public class PlatformImpl implements Platform {
 
     @Override
     public int getMcVersion() {
-        //#if MC==11900
+        //#if MC>=11903
+        //$$ return 11903;
+        //#elseif MC==11900
         return 11900;
         //#elseif MC==11802
         //$$ return 11802;
@@ -81,7 +83,12 @@ public class PlatformImpl implements Platform {
     public void scale(double scaledWidth, double scaledHeight) {
         //#if MC>=11701
         RenderSystem.clear(256, VirtualMinecraft.INSTANCE.isRunningOnMac());
+        //#if MC>=11903
+        //$$ Matrix4f matrix4f = new Matrix4f().setOrtho(0.0f, (float) scaledWidth, 0.0f, (float) scaledHeight, 1000.0f, 3000.0f);
+        //#else
         Matrix4f matrix4f = Matrix4f.projectionMatrix(0.0f, (float) scaledWidth, 0.0f, (float) scaledHeight, 1000.0f, 3000.0f);
+        //#endif
+
         RenderSystem.setProjectionMatrix(matrix4f);
         MatrixStack matrixStack = RenderSystem.getModelViewStack();
         matrixStack.loadIdentity();

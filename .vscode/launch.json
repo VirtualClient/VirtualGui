@@ -184,6 +184,32 @@
       "args": "",
       "env": {},
       "projectName": "platform:1.19-fabric"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.16.5-fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.16.5-fabric/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.16.5-fabric\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.fabricmc.loader.impl.launch.knot.KnotClient\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.16.5-fabric"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Client (:platform:1.19.3-fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/versions\\1.19.3-fabric/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "net.fabricmc.devlaunchinjector.Main",
+      "vmArgs": "\"-Dfabric.dli.config\u003dF:\\Projects\\VirtualClient\\VirtualGui\\versions\\1.19.3-fabric\\.gradle\\loom-cache\\launch.cfg\" \"-Dfabric.dli.env\u003dclient\" \"-Dfabric.dli.main\u003dnet.fabricmc.loader.impl.launch.knot.KnotClient\"",
+      "args": "",
+      "env": {},
+      "projectName": "platform:1.19.3-fabric"
     }
   ]
 }

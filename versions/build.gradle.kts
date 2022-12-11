@@ -46,6 +46,7 @@ dependencies {
             11701 -> "0.39.2+1.17"
             11802 -> "0.57.0+1.18.2"
             11900 -> "0.57.0+1.19"
+            11903 -> "0.68.1+1.19.3"
             else -> throw GradleException("Unsupported platform $platform")
         }
         val fabricApiModules = mutableListOf(
