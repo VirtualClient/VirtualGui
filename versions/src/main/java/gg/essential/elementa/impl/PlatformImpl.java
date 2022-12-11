@@ -86,7 +86,7 @@ public class PlatformImpl implements Platform {
         //#if MC>=11903
         //$$ Matrix4f matrix4f = new Matrix4f().setOrtho(0.0f, (float) scaledWidth, 0.0f, (float) scaledHeight, 1000.0f, 3000.0f);
         //#else
-        Matrix4f matrix4f = Matrix4f.projectionMatrix(0.0f, (float) scaledWidth, 0.0f, (float) scaledHeight, 1000.0f, 3000.0f);
+        Matrix4f matrix4f = Matrix4f.projectionMatrix(0.0f, (float) scaledWidth, (float) scaledHeight, 0.0f, 1000.0f, 3000.0f);
         //#endif
 
         RenderSystem.setProjectionMatrix(matrix4f);
