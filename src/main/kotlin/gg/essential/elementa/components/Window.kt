@@ -12,6 +12,8 @@ import gg.essential.elementa.scale.VanillaScaleHelper
 import gg.essential.elementa.utils.elementaDev
 import gg.essential.elementa.utils.requireMainThread
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.keyboard.Key
+import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import org.lwjgl.opengl.GL11
 import java.util.concurrent.ConcurrentLinkedQueue
 import java.util.concurrent.TimeUnit
@@ -251,11 +253,40 @@ class Window @JvmOverloads constructor(
     override fun keyType(typedChar: Char, keyCode: Int) {
         requireMainThread()
 
+        if(this.canTabKeyChangeFocus && keyCode == Key.KEY_TAB.getKeyCode() && (focusedComponent == null || focusedComponent?.canTabKeyChangeFocus == true)) {
+            //Inefficient, I know - please don't judge me
+
+            val tabable = getTabNavigatableComponents(this).sortedByDescending { it.tabIndex }
+            val index = if(focusedComponent == null) 0 else tabable.indexOf(focusedComponent)
+
+            if(tabable.isNotEmpty()) {
+                val newIndex = if(VirtualKeyboard.isShiftKeyDown()) index -1 else index + 1
+
+                if(index >= tabable.size || index < 0) {
+                    focusedComponent?.releaseWindowFocus()
+                } else {
+                    tabable[newIndex].grabWindowFocus()
+                }
+
+            }
+
+        }
+
         if (focusedComponent != null) {
             focusedComponent?.keyType(typedChar, keyCode)
         } else {
             super.keyType(typedChar, keyCode)
         }
+    }
+
+    private fun getTabNavigatableComponents(component: UIComponent): List<UIComponent> {
+        val tabable = mutableListOf<UIComponent>()
+        component.children.forEach {
+            if(it.tabIndex == -1) return@forEach
+            tabable.add(it)
+            tabable.addAll(getTabNavigatableComponents(it))
+        }
+        return tabable
     }
 
     override fun animationFrame() {

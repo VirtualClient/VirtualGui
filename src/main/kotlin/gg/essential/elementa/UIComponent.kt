@@ -116,6 +116,19 @@ abstract class UIComponent : Observable() {
 
     internal var cachedWindow: Window? = null
 
+    /*
+     * Keyboard Navigation API
+     */
+
+    /*
+     * Determines weather the user can leave this component by pressing the tab key when focused.
+     * Setting this to false on the window completely disables tab navigation.
+     */
+    var canTabKeyChangeFocus = true
+    var tabIndex = -1
+
+    //TODO: Arrow navigation
+
     private fun setWindowCacheOnChangedChild(possibleEvent: Any) {
         @Suppress("UNCHECKED_CAST")
         when (val event = possibleEvent as? ObservableListEvent<UIComponent> ?: return) {
@@ -911,7 +924,7 @@ abstract class UIComponent : Observable() {
         onFocusActions.add(listener)
     }
 
-    fun focus() {
+    internal fun focus() {
         for (listener in onFocusActions)
             this.listener()
     }
@@ -924,7 +937,7 @@ abstract class UIComponent : Observable() {
         onFocusLostActions.add(listener)
     }
 
-    fun loseFocus() {
+    internal fun loseFocus() {
         for (listener in onFocusLostActions)
             this.listener()
     }
