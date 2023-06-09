@@ -69,8 +69,7 @@ class Window @JvmOverloads constructor(
         }
     }
 
-    override fun draw(matrixStack: VirtualMatrixStack) =
-        version.enableFor { doDraw(matrixStack) }
+    override fun draw(matrixStack: VirtualMatrixStack) = doDraw(matrixStack)
 
     private fun doDraw(matrixStack: VirtualMatrixStack) {
         if (cancelDrawing)

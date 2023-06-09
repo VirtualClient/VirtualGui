@@ -1,16 +1,7 @@
 package com.example.examplemod
 
-import gg.essential.elementa.UIComponent
 import gg.essential.elementa.WindowScreen
-import gg.essential.elementa.components.*
-import gg.essential.elementa.components.image.BlurHashImage
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.animation.Animations
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.effects.ScissorEffect
 import net.kyori.adventure.text.Component
-import java.awt.Color
-import java.net.URL
 
 class ExampleServerList : WindowScreen(Component.empty()) {
 //    val serverList = (ScrollComponent().constrain {

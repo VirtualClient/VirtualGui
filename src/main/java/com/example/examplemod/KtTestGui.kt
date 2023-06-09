@@ -2,16 +2,9 @@ package com.example.examplemod
 
 import gg.essential.elementa.WindowScreen
 import gg.essential.elementa.components.*
-import gg.essential.elementa.components.input.UIMultilineTextInput
-import gg.essential.elementa.components.inspector.Inspector
 import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.animation.Animations
 import gg.essential.elementa.dsl.*
 import gg.essential.elementa.effects.OutlineEffect
-import gg.essential.elementa.effects.ScissorEffect
-import gg.essential.elementa.font.DefaultFonts
-import gg.essential.elementa.font.ElementaFonts
-import gg.essential.elementa.utils.withAlpha
 import net.kyori.adventure.text.Component
 import java.awt.Color
 

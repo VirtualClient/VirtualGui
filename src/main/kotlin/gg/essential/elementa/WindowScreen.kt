@@ -24,7 +24,7 @@ abstract class WindowScreen @JvmOverloads constructor(
     val scaleHelper: WindowScaler = VanillaScaleHelper
 ) : VirtualScreen(component) {
 
-    val window = Window(version, scaleHelper = scaleHelper)
+    val window = Window(scaleHelper = scaleHelper)
     private var isInitialized = false
 
     init {
