@@ -1,6 +1,5 @@
 package gg.essential.elementa.components.inspector
 
-import gg.essential.elementa.ElementaVersion
 import gg.essential.elementa.UIComponent
 import gg.essential.elementa.components.*
 import gg.essential.elementa.constraints.*

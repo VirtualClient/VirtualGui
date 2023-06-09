@@ -1,6 +1,5 @@
 package gg.essential.elementa.components
 
-import gg.essential.elementa.ElementaVersion
 import gg.essential.elementa.UIComponent
 import gg.essential.elementa.constraints.ColorConstraint
 import gg.essential.elementa.dsl.toConstraint
@@ -80,20 +79,16 @@ open class UIBlock(colorConstraint: ColorConstraint = Color.WHITE.toConstraint()
             worldRenderer.vertex(matrixStack, x2, y1, 0.0).color(red, green, blue, alpha).next()
             worldRenderer.vertex(matrixStack, x1, y1, 0.0).color(red, green, blue, alpha).next()
 
-            if (ElementaVersion.active >= ElementaVersion.v1 && useDepth) {
-                // At some point MC started enabling its depth test during font rendering but all GUI code is
-                // essentially flat and has depth tests disabled. This can cause stuff rendered in the background of the
-                // GUI to interfere with text rendered in the foreground because none of the blocks rendered in between
-                // will actually write to the depth buffer.
-                // So that's what we're doing, resetting the depth buffer in the area where we draw the block.
-                VirtualRenderSystem.enableDepth()
-                VirtualRenderSystem.depthFunc(GL11.GL_ALWAYS)
-                VirtualBufferBuilder.drawTessellator()
-                VirtualRenderSystem.disableDepth()
-                VirtualRenderSystem.depthFunc(GL11.GL_LEQUAL)
-            } else {
-                VirtualBufferBuilder.drawTessellator()
-            }
+            // At some point MC started enabling its depth test during font rendering but all GUI code is
+            // essentially flat and has depth tests disabled. This can cause stuff rendered in the background of the
+            // GUI to interfere with text rendered in the foreground because none of the blocks rendered in between
+            // will actually write to the depth buffer.
+            // So that's what we're doing, resetting the depth buffer in the area where we draw the block.
+            VirtualRenderSystem.enableDepth()
+            VirtualRenderSystem.depthFunc(GL11.GL_ALWAYS)
+            VirtualBufferBuilder.drawTessellator()
+            VirtualRenderSystem.disableDepth()
+            VirtualRenderSystem.depthFunc(GL11.GL_LEQUAL)
         }
 
         fun drawBlockSized(matrixStack: VirtualMatrixStack, color: Color, x: Double, y: Double, width: Double, height: Double) {

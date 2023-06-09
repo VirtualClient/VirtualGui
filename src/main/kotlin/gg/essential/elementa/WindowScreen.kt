@@ -19,7 +19,6 @@ import kotlin.reflect.KMutableProperty0
  */
 abstract class WindowScreen @JvmOverloads constructor(
     component: Component,
-    private val version: ElementaVersion = ElementaVersion.V2,
     private val enableRepeatKeys: Boolean = true,
     private val drawDefaultBackground: Boolean = true,
     val scaleHelper: WindowScaler = VanillaScaleHelper
@@ -66,7 +65,7 @@ abstract class WindowScreen @JvmOverloads constructor(
         // Restore decimal value to mouse locations if not present.
         // See [ElementaVersion.V2] for more info
         val (adjustedMouseX, adjustedMouseY) =
-            if (version >= ElementaVersion.v2 && (mX == floor(mX) && mY == floor(mY))) {
+            if ((mX == floor(mX) && mY == floor(mY))) {
                 val x = window.getMouseX()
                 val y = window.getMouseY()
 

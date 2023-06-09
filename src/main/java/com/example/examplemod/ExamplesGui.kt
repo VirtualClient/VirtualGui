@@ -1,6 +1,5 @@
 package com.example.examplemod
 
-import gg.essential.elementa.ElementaVersion
 import gg.essential.elementa.WindowScreen
 import gg.essential.elementa.components.*
 import gg.essential.elementa.constraints.*
@@ -15,7 +14,7 @@ import java.awt.Color
  * List of buttons to open a specific example gui.
  * See ExampleGui (singular) for a well-commented example gui.
  */
-class ExamplesGui : WindowScreen(Component.empty(), ElementaVersion.V2) {
+class ExamplesGui : WindowScreen(Component.empty()) {
     private val container by ScrollComponent().constrain {
         y = 3.pixels()
         width = 100.percent()

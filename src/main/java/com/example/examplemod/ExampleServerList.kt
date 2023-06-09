@@ -1,6 +1,5 @@
 package com.example.examplemod
 
-import gg.essential.elementa.ElementaVersion
 import gg.essential.elementa.UIComponent
 import gg.essential.elementa.WindowScreen
 import gg.essential.elementa.components.*
@@ -13,7 +12,7 @@ import net.kyori.adventure.text.Component
 import java.awt.Color
 import java.net.URL
 
-class ExampleServerList : WindowScreen(Component.empty(), ElementaVersion.V2) {
+class ExampleServerList : WindowScreen(Component.empty()) {
 //    val serverList = (ScrollComponent().constrain {
 //        y = 30.pixels()
 //        width = RelativeConstraint()

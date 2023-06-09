@@ -1,6 +1,5 @@
 package gg.essential.elementa.components
 
-import gg.essential.elementa.ElementaVersion
 import gg.essential.elementa.UIComponent
 import gg.essential.elementa.constraints.resolution.ConstraintResolutionGui
 import gg.essential.elementa.constraints.resolution.ConstraintResolver
@@ -22,7 +21,6 @@ import java.util.concurrent.TimeUnit
  * or animating.
  */
 class Window @JvmOverloads constructor(
-    internal val version: ElementaVersion = ElementaVersion.V2,
     val animationFPS: Int = 244,
     private var scaleHelper: WindowScaler = VanillaScaleHelper
 ) : UIComponent() {
@@ -264,12 +262,7 @@ class Window @JvmOverloads constructor(
     override fun animationFrame() {
         if (currentMouseButton != -1) {
             val (mouseX, mouseY) = getMousePosition()
-            if (version >= ElementaVersion.v2) {
-                dragMouse(mouseX, mouseY, currentMouseButton)
-            } else {
-                @Suppress("DEPRECATION")
-                dragMouse(mouseX.toInt(), mouseY.toInt(), currentMouseButton)
-            }
+            dragMouse(mouseX, mouseY, currentMouseButton)
         }
 
         if (componentRequestingFocus != null && componentRequestingFocus != focusedComponent) {

@@ -1,6 +1,5 @@
 package com.example.examplemod
 
-import gg.essential.elementa.ElementaVersion
 import gg.essential.elementa.WindowScreen
 import gg.essential.elementa.components.*
 import gg.essential.elementa.components.input.UITextInput
@@ -19,7 +18,7 @@ import java.awt.Color
  * The example won't look particularly pretty, but that is up to the programmer
  * to design their GUIs how they wish.
  */
-class ExampleGui : WindowScreen(Component.empty(), ElementaVersion.V2) {
+class ExampleGui : WindowScreen(Component.empty()) {
     // Our ExampleGui class will extend from WindowScreen
     // which is a subclass of GuiScreen that will call all mouse/keyboard
     // events for us.
