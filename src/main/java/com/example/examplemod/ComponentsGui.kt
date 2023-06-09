@@ -138,34 +138,7 @@ class ComponentsGui : WindowScreen(Component.empty(), ElementaVersion.V2) {
                 height = 40.pixels()
             } childOf this
 
-            (UIShape() childOf shapeHolder).apply {
-                // Must be called after [childOf] because [addVertex] requires a parent at call
-                addVertex(UIPoint(
-                    x = 15.pixels(),
-                    y = 10.pixels()
-                ))
 
-                addVertex(UIPoint(
-                    x = 16.pixels(),
-                    y = 30.pixels()
-                ))
-
-                addVertex(UIPoint(
-                    x = 36.pixels(),
-                    y = 24.pixels()
-                ))
-
-                addVertex(UIPoint(
-                    x = 32.pixels(),
-                    y = 15.pixels()
-                ))
-
-                addVertex(UIPoint(
-                    x = 10.pixels(),
-                    y = 4.pixels()
-                ))
-            }
-        } childOf window
 
         ComponentType("UIImage") {
             UIImage.ofURL(URL("https://i.imgur.com/Pc6iMw3.png")).constrain {

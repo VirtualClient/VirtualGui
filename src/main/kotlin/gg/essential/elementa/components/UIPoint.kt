@@ -7,8 +7,6 @@ import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 /**
  * "Component" with no width/height and therefore no visible rendering.
- *
- * Used primarily for [UIShape]
  */
 class UIPoint(
     val x: PositionConstraint,
