@@ -1,6 +1,6 @@
-package gg.essential.elementa.components.image
+package gg.virtualclient.virtualgui.components.image
 
-import gg.essential.elementa.utils.drawTexture
+import gg.virtualclient.virtualgui.utils.drawTexture
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
 import org.lwjgl.opengl.GL11

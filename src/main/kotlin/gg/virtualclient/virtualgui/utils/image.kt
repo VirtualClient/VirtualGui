@@ -1,4 +1,4 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem

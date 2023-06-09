@@ -1,4 +1,4 @@
-package gg.essential.elementa.components.plot
+package gg.virtualclient.virtualgui.components.plot
 
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import org.lwjgl.opengl.GL11

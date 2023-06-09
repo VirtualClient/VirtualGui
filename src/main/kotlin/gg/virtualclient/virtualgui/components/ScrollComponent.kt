@@ -1,12 +1,12 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.animation.Animations
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.effects.ScissorEffect
-import gg.essential.elementa.utils.bindLast
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.animation.Animations
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.dsl.*
+import gg.virtualclient.virtualgui.effects.ScissorEffect
+import gg.virtualclient.virtualgui.utils.bindLast
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import java.awt.Color

@@ -1,6 +1,6 @@
-package gg.essential.elementa.constraints.resolution
+package gg.virtualclient.virtualgui.constraints.resolution
 
-import gg.essential.elementa.utils.Matrix2b
+import gg.virtualclient.virtualgui.utils.Matrix2b
 import java.util.*
 
 class DirectedAcyclicGraph<T> {

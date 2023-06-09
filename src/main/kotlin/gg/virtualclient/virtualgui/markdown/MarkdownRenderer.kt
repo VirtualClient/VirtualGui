@@ -1,12 +1,12 @@
-package gg.essential.elementa.markdown
+package gg.virtualclient.virtualgui.markdown
 
-import gg.essential.elementa.impl.commonmark.ext.gfm.strikethrough.Strikethrough
-import gg.essential.elementa.impl.commonmark.ext.gfm.strikethrough.StrikethroughExtension
-import gg.essential.elementa.impl.commonmark.ext.ins.Ins
-import gg.essential.elementa.impl.commonmark.ext.ins.InsExtension
-import gg.essential.elementa.impl.commonmark.node.*
-import gg.essential.elementa.impl.commonmark.parser.Parser
-import gg.essential.elementa.markdown.drawables.*
+import gg.virtualclient.virtualgui.impl.commonmark.ext.gfm.strikethrough.Strikethrough
+import gg.virtualclient.virtualgui.impl.commonmark.ext.gfm.strikethrough.StrikethroughExtension
+import gg.virtualclient.virtualgui.impl.commonmark.ext.ins.Ins
+import gg.virtualclient.virtualgui.impl.commonmark.ext.ins.InsExtension
+import gg.virtualclient.virtualgui.impl.commonmark.node.*
+import gg.virtualclient.virtualgui.impl.commonmark.parser.Parser
+import gg.virtualclient.virtualgui.markdown.drawables.*
 import java.net.URL
 
 class MarkdownRenderer @JvmOverloads constructor(

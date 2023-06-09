@@ -1,10 +1,10 @@
-package gg.essential.elementa.components.input
+package gg.virtualclient.virtualgui.components.input
 
-import gg.essential.elementa.constraints.HeightConstraint
-import gg.essential.elementa.dsl.coerceAtMost
-import gg.essential.elementa.dsl.pixels
-import gg.essential.elementa.dsl.width
-import gg.essential.elementa.utils.getStringSplitToWidthTruncated
+import gg.virtualclient.virtualgui.constraints.HeightConstraint
+import gg.virtualclient.virtualgui.dsl.coerceAtMost
+import gg.virtualclient.virtualgui.dsl.pixels
+import gg.virtualclient.virtualgui.dsl.width
+import gg.virtualclient.virtualgui.utils.getStringSplitToWidthTruncated
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import java.awt.Color

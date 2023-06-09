@@ -1,6 +1,6 @@
-package gg.essential.elementa.effects
+package gg.virtualclient.virtualgui.effects
 
-import gg.essential.elementa.impl.Platform.Companion.platform
+import gg.virtualclient.virtualgui.impl.Platform.Companion.platform
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import org.lwjgl.opengl.GL11.*
 

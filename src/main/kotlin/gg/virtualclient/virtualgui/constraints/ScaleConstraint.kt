@@ -1,10 +1,10 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.state.BasicState
-import gg.essential.elementa.state.MappedState
-import gg.essential.elementa.state.State
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.state.BasicState
+import gg.virtualclient.virtualgui.state.MappedState
+import gg.virtualclient.virtualgui.state.State
 
 class ScaleConstraint(val constraint: SuperConstraint<Float>, value: State<Float>) : MasterConstraint {
     constructor(constraint: SuperConstraint<Float>, value: Float) : this(constraint, BasicState(value))

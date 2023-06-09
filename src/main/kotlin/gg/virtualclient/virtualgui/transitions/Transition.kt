@@ -1,8 +1,8 @@
-package gg.essential.elementa.transitions
+package gg.virtualclient.virtualgui.transitions
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.animation.AnimatingConstraints
-import gg.essential.elementa.dsl.animate
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.animation.AnimatingConstraints
+import gg.virtualclient.virtualgui.dsl.animate
 
 /**
  * A Transition is just a wrapper around a general animation

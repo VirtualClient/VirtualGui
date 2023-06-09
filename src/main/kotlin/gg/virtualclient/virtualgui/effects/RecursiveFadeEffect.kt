@@ -1,14 +1,14 @@
-package gg.essential.elementa.effects
+package gg.virtualclient.virtualgui.effects
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.ColorConstraint
-import gg.essential.elementa.constraints.ConstraintType
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.dsl.constrain
-import gg.essential.elementa.state.BasicState
-import gg.essential.elementa.state.MappedState
-import gg.essential.elementa.state.State
-import gg.essential.elementa.utils.withAlpha
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.ColorConstraint
+import gg.virtualclient.virtualgui.constraints.ConstraintType
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.dsl.constrain
+import gg.virtualclient.virtualgui.state.BasicState
+import gg.virtualclient.virtualgui.state.MappedState
+import gg.virtualclient.virtualgui.state.State
+import gg.virtualclient.virtualgui.utils.withAlpha
 import java.awt.Color
 import kotlin.math.roundToInt
 

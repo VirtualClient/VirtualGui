@@ -1,4 +1,4 @@
-package gg.essential.elementa.components.plot
+package gg.virtualclient.virtualgui.components.plot
 
 import java.awt.Color
 import kotlin.math.abs

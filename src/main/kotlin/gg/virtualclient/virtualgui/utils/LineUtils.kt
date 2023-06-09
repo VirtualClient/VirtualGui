@@ -1,6 +1,6 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
-import gg.essential.elementa.components.UIPoint
+import gg.virtualclient.virtualgui.components.UIPoint
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import gg.virtualclient.virtualminecraft.vertex.CommonVertexFormats

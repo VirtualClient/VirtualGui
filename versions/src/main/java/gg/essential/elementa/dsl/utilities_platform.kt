@@ -1,14 +1,14 @@
 @file:JvmName("PlatformUtil")
-package gg.essential.elementa.dsl
+package gg.virtualclient.virtualgui.dsl
 
-import gg.essential.elementa.components.UIImage
+import gg.virtualclient.virtualgui.components.UIImage
 import net.minecraft.client.MinecraftClient
 import net.minecraft.util.Identifier
 import java.util.concurrent.CompletableFuture
 import javax.imageio.ImageIO
 
-//import gg.essential.elementa.font.DefaultFonts
-//import gg.essential.elementa.font.FontProvider
+//import gg.virtualclient.virtualgui.font.DefaultFonts
+//import gg.virtualclient.virtualgui.font.FontProvider
 //import gg.essential.universal.wrappers.message.UTextComponent
 //import net.minecraft.util.text.ITextComponent
 //

@@ -1,16 +1,16 @@
-package gg.essential.elementa.components.inspector
+package gg.virtualclient.virtualgui.components.inspector
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.UIConstraints
-import gg.essential.elementa.components.TreeNode
-import gg.essential.elementa.components.TreeListComponent
-import gg.essential.elementa.components.UIContainer
-import gg.essential.elementa.components.UIText
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.animation.*
-import gg.essential.elementa.constraints.debug.CycleSafeConstraintDebugger
-import gg.essential.elementa.constraints.debug.withDebugger
-import gg.essential.elementa.dsl.*
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.UIConstraints
+import gg.virtualclient.virtualgui.components.TreeNode
+import gg.virtualclient.virtualgui.components.TreeListComponent
+import gg.virtualclient.virtualgui.components.UIContainer
+import gg.virtualclient.virtualgui.components.UIText
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.animation.*
+import gg.virtualclient.virtualgui.constraints.debug.CycleSafeConstraintDebugger
+import gg.virtualclient.virtualgui.constraints.debug.withDebugger
+import gg.virtualclient.virtualgui.dsl.*
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 

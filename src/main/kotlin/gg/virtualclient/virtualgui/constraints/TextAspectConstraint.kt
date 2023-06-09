@@ -1,8 +1,8 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.UIText
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.UIText
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
 import java.lang.UnsupportedOperationException
 
 /**

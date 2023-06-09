@@ -1,6 +1,6 @@
 package com.example.examplemod
 
-import gg.essential.elementa.WindowScreen
+import gg.virtualclient.virtualgui.WindowScreen
 import net.kyori.adventure.text.Component
 
 class ExampleServerList : WindowScreen(Component.empty()) {

@@ -1,6 +1,6 @@
-package gg.essential.elementa.font
+package gg.virtualclient.virtualgui.font
 
-import gg.essential.elementa.constraints.SuperConstraint
+import gg.virtualclient.virtualgui.constraints.SuperConstraint
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import net.kyori.adventure.text.Component
 import java.awt.Color

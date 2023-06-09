@@ -1,8 +1,8 @@
-package gg.essential.elementa.state
+package gg.virtualclient.virtualgui.state
 
-import gg.essential.elementa.constraints.ConstantColorConstraint
-import gg.essential.elementa.constraints.PixelConstraint
-import gg.essential.elementa.constraints.RelativeConstraint
+import gg.virtualclient.virtualgui.constraints.ConstantColorConstraint
+import gg.virtualclient.virtualgui.constraints.PixelConstraint
+import gg.virtualclient.virtualgui.constraints.RelativeConstraint
 import java.awt.Color
 
 fun State<Float>.pixels(

@@ -1,13 +1,13 @@
-package gg.essential.elementa.transitions
+package gg.virtualclient.virtualgui.transitions
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.XConstraint
-import gg.essential.elementa.constraints.YConstraint
-import gg.essential.elementa.constraints.animation.AnimatingConstraints
-import gg.essential.elementa.constraints.animation.Animations
-import gg.essential.elementa.dsl.plus
-import gg.essential.elementa.dsl.minus
-import gg.essential.elementa.dsl.pixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.XConstraint
+import gg.virtualclient.virtualgui.constraints.YConstraint
+import gg.virtualclient.virtualgui.constraints.animation.AnimatingConstraints
+import gg.virtualclient.virtualgui.constraints.animation.Animations
+import gg.virtualclient.virtualgui.dsl.plus
+import gg.virtualclient.virtualgui.dsl.minus
+import gg.virtualclient.virtualgui.dsl.pixels
 
 /**
  * Transitions the component in from the respective direction.

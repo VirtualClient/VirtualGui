@@ -1,16 +1,16 @@
-package gg.essential.elementa.components.inspector
+package gg.virtualclient.virtualgui.components.inspector
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.TreeNode
-import gg.essential.elementa.components.UIBlock
-import gg.essential.elementa.components.UIText
-import gg.essential.elementa.constraints.ChildBasedSizeConstraint
-import gg.essential.elementa.constraints.SiblingConstraint
-import gg.essential.elementa.constraints.TextAspectConstraint
-import gg.essential.elementa.dsl.toConstraint
-import gg.essential.elementa.dsl.childOf
-import gg.essential.elementa.dsl.constrain
-import gg.essential.elementa.dsl.pixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.TreeNode
+import gg.virtualclient.virtualgui.components.UIBlock
+import gg.virtualclient.virtualgui.components.UIText
+import gg.virtualclient.virtualgui.constraints.ChildBasedSizeConstraint
+import gg.virtualclient.virtualgui.constraints.SiblingConstraint
+import gg.virtualclient.virtualgui.constraints.TextAspectConstraint
+import gg.virtualclient.virtualgui.dsl.toConstraint
+import gg.virtualclient.virtualgui.dsl.childOf
+import gg.virtualclient.virtualgui.dsl.constrain
+import gg.virtualclient.virtualgui.dsl.pixels
 import java.awt.Color
 
 class InspectorNode(private val inspector: Inspector, val targetComponent: UIComponent) : TreeNode() {

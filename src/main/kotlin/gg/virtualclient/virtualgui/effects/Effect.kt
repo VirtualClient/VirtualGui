@@ -1,6 +1,6 @@
-package gg.essential.elementa.effects
+package gg.virtualclient.virtualgui.effects
 
-import gg.essential.elementa.UIComponent
+import gg.virtualclient.virtualgui.UIComponent
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 /**

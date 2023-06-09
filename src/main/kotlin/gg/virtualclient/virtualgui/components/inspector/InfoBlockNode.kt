@@ -1,15 +1,15 @@
-package gg.essential.elementa.components.inspector
+package gg.virtualclient.virtualgui.components.inspector
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.TreeNode
-import gg.essential.elementa.components.UIContainer
-import gg.essential.elementa.components.UIText
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.animation.AnimationComponent
-import gg.essential.elementa.dsl.childOf
-import gg.essential.elementa.dsl.constrain
-import gg.essential.elementa.dsl.pixels
-import gg.essential.elementa.dsl.plus
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.TreeNode
+import gg.virtualclient.virtualgui.components.UIContainer
+import gg.virtualclient.virtualgui.components.UIText
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.animation.AnimationComponent
+import gg.virtualclient.virtualgui.dsl.childOf
+import gg.virtualclient.virtualgui.dsl.constrain
+import gg.virtualclient.virtualgui.dsl.pixels
+import gg.virtualclient.virtualgui.dsl.plus
 import java.awt.Color
 
 class InfoBlockNode<T>(private val constraint: SuperConstraint<T>, private val name: String? = null) : TreeNode() {

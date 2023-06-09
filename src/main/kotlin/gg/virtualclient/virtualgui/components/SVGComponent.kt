@@ -1,10 +1,10 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.image.ImageProvider
-import gg.essential.elementa.impl.Platform.Companion.platform
-import gg.essential.elementa.svg.SVGParser
-import gg.essential.elementa.svg.data.SVG
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.image.ImageProvider
+import gg.virtualclient.virtualgui.impl.Platform.Companion.platform
+import gg.virtualclient.virtualgui.svg.SVGParser
+import gg.virtualclient.virtualgui.svg.data.SVG
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import org.lwjgl.BufferUtils

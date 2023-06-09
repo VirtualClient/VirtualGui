@@ -1,8 +1,8 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.dsl.pixels
-import gg.essential.elementa.utils.readFromLegacyShader
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.dsl.pixels
+import gg.virtualclient.virtualgui.utils.readFromLegacyShader
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.shader.BlendState
 import gg.virtualclient.virtualminecraft.shader.Float4Uniform

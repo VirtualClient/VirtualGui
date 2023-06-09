@@ -1,6 +1,6 @@
-package gg.essential.elementa.svg.data
+package gg.virtualclient.virtualgui.svg.data
 
-import gg.essential.elementa.impl.dom4j.Element
+import gg.virtualclient.virtualgui.impl.dom4j.Element
 import org.lwjgl.opengl.GL11
 import java.nio.FloatBuffer
 

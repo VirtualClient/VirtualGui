@@ -1,15 +1,15 @@
-package gg.essential.elementa.components.inspector
+package gg.virtualclient.virtualgui.components.inspector
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.*
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.effects.OutlineEffect
-import gg.essential.elementa.effects.ScissorEffect
-import gg.essential.elementa.utils.ObservableAddEvent
-import gg.essential.elementa.utils.ObservableClearEvent
-import gg.essential.elementa.utils.ObservableRemoveEvent
-import gg.essential.elementa.utils.elementaDebug
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.*
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.dsl.*
+import gg.virtualclient.virtualgui.effects.OutlineEffect
+import gg.virtualclient.virtualgui.effects.ScissorEffect
+import gg.virtualclient.virtualgui.utils.ObservableAddEvent
+import gg.virtualclient.virtualgui.utils.ObservableClearEvent
+import gg.virtualclient.virtualgui.utils.ObservableRemoveEvent
+import gg.virtualclient.virtualgui.utils.elementaDebug
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import org.lwjgl.opengl.GL11

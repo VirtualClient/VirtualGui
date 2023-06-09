@@ -1,4 +1,4 @@
-package gg.essential.elementa.svg.data
+package gg.virtualclient.virtualgui.svg.data
 
 data class Point(var x: Float, var y: Float) {
     constructor(x: Number, y: Number) : this(x.toFloat(), y.toFloat())

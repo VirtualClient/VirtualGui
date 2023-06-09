@@ -1,4 +1,4 @@
-package gg.essential.elementa.scale
+package gg.virtualclient.virtualgui.scale
 
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualWindow

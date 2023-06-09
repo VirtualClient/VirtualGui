@@ -1,7 +1,7 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
 
 /**
  * Sets this component's width or height to be the sum of its children's width or height

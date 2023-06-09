@@ -1,4 +1,4 @@
-package gg.essential.elementa.components.image
+package gg.virtualclient.virtualgui.components.image
 
 import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
 

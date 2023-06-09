@@ -1,6 +1,6 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
-import gg.essential.elementa.UIComponent
+import gg.virtualclient.virtualgui.UIComponent
 
 interface PaddingConstraint {
 

@@ -1,9 +1,9 @@
-package gg.essential.elementa.components.image
+package gg.virtualclient.virtualgui.components.image
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.UIImage
-import gg.essential.elementa.utils.decodeBlurHash
-import gg.essential.elementa.utils.drawTexture
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.UIImage
+import gg.virtualclient.virtualgui.utils.decodeBlurHash
+import gg.virtualclient.virtualgui.utils.drawTexture
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
 import java.awt.Color

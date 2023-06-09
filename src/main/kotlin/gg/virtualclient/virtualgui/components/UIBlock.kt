@@ -1,10 +1,10 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.ColorConstraint
-import gg.essential.elementa.dsl.toConstraint
-import gg.essential.elementa.state.State
-import gg.essential.elementa.state.toConstraint
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.ColorConstraint
+import gg.virtualclient.virtualgui.dsl.toConstraint
+import gg.virtualclient.virtualgui.state.State
+import gg.virtualclient.virtualgui.state.toConstraint
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import gg.virtualclient.virtualminecraft.vertex.CommonVertexFormats

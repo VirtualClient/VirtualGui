@@ -1,11 +1,11 @@
-package gg.essential.elementa.components.inspector
+package gg.virtualclient.virtualgui.components.inspector
 
-import gg.essential.elementa.components.TreeArrowComponent
-import gg.essential.elementa.components.UIImage
-import gg.essential.elementa.constraints.CenterConstraint
-import gg.essential.elementa.dsl.childOf
-import gg.essential.elementa.dsl.constrain
-import gg.essential.elementa.dsl.pixels
+import gg.virtualclient.virtualgui.components.TreeArrowComponent
+import gg.virtualclient.virtualgui.components.UIImage
+import gg.virtualclient.virtualgui.constraints.CenterConstraint
+import gg.virtualclient.virtualgui.dsl.childOf
+import gg.virtualclient.virtualgui.dsl.constrain
+import gg.virtualclient.virtualgui.dsl.pixels
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class ArrowComponent(private val empty: Boolean) : TreeArrowComponent() {

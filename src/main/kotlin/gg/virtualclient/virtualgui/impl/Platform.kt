@@ -1,4 +1,4 @@
-package gg.essential.elementa.impl
+package gg.virtualclient.virtualgui.impl
 
 import org.jetbrains.annotations.ApiStatus
 import java.util.*

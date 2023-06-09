@@ -1,8 +1,8 @@
-package gg.essential.elementa.dsl
+package gg.virtualclient.virtualgui.dsl
 
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.font.DefaultFonts
-import gg.essential.elementa.font.FontProvider
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.font.DefaultFonts
+import gg.virtualclient.virtualgui.font.FontProvider
 import gg.virtualclient.virtualminecraft.VirtualTextRenderer
 import net.kyori.adventure.text.Component
 import java.awt.Color

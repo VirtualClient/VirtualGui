@@ -1,21 +1,21 @@
-package gg.essential.elementa
+package gg.virtualclient.virtualgui
 
-import gg.essential.elementa.components.UIBlock
-import gg.essential.elementa.components.UIContainer
-import gg.essential.elementa.components.Window
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.animation.*
-import gg.essential.elementa.dsl.animate
-import gg.essential.elementa.dsl.toConstraint
-import gg.essential.elementa.effects.Effect
-import gg.essential.elementa.effects.ScissorEffect
-import gg.essential.elementa.events.UIClickEvent
-import gg.essential.elementa.events.UIScrollEvent
-import gg.essential.elementa.font.FontProvider
-import gg.essential.elementa.scale.WindowScaler
-import gg.essential.elementa.utils.*
-import gg.essential.elementa.utils.requireMainThread
-import gg.essential.elementa.utils.requireState
+import gg.virtualclient.virtualgui.components.UIBlock
+import gg.virtualclient.virtualgui.components.UIContainer
+import gg.virtualclient.virtualgui.components.Window
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.animation.*
+import gg.virtualclient.virtualgui.dsl.animate
+import gg.virtualclient.virtualgui.dsl.toConstraint
+import gg.virtualclient.virtualgui.effects.Effect
+import gg.virtualclient.virtualgui.effects.ScissorEffect
+import gg.virtualclient.virtualgui.events.UIClickEvent
+import gg.virtualclient.virtualgui.events.UIScrollEvent
+import gg.virtualclient.virtualgui.font.FontProvider
+import gg.virtualclient.virtualgui.scale.WindowScaler
+import gg.virtualclient.virtualgui.utils.*
+import gg.virtualclient.virtualgui.utils.requireMainThread
+import gg.virtualclient.virtualgui.utils.requireState
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import org.lwjgl.opengl.GL11
 import java.awt.Color
@@ -285,14 +285,14 @@ abstract class UIComponent : Observable() {
     /**
      * Constructs an animation object specific to this component.
      *
-     * A convenient Kotlin wrapper can be found at [gg.essential.elementa.dsl.animate]
+     * A convenient Kotlin wrapper can be found at [gg.virtualclient.virtualgui.dsl.animate]
      */
     fun makeAnimation() = AnimatingConstraints(this, constraints)
 
     /**
      * Begin animating to a previously constructed animation.
      *
-     * This is handled internally by the [gg.essential.elementa.dsl.animate] dsl if used.
+     * This is handled internally by the [gg.virtualclient.virtualgui.dsl.animate] dsl if used.
      */
     fun animateTo(constraints: AnimatingConstraints) {
         this.constraints = constraints

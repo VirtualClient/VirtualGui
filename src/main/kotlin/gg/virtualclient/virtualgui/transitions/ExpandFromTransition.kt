@@ -1,11 +1,11 @@
-package gg.essential.elementa.transitions
+package gg.virtualclient.virtualgui.transitions
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.animation.AnimatingConstraints
-import gg.essential.elementa.constraints.animation.Animations
-import gg.essential.elementa.dsl.plus
-import gg.essential.elementa.dsl.pixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.animation.AnimatingConstraints
+import gg.virtualclient.virtualgui.constraints.animation.Animations
+import gg.virtualclient.virtualgui.dsl.plus
+import gg.virtualclient.virtualgui.dsl.pixels
 
 /**
  * Sets the width/height of the component to zero, and transitions

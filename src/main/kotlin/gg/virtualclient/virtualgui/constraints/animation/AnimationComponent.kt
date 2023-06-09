@@ -1,9 +1,9 @@
-package gg.essential.elementa.constraints.animation
+package gg.virtualclient.virtualgui.constraints.animation
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.debug.constraintDebugger
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.debug.constraintDebugger
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
 import java.awt.Color
 import java.lang.UnsupportedOperationException
 import kotlin.math.max

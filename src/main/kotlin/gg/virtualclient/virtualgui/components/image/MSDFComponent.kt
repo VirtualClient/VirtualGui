@@ -1,16 +1,16 @@
-package gg.essential.elementa.components.image
+package gg.virtualclient.virtualgui.components.image
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.UIImage
-import gg.essential.elementa.components.Window
-import gg.essential.elementa.font.FontRenderer.Companion.doffsetUniform
-import gg.essential.elementa.font.FontRenderer.Companion.fgColorUniform
-import gg.essential.elementa.font.FontRenderer.Companion.hintAmountUniform
-import gg.essential.elementa.font.FontRenderer.Companion.samplerUniform
-import gg.essential.elementa.font.FontRenderer.Companion.sdfTexel
-import gg.essential.elementa.font.FontRenderer.Companion.shader
-import gg.essential.elementa.font.FontRenderer.Companion.subpixelAmountUniform
-import gg.essential.elementa.utils.ResourceCache
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.UIImage
+import gg.virtualclient.virtualgui.components.Window
+import gg.virtualclient.virtualgui.font.FontRenderer.Companion.doffsetUniform
+import gg.virtualclient.virtualgui.font.FontRenderer.Companion.fgColorUniform
+import gg.virtualclient.virtualgui.font.FontRenderer.Companion.hintAmountUniform
+import gg.virtualclient.virtualgui.font.FontRenderer.Companion.samplerUniform
+import gg.virtualclient.virtualgui.font.FontRenderer.Companion.sdfTexel
+import gg.virtualclient.virtualgui.font.FontRenderer.Companion.shader
+import gg.virtualclient.virtualgui.font.FontRenderer.Companion.subpixelAmountUniform
+import gg.virtualclient.virtualgui.utils.ResourceCache
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
@@ -172,8 +172,8 @@ open class MSDFComponent constructor(
             return resourceCache.getMSDFComponent(path)
         }
 
-        fun areShadersInitialized() = gg.essential.elementa.font.FontRenderer.areShadersInitialized()
-        fun initShaders() = gg.essential.elementa.font.FontRenderer.initShaders()
+        fun areShadersInitialized() = gg.virtualclient.virtualgui.font.FontRenderer.areShadersInitialized()
+        fun initShaders() = gg.virtualclient.virtualgui.font.FontRenderer.initShaders()
     }
 
 

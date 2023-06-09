@@ -1,9 +1,9 @@
-package gg.essential.elementa.effects
+package gg.virtualclient.virtualgui.effects
 
-import gg.essential.elementa.components.UIBlock
-import gg.essential.elementa.state.BasicState
-import gg.essential.elementa.state.MappedState
-import gg.essential.elementa.state.State
+import gg.virtualclient.virtualgui.components.UIBlock
+import gg.virtualclient.virtualgui.state.BasicState
+import gg.virtualclient.virtualgui.state.MappedState
+import gg.virtualclient.virtualgui.state.State
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 

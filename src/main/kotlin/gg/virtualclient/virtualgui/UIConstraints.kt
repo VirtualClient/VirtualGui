@@ -1,11 +1,11 @@
-package gg.essential.elementa
+package gg.virtualclient.virtualgui
 
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.dsl.pixel
-import gg.essential.elementa.dsl.pixels
-import gg.essential.elementa.dsl.toConstraint
-import gg.essential.elementa.font.DefaultFonts
-import gg.essential.elementa.font.FontProvider
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.dsl.pixel
+import gg.virtualclient.virtualgui.dsl.pixels
+import gg.virtualclient.virtualgui.dsl.toConstraint
+import gg.virtualclient.virtualgui.font.DefaultFonts
+import gg.virtualclient.virtualgui.font.FontProvider
 import java.awt.Color
 import java.util.*
 

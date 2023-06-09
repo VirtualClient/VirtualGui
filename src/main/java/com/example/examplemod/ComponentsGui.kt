@@ -1,15 +1,15 @@
 package com.example.examplemod
 
-import gg.essential.elementa.WindowScreen
-import gg.essential.elementa.components.*
-import gg.essential.elementa.components.image.BlurHashImage
-import gg.essential.elementa.components.input.UIMultilineTextInput
-import gg.essential.elementa.components.input.UITextInput
-import gg.essential.elementa.components.inspector.Inspector
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.effects.OutlineEffect
-import gg.essential.elementa.markdown.MarkdownComponent
+import gg.virtualclient.virtualgui.WindowScreen
+import gg.virtualclient.virtualgui.components.*
+import gg.virtualclient.virtualgui.components.image.BlurHashImage
+import gg.virtualclient.virtualgui.components.input.UIMultilineTextInput
+import gg.virtualclient.virtualgui.components.input.UITextInput
+import gg.virtualclient.virtualgui.components.inspector.Inspector
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.dsl.*
+import gg.virtualclient.virtualgui.effects.OutlineEffect
+import gg.virtualclient.virtualgui.markdown.MarkdownComponent
 import net.kyori.adventure.text.Component
 import java.awt.Color
 import java.net.URL

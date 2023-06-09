@@ -1,11 +1,11 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.state.BasicState
-import gg.essential.elementa.state.State
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.state.MappedState
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.state.BasicState
+import gg.virtualclient.virtualgui.state.State
+import gg.virtualclient.virtualgui.dsl.*
+import gg.virtualclient.virtualgui.state.MappedState
 import java.awt.Color
 import kotlin.math.sin
 import kotlin.random.Random

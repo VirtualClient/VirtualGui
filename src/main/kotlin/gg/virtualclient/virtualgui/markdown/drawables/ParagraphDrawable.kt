@@ -1,14 +1,14 @@
-package gg.essential.elementa.markdown.drawables
+package gg.virtualclient.virtualgui.markdown.drawables
 
-import gg.essential.elementa.components.UIBlock
-import gg.essential.elementa.dsl.width
-import gg.essential.elementa.markdown.DrawState
-import gg.essential.elementa.markdown.HeaderLevelConfig
-import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.elementa.markdown.selection.Cursor
-import gg.essential.elementa.markdown.selection.ImageCursor
-import gg.essential.elementa.markdown.selection.TextCursor
-import gg.essential.elementa.utils.withAlpha
+import gg.virtualclient.virtualgui.components.UIBlock
+import gg.virtualclient.virtualgui.dsl.width
+import gg.virtualclient.virtualgui.markdown.DrawState
+import gg.virtualclient.virtualgui.markdown.HeaderLevelConfig
+import gg.virtualclient.virtualgui.markdown.MarkdownComponent
+import gg.virtualclient.virtualgui.markdown.selection.Cursor
+import gg.virtualclient.virtualgui.markdown.selection.ImageCursor
+import gg.virtualclient.virtualgui.markdown.selection.TextCursor
+import gg.virtualclient.virtualgui.utils.withAlpha
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 import java.net.URI

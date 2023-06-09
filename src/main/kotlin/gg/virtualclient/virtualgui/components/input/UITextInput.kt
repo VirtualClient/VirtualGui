@@ -1,7 +1,7 @@
-package gg.essential.elementa.components.input
+package gg.virtualclient.virtualgui.components.input
 
-import gg.essential.elementa.constraints.WidthConstraint
-import gg.essential.elementa.dsl.*
+import gg.virtualclient.virtualgui.constraints.WidthConstraint
+import gg.virtualclient.virtualgui.dsl.*
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 

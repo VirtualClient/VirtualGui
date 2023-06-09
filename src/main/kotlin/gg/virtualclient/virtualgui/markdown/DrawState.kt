@@ -1,4 +1,4 @@
-package gg.essential.elementa.markdown
+package gg.virtualclient.virtualgui.markdown
 
 /**
  * Stores universal state necessary for rendering all drawables.

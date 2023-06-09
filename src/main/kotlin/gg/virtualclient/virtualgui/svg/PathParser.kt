@@ -1,6 +1,6 @@
-package gg.essential.elementa.svg
+package gg.virtualclient.virtualgui.svg
 
-import gg.essential.elementa.svg.data.*
+import gg.virtualclient.virtualgui.svg.data.*
 
 class PathParser(private var dataString: String) {
     private val currentPos = Point(0f, 0f)

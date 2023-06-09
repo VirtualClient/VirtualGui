@@ -1,4 +1,4 @@
-package gg.essential.elementa.svg.data
+package gg.virtualclient.virtualgui.svg.data
 
 data class SVG(
     val elements: List<SVGElement>,

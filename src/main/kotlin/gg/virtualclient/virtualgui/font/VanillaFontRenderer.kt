@@ -1,9 +1,9 @@
-package gg.essential.elementa.font
+package gg.virtualclient.virtualgui.font
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.ConstraintType
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.utils.roundToRealPixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.ConstraintType
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.utils.roundToRealPixels
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualTextRenderer
 import net.kyori.adventure.text.Component

@@ -1,11 +1,11 @@
 package com.example.examplemod
 
-import gg.essential.elementa.WindowScreen
-import gg.essential.elementa.components.*
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.animation.Animations
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.impl.Platform.Companion.platform
+import gg.virtualclient.virtualgui.WindowScreen
+import gg.virtualclient.virtualgui.components.*
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.animation.Animations
+import gg.virtualclient.virtualgui.dsl.*
+import gg.virtualclient.virtualgui.impl.Platform.Companion.platform
 import gg.virtualclient.virtualminecraft.VirtualScreen
 import net.kyori.adventure.text.Component
 import java.awt.Color

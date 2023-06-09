@@ -1,10 +1,10 @@
-package gg.essential.elementa.components.plot
+package gg.virtualclient.virtualgui.components.plot
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.UIContainer
-import gg.essential.elementa.components.UIText
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.dsl.*
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.UIContainer
+import gg.virtualclient.virtualgui.components.UIText
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.dsl.*
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class PlotComponent(

@@ -1,8 +1,8 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.state.BasicState
-import gg.essential.elementa.state.MappedState
-import gg.essential.elementa.state.State
+import gg.virtualclient.virtualgui.state.BasicState
+import gg.virtualclient.virtualgui.state.MappedState
+import gg.virtualclient.virtualgui.state.State
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import gg.virtualclient.virtualminecraft.vertex.CommonVertexFormats

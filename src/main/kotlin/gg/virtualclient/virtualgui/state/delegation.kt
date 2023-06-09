@@ -1,4 +1,4 @@
-package gg.essential.elementa.state
+package gg.virtualclient.virtualgui.state
 
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -12,9 +12,9 @@ import kotlin.reflect.jvm.isAccessible
  * utility methods provided in this file. See those functions
  * for example usage.
  *
- * @see gg.essential.elementa.state.state
- * @see gg.essential.elementa.state.map
- * @see gg.essential.elementa.state.zip
+ * @see gg.virtualclient.virtualgui.state.state
+ * @see gg.virtualclient.virtualgui.state.map
+ * @see gg.virtualclient.virtualgui.state.zip
  */
 open class StateDelegator<T>(val state: State<T>) : ReadWriteProperty<Any?, T> {
     override fun getValue(thisRef: Any?, property: KProperty<*>) = state.get()

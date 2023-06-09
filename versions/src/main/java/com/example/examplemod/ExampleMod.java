@@ -1,6 +1,6 @@
 package com.example.examplemod;
 
-import gg.essential.elementa.effects.StencilEffect;
+import gg.virtualclient.virtualgui.effects.StencilEffect;
 
 
 //#if FORGE

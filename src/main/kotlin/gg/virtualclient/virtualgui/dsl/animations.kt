@@ -1,7 +1,7 @@
-package gg.essential.elementa.dsl
+package gg.virtualclient.virtualgui.dsl
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.animation.AnimatingConstraints
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.animation.AnimatingConstraints
 
 /**
  * Wrapper around [UIComponent.makeAnimation] and [UIComponent.animateTo],

@@ -1,6 +1,6 @@
-package gg.essential.elementa.font
+package gg.virtualclient.virtualgui.font
 
-import gg.essential.elementa.font.data.Font
+import gg.virtualclient.virtualgui.font.data.Font
 
 object ElementaFonts {
     private val JETBRAINS_MONO_FONT = Font.fromResource("/fonts/JetBrainsMono-Regular")

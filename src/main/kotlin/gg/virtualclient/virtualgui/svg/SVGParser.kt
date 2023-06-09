@@ -1,9 +1,9 @@
-package gg.essential.elementa.svg
+package gg.virtualclient.virtualgui.svg
 
-import gg.essential.elementa.impl.dom4j.Document
-import gg.essential.elementa.impl.dom4j.Element
-import gg.essential.elementa.impl.dom4j.io.SAXReader
-import gg.essential.elementa.svg.data.*
+import gg.virtualclient.virtualgui.impl.dom4j.Document
+import gg.virtualclient.virtualgui.impl.dom4j.Element
+import gg.virtualclient.virtualgui.impl.dom4j.io.SAXReader
+import gg.virtualclient.virtualgui.svg.data.*
 import java.lang.UnsupportedOperationException
 
 object SVGParser {

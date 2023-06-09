@@ -1,11 +1,11 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.components.inspector.ArrowComponent
-import gg.essential.elementa.constraints.SiblingConstraint
-import gg.essential.elementa.dsl.constrain
-import gg.essential.elementa.dsl.pixels
-import gg.essential.elementa.markdown.drawables.Drawable
-import gg.essential.elementa.markdown.drawables.TextDrawable
+import gg.virtualclient.virtualgui.components.inspector.ArrowComponent
+import gg.virtualclient.virtualgui.constraints.SiblingConstraint
+import gg.virtualclient.virtualgui.dsl.constrain
+import gg.virtualclient.virtualgui.dsl.pixels
+import gg.virtualclient.virtualgui.markdown.drawables.Drawable
+import gg.virtualclient.virtualgui.markdown.drawables.TextDrawable
 
 internal class MarkdownNode(private val targetDrawable: Drawable) : TreeNode() {
     private val componentClassName = targetDrawable.javaClass.simpleName.ifEmpty { "UnknownType" }

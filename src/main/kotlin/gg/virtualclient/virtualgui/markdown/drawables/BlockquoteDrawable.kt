@@ -1,8 +1,8 @@
-package gg.essential.elementa.markdown.drawables
+package gg.virtualclient.virtualgui.markdown.drawables
 
-import gg.essential.elementa.components.UIBlock
-import gg.essential.elementa.markdown.DrawState
-import gg.essential.elementa.markdown.MarkdownComponent
+import gg.virtualclient.virtualgui.components.UIBlock
+import gg.virtualclient.virtualgui.markdown.DrawState
+import gg.virtualclient.virtualgui.markdown.MarkdownComponent
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class BlockquoteDrawable(md: MarkdownComponent, val drawables: DrawableList) : Drawable(md) {

@@ -1,4 +1,4 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
 @FunctionalInterface
 interface TriConsumer <T, U, V> {

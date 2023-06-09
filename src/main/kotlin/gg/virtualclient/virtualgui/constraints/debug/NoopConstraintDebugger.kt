@@ -1,8 +1,8 @@
-package gg.essential.elementa.constraints.debug
+package gg.virtualclient.virtualgui.constraints.debug
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.ConstraintType
-import gg.essential.elementa.constraints.SuperConstraint
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.ConstraintType
+import gg.virtualclient.virtualgui.constraints.SuperConstraint
 
 internal class NoopConstraintDebugger : ConstraintDebugger {
     override fun evaluate(constraint: SuperConstraint<Float>, type: ConstraintType, component: UIComponent): Float {

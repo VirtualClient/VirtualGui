@@ -1,4 +1,4 @@
-package gg.essential.elementa.events
+package gg.virtualclient.virtualgui.events
 
 abstract class UIEvent {
     var propagationStopped = false

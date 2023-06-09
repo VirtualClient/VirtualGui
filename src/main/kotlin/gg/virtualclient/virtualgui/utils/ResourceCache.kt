@@ -1,8 +1,8 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
-import gg.essential.elementa.components.UIImage
-import gg.essential.elementa.components.image.CacheableImage
-import gg.essential.elementa.components.image.MSDFComponent
+import gg.virtualclient.virtualgui.components.UIImage
+import gg.virtualclient.virtualgui.components.image.CacheableImage
+import gg.virtualclient.virtualgui.components.image.MSDFComponent
 import java.awt.image.BufferedImage
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.ConcurrentHashMap

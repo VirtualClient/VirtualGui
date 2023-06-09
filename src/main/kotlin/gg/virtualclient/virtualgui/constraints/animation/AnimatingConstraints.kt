@@ -1,9 +1,9 @@
-package gg.essential.elementa.constraints.animation
+package gg.virtualclient.virtualgui.constraints.animation
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.UIConstraints
-import gg.essential.elementa.components.Window
-import gg.essential.elementa.constraints.*
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.UIConstraints
+import gg.virtualclient.virtualgui.components.Window
+import gg.virtualclient.virtualgui.constraints.*
 
 class AnimatingConstraints(
     component: UIComponent,

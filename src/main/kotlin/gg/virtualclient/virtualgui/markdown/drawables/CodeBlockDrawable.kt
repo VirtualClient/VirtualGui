@@ -1,8 +1,8 @@
-package gg.essential.elementa.markdown.drawables
+package gg.virtualclient.virtualgui.markdown.drawables
 
-import gg.essential.elementa.markdown.DrawState
-import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.elementa.markdown.selection.Cursor
+import gg.virtualclient.virtualgui.markdown.DrawState
+import gg.virtualclient.virtualgui.markdown.MarkdownComponent
+import gg.virtualclient.virtualgui.markdown.selection.Cursor
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class CodeBlockDrawable(md: MarkdownComponent) : Drawable(md) {

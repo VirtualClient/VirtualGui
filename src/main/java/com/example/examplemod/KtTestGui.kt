@@ -1,10 +1,10 @@
 package com.example.examplemod
 
-import gg.essential.elementa.WindowScreen
-import gg.essential.elementa.components.*
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.effects.OutlineEffect
+import gg.virtualclient.virtualgui.WindowScreen
+import gg.virtualclient.virtualgui.components.*
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.dsl.*
+import gg.virtualclient.virtualgui.effects.OutlineEffect
 import net.kyori.adventure.text.Component
 import java.awt.Color
 

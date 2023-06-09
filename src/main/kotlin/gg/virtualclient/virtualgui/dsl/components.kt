@@ -1,8 +1,8 @@
-package gg.essential.elementa.dsl
+package gg.virtualclient.virtualgui.dsl
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.UIConstraints
-import gg.essential.elementa.effects.Effect
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.UIConstraints
+import gg.virtualclient.virtualgui.effects.Effect
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 

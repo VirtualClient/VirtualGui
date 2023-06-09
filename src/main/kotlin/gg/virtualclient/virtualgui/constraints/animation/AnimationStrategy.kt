@@ -1,4 +1,4 @@
-package gg.essential.elementa.constraints.animation
+package gg.virtualclient.virtualgui.constraints.animation
 
 import kotlin.math.cos
 import kotlin.math.pow

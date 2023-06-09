@@ -1,4 +1,4 @@
-package gg.essential.elementa.markdown
+package gg.virtualclient.virtualgui.markdown
 
 import java.awt.Color
 

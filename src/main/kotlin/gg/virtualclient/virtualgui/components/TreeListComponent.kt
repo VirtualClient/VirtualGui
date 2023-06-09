@@ -1,11 +1,11 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.dsl.basicWidthConstraint
-import gg.essential.elementa.dsl.childOf
-import gg.essential.elementa.dsl.constrain
-import gg.essential.elementa.dsl.pixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.dsl.basicWidthConstraint
+import gg.virtualclient.virtualgui.dsl.childOf
+import gg.virtualclient.virtualgui.dsl.constrain
+import gg.virtualclient.virtualgui.dsl.pixels
 import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import kotlin.math.max
 

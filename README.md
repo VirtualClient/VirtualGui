@@ -156,7 +156,7 @@ You'll then want to relocate Elementa to your own package to avoid breaking othe
 ```groovy
 shadowJar {
     archiveClassifier.set(null)
-    relocate("gg.essential.elementa", "your.package.elementa")
+    relocate("gg.virtualclient.virtualgui", "your.package.elementa")
     // elementa dependencies
     relocate("gg.essential.universalcraft", "your.package.universalcraft")
 }
@@ -190,7 +190,7 @@ You'll then want to relocate Elementa to your own package to avoid breaking othe
 ```kotlin
 tasks.shadowJar {
     archiveClassifier.set(null)
-    relocate("gg.essential.elementa", "your.package.elementa")
+    relocate("gg.virtualclient.virtualgui", "your.package.elementa")
     // elementa dependencies
     relocate("gg.essential.universalcraft", "your.package.universalcraft")
 }

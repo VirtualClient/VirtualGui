@@ -1,14 +1,14 @@
-package gg.essential.elementa.constraints.debug
+package gg.virtualclient.virtualgui.constraints.debug
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.ConstraintType
-import gg.essential.elementa.constraints.HeightConstraint
-import gg.essential.elementa.constraints.RadiusConstraint
-import gg.essential.elementa.constraints.SuperConstraint
-import gg.essential.elementa.constraints.WidthConstraint
-import gg.essential.elementa.constraints.XConstraint
-import gg.essential.elementa.constraints.YConstraint
-import gg.essential.elementa.utils.roundToRealPixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.ConstraintType
+import gg.virtualclient.virtualgui.constraints.HeightConstraint
+import gg.virtualclient.virtualgui.constraints.RadiusConstraint
+import gg.virtualclient.virtualgui.constraints.SuperConstraint
+import gg.virtualclient.virtualgui.constraints.WidthConstraint
+import gg.virtualclient.virtualgui.constraints.XConstraint
+import gg.virtualclient.virtualgui.constraints.YConstraint
+import gg.virtualclient.virtualgui.utils.roundToRealPixels
 
 internal interface ConstraintDebugger {
     fun evaluate(constraint: SuperConstraint<Float>, type: ConstraintType, component: UIComponent): Float

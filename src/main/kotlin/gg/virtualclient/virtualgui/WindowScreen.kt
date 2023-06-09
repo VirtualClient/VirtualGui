@@ -1,9 +1,9 @@
-package gg.essential.elementa
+package gg.virtualclient.virtualgui
 
-import gg.essential.elementa.components.Window
-import gg.essential.elementa.constraints.animation.*
-import gg.essential.elementa.scale.WindowScaler
-import gg.essential.elementa.scale.VanillaScaleHelper
+import gg.virtualclient.virtualgui.components.Window
+import gg.virtualclient.virtualgui.constraints.animation.*
+import gg.virtualclient.virtualgui.scale.WindowScaler
+import gg.virtualclient.virtualgui.scale.VanillaScaleHelper
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualScreen
 import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard

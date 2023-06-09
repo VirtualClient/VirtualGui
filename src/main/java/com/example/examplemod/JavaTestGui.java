@@ -1,14 +1,14 @@
 package com.example.examplemod;
 
-import gg.essential.elementa.UIComponent;
-import gg.essential.elementa.WindowScreen;
-import gg.essential.elementa.components.UIBlock;
-import gg.essential.elementa.constraints.CenterConstraint;
-import gg.essential.elementa.constraints.ChildBasedSizeConstraint;
-import gg.essential.elementa.constraints.PixelConstraint;
-import gg.essential.elementa.constraints.animation.AnimatingConstraints;
-import gg.essential.elementa.constraints.animation.Animations;
-import gg.essential.elementa.effects.ScissorEffect;
+import gg.virtualclient.virtualgui.UIComponent;
+import gg.virtualclient.virtualgui.WindowScreen;
+import gg.virtualclient.virtualgui.components.UIBlock;
+import gg.virtualclient.virtualgui.constraints.CenterConstraint;
+import gg.virtualclient.virtualgui.constraints.ChildBasedSizeConstraint;
+import gg.virtualclient.virtualgui.constraints.PixelConstraint;
+import gg.virtualclient.virtualgui.constraints.animation.AnimatingConstraints;
+import gg.virtualclient.virtualgui.constraints.animation.Animations;
+import gg.virtualclient.virtualgui.effects.ScissorEffect;
 import net.kyori.adventure.text.Component;
 
 public class JavaTestGui extends WindowScreen {

@@ -1,8 +1,8 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.Window
-import gg.essential.elementa.scale.WindowScaler
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.Window
+import gg.virtualclient.virtualgui.scale.WindowScaler
 import gg.virtualclient.virtualminecraft.shader.BlendState
 import gg.virtualclient.virtualminecraft.shader.VirtualShader
 import java.awt.Color

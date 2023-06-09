@@ -1,4 +1,4 @@
-package gg.essential.elementa.impl;
+package gg.virtualclient.virtualgui.impl;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import gg.virtualclient.virtualminecraft.VirtualMinecraft;

@@ -1,4 +1,4 @@
-package gg.essential.elementa.components.plot
+package gg.virtualclient.virtualgui.components.plot
 
 enum class PointType(private val drawFunc: (List<PlotPoint>, PlotStyle) -> Unit) {
     None({ _, _ -> });

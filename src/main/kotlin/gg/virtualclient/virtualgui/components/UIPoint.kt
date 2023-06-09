@@ -1,8 +1,8 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.PositionConstraint
-import gg.essential.elementa.dsl.pixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.PositionConstraint
+import gg.virtualclient.virtualgui.dsl.pixels
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 /**

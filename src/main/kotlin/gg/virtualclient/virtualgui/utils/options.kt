@@ -1,4 +1,4 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
 internal val devPropSet = System.getProperty("elementa.dev")?.toBoolean() ?: false
 private val debugPropSet = System.getProperty("elementa.debug")?.toBoolean() ?: false

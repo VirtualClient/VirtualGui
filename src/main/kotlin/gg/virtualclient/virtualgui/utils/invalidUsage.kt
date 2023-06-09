@@ -1,6 +1,6 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
-import gg.essential.elementa.impl.Platform.Companion.platform
+import gg.virtualclient.virtualgui.impl.Platform.Companion.platform
 
 internal enum class InvalidUsageBehavior {
     IGNORE,

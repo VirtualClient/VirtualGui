@@ -1,4 +1,4 @@
-package gg.essential.elementa.font.data
+package gg.virtualclient.virtualgui.font.data
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject

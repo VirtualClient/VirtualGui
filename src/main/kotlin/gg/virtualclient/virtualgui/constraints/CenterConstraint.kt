@@ -1,8 +1,8 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.utils.roundToRealPixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.utils.roundToRealPixels
 
 /**
  * Centers this box on the X or Y axis.

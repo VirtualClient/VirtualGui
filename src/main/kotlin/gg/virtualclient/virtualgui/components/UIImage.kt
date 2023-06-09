@@ -1,10 +1,10 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.svg.SVGParser
-import gg.essential.elementa.components.image.*
-import gg.essential.elementa.utils.ResourceCache
-import gg.essential.elementa.utils.drawTexture
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.svg.SVGParser
+import gg.virtualclient.virtualgui.components.image.*
+import gg.virtualclient.virtualgui.utils.ResourceCache
+import gg.virtualclient.virtualgui.utils.drawTexture
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.util.ReleasedDynamicTexture
 import org.lwjgl.opengl.GL11

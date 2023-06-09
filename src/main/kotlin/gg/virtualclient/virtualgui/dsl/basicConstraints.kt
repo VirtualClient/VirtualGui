@@ -1,8 +1,8 @@
-package gg.essential.elementa.dsl
+package gg.virtualclient.virtualgui.dsl
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
 import java.awt.Color
 
 abstract class BasicConstraint<T>(defaultValue: T) : SuperConstraint<T> {

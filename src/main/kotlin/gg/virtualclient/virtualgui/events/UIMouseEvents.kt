@@ -1,6 +1,6 @@
-package gg.essential.elementa.events
+package gg.virtualclient.virtualgui.events
 
-import gg.essential.elementa.UIComponent
+import gg.virtualclient.virtualgui.UIComponent
 
 data class UIClickEvent(
     val absoluteX: Float,

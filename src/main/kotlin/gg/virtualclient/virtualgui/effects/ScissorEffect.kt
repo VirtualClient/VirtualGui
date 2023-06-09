@@ -1,8 +1,8 @@
-package gg.essential.elementa.effects
+package gg.virtualclient.virtualgui.effects
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.scale.WindowScaler
-import gg.essential.elementa.utils.roundToRealPixels
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.scale.WindowScaler
+import gg.virtualclient.virtualgui.utils.roundToRealPixels
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualWindow
 import org.lwjgl.opengl.GL11.*

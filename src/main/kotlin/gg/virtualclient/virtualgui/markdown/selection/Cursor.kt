@@ -1,9 +1,9 @@
-package gg.essential.elementa.markdown.selection
+package gg.virtualclient.virtualgui.markdown.selection
 
-import gg.essential.elementa.components.UIBlock
-import gg.essential.elementa.markdown.DrawState
-import gg.essential.elementa.markdown.MarkdownComponent
-import gg.essential.elementa.markdown.drawables.Drawable
+import gg.virtualclient.virtualgui.components.UIBlock
+import gg.virtualclient.virtualgui.markdown.DrawState
+import gg.virtualclient.virtualgui.markdown.MarkdownComponent
+import gg.virtualclient.virtualgui.markdown.drawables.Drawable
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 

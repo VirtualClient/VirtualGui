@@ -1,9 +1,9 @@
-package gg.essential.elementa.markdown.selection
+package gg.virtualclient.virtualgui.markdown.selection
 
-import gg.essential.elementa.markdown.DrawState
-import gg.essential.elementa.markdown.drawables.Drawable
-import gg.essential.elementa.markdown.drawables.ImageDrawable
-import gg.essential.elementa.markdown.drawables.TextDrawable
+import gg.virtualclient.virtualgui.markdown.DrawState
+import gg.virtualclient.virtualgui.markdown.drawables.Drawable
+import gg.virtualclient.virtualgui.markdown.drawables.ImageDrawable
+import gg.virtualclient.virtualgui.markdown.drawables.TextDrawable
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 
 class Selection private constructor(val start: Cursor<*>, val end: Cursor<*>) {

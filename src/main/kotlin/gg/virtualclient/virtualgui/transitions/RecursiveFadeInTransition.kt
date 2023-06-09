@@ -1,10 +1,10 @@
-package gg.essential.elementa.transitions
+package gg.virtualclient.virtualgui.transitions
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.animation.AnimatingConstraints
-import gg.essential.elementa.constraints.animation.Animations
-import gg.essential.elementa.effects.RecursiveFadeEffect
-import gg.essential.elementa.state.BasicState
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.animation.AnimatingConstraints
+import gg.virtualclient.virtualgui.constraints.animation.Animations
+import gg.virtualclient.virtualgui.effects.RecursiveFadeEffect
+import gg.virtualclient.virtualgui.state.BasicState
 import kotlin.properties.Delegates
 
 /**

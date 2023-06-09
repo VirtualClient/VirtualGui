@@ -1,11 +1,11 @@
-package gg.essential.elementa.constraints.resolution
+package gg.virtualclient.virtualgui.constraints.resolution
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.Window
-import gg.essential.elementa.constraints.ConstraintType
-import gg.essential.elementa.constraints.SuperConstraint
-import gg.essential.elementa.constraints.debug.ConstraintDebugger
-import gg.essential.elementa.constraints.debug.withDebugger
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.Window
+import gg.virtualclient.virtualgui.constraints.ConstraintType
+import gg.virtualclient.virtualgui.constraints.SuperConstraint
+import gg.virtualclient.virtualgui.constraints.debug.ConstraintDebugger
+import gg.virtualclient.virtualgui.constraints.debug.withDebugger
 
 internal class ConstraintResolverV2(private val window: Window) {
     fun getCyclicNodes(): List<ResolverNode>? {

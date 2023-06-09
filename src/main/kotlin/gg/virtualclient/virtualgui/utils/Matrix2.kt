@@ -1,4 +1,4 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
 open class Matrix2<T>(
     val numRows: Int,

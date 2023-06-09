@@ -1,4 +1,4 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
 enum class ConstraintType(val prettyName: String) {
     X("X"),

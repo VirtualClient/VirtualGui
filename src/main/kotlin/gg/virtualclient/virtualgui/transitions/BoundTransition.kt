@@ -1,7 +1,7 @@
-package gg.essential.elementa.transitions
+package gg.virtualclient.virtualgui.transitions
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.animation.AnimatingConstraints
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.animation.AnimatingConstraints
 
 /**
  * A normal transition which is bound to a single component. This

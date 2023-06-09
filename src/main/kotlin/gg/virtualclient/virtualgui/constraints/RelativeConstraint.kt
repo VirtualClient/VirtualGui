@@ -1,10 +1,10 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.state.BasicState
-import gg.essential.elementa.state.MappedState
-import gg.essential.elementa.state.State
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.state.BasicState
+import gg.virtualclient.virtualgui.state.MappedState
+import gg.virtualclient.virtualgui.state.State
 
 /**
  * Sets this component's X/Y position or width/height to be some

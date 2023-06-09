@@ -1,12 +1,12 @@
-package gg.essential.elementa.font
+package gg.virtualclient.virtualgui.font
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.ConstraintType
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.font.data.Font
-import gg.essential.elementa.font.data.Glyph
-import gg.essential.elementa.scale.WindowScaler
-import gg.essential.elementa.utils.readFromLegacyShader
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.ConstraintType
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.font.data.Font
+import gg.virtualclient.virtualgui.font.data.Glyph
+import gg.virtualclient.virtualgui.scale.WindowScaler
+import gg.virtualclient.virtualgui.utils.readFromLegacyShader
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import gg.virtualclient.virtualminecraft.shader.*

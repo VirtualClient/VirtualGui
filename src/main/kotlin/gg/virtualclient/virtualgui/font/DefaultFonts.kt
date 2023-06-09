@@ -1,4 +1,4 @@
-package gg.essential.elementa.font
+package gg.virtualclient.virtualgui.font
 
 object DefaultFonts {
     @JvmStatic

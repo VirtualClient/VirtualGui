@@ -1,4 +1,4 @@
-package gg.essential.elementa.utils
+package gg.virtualclient.virtualgui.utils
 
 fun <A, R> ((A) -> R).bind(arg1: A): () -> R = { this(arg1) }
 

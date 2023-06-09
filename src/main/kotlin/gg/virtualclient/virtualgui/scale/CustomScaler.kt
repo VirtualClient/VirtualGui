@@ -1,9 +1,9 @@
-package gg.essential.elementa.scale
+package gg.virtualclient.virtualgui.scale
 
-import gg.essential.elementa.impl.Platform
-import gg.essential.elementa.state.BasicState
-import gg.essential.elementa.state.State
-import gg.essential.elementa.utils.GuiScale
+import gg.virtualclient.virtualgui.impl.Platform
+import gg.virtualclient.virtualgui.state.BasicState
+import gg.virtualclient.virtualgui.state.State
+import gg.virtualclient.virtualgui.utils.GuiScale
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualWindow
 

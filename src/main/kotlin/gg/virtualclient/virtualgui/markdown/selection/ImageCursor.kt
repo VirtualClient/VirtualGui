@@ -1,6 +1,6 @@
-package gg.essential.elementa.markdown.selection
+package gg.virtualclient.virtualgui.markdown.selection
 
-import gg.essential.elementa.markdown.drawables.ImageDrawable
+import gg.virtualclient.virtualgui.markdown.drawables.ImageDrawable
 
 class ImageCursor(target: ImageDrawable) : Cursor<ImageDrawable>(target) {
     override fun compareTo(other: Cursor<*>): Int {

@@ -1,4 +1,4 @@
-package gg.essential.elementa.state
+package gg.virtualclient.virtualgui.state
 
 import java.util.function.Consumer
 import java.util.function.Function
@@ -115,7 +115,7 @@ open class BasicState<T>(protected var valueBacker: T) : State<T>() {
  * mapping function.
  *
  * This should primarily be used via the [State.map] or
- * [gg.essential.elementa.state.map] methods.
+ * [gg.virtualclient.virtualgui.state.map] methods.
  */
 open class MappedState<T, U>(initialState: State<T>, private val mapper: (T) -> U) : BasicState<U>(mapper(initialState.get())) {
     private var removeListener = initialState.onSetValue {
@@ -141,7 +141,7 @@ open class MappedState<T, U>(initialState: State<T>, private val mapper: (T) -> 
  * A state which combines two other states into a [Pair].
  *
  * This should primarily be used via the [State.zip] or
- * [gg.essential.elementa.state.zip] methods.
+ * [gg.virtualclient.virtualgui.state.zip] methods.
  */
 class ZippedState<T, U>(
     firstState: State<T>,

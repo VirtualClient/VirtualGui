@@ -1,10 +1,10 @@
-package gg.essential.elementa.components
+package gg.virtualclient.virtualgui.components
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.RelativeConstraint
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.effects.ScissorEffect
-import gg.essential.elementa.utils.LineUtils
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.RelativeConstraint
+import gg.virtualclient.virtualgui.dsl.*
+import gg.virtualclient.virtualgui.effects.ScissorEffect
+import gg.virtualclient.virtualgui.utils.LineUtils
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import java.awt.Color
 import kotlin.math.max

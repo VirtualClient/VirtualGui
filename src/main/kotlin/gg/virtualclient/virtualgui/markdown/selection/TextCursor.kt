@@ -1,7 +1,7 @@
-package gg.essential.elementa.markdown.selection
+package gg.virtualclient.virtualgui.markdown.selection
 
-import gg.essential.elementa.dsl.width
-import gg.essential.elementa.markdown.drawables.TextDrawable
+import gg.virtualclient.virtualgui.dsl.width
+import gg.virtualclient.virtualgui.markdown.drawables.TextDrawable
 
 /**
  * A simple class which points to a position in a TextDrawable.

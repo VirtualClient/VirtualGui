@@ -1,10 +1,10 @@
-package gg.essential.elementa.dsl
+package gg.virtualclient.virtualgui.dsl
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.*
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
-import gg.essential.elementa.constraints.MinConstraint
-import gg.essential.elementa.state.State
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.*
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.constraints.MinConstraint
+import gg.virtualclient.virtualgui.state.State
 import java.awt.Color
 
 infix fun SuperConstraint<Float>.coerceAtLeast(minConstraint: SuperConstraint<Float>) =

@@ -1,13 +1,13 @@
-package gg.essential.elementa.components.input
+package gg.virtualclient.virtualgui.components.input
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.components.UIBlock
-import gg.essential.elementa.constraints.CenterConstraint
-import gg.essential.elementa.constraints.animation.Animations
-import gg.essential.elementa.dsl.*
-import gg.essential.elementa.effects.ScissorEffect
-import gg.essential.elementa.impl.Platform.Companion.platform
-import gg.essential.elementa.utils.getStringSplitToWidth
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.components.UIBlock
+import gg.virtualclient.virtualgui.constraints.CenterConstraint
+import gg.virtualclient.virtualgui.constraints.animation.Animations
+import gg.virtualclient.virtualgui.dsl.*
+import gg.virtualclient.virtualgui.effects.ScissorEffect
+import gg.virtualclient.virtualgui.impl.Platform.Companion.platform
+import gg.virtualclient.virtualgui.utils.getStringSplitToWidth
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.keyboard.Key
 import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard

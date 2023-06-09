@@ -1,10 +1,10 @@
-package gg.essential.elementa.components.input
+package gg.virtualclient.virtualgui.components.input
 
-import gg.essential.elementa.dsl.pixels
-import gg.essential.elementa.dsl.width
-import gg.essential.elementa.state.BasicState
-import gg.essential.elementa.state.MappedState
-import gg.essential.elementa.state.State
+import gg.virtualclient.virtualgui.dsl.pixels
+import gg.virtualclient.virtualgui.dsl.width
+import gg.virtualclient.virtualgui.state.BasicState
+import gg.virtualclient.virtualgui.state.MappedState
+import gg.virtualclient.virtualgui.state.State
 import java.awt.Color
 
 open class UIPasswordInput @JvmOverloads constructor(

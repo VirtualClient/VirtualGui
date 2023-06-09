@@ -1,7 +1,7 @@
-package gg.essential.elementa.constraints
+package gg.virtualclient.virtualgui.constraints
 
-import gg.essential.elementa.UIComponent
-import gg.essential.elementa.constraints.resolution.ConstraintVisitor
+import gg.virtualclient.virtualgui.UIComponent
+import gg.virtualclient.virtualgui.constraints.resolution.ConstraintVisitor
 import kotlin.math.min
 
 class MinConstraint(val first: SuperConstraint<Float>, val second: SuperConstraint<Float>) : MasterConstraint {
