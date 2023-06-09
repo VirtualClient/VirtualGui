@@ -2,7 +2,7 @@ package gg.essential.elementa
 
 import gg.essential.elementa.components.Window
 import gg.essential.elementa.constraints.animation.*
-import gg.essential.elementa.scale.ScaleHelper
+import gg.essential.elementa.scale.WindowScaler
 import gg.essential.elementa.scale.VanillaScaleHelper
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualScreen
@@ -22,7 +22,7 @@ abstract class WindowScreen @JvmOverloads constructor(
     private val version: ElementaVersion = ElementaVersion.V2,
     private val enableRepeatKeys: Boolean = true,
     private val drawDefaultBackground: Boolean = true,
-    val scaleHelper: ScaleHelper = VanillaScaleHelper
+    val scaleHelper: WindowScaler = VanillaScaleHelper
 ) : VirtualScreen(component) {
 
     val window = Window(version, scaleHelper = scaleHelper)

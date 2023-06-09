@@ -12,12 +12,11 @@ import gg.essential.elementa.effects.ScissorEffect
 import gg.essential.elementa.events.UIClickEvent
 import gg.essential.elementa.events.UIScrollEvent
 import gg.essential.elementa.font.FontProvider
-import gg.essential.elementa.scale.ScaleHelper
+import gg.essential.elementa.scale.WindowScaler
 import gg.essential.elementa.utils.*
 import gg.essential.elementa.utils.requireMainThread
 import gg.essential.elementa.utils.requireState
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
-import gg.virtualclient.virtualminecraft.VirtualWindow
 import org.lwjgl.opengl.GL11
 import java.awt.Color
 import java.util.*
@@ -1166,8 +1165,8 @@ abstract class UIComponent : Observable() {
         }
     }
 
-    open fun getScaleHelper(): ScaleHelper {
-        return Window.ofOrNull(this)?.getScaleHelper() ?: ScaleHelper.getActiveScaleHelper()
+    open fun getScaleHelper(): WindowScaler {
+        return Window.ofOrNull(this)?.getScaleHelper() ?: WindowScaler.getActiveScaleHelper()
     }
 
     internal fun getMouseX(): Float {
@@ -1238,7 +1237,7 @@ abstract class UIComponent : Observable() {
          * Hints a number with respect to the current GUI scale.
          */
         fun guiHint(number: Float, roundDown: Boolean): Float {
-            val factor = ScaleHelper.getActiveScaleHelper().getScaleFactor().toFloat()
+            val factor = WindowScaler.getActiveScaleHelper().getScaleFactor().toFloat()
             return (number * factor).let {
                 if (roundDown) floor(it) else ceil(it)
             } / factor
@@ -1248,7 +1247,7 @@ abstract class UIComponent : Observable() {
          * Hints a number with respect to the current GUI scale.
          */
         fun guiHint(number: Double, roundDown: Boolean): Double {
-            val factor = ScaleHelper.getActiveScaleHelper().getScaleFactor()
+            val factor = WindowScaler.getActiveScaleHelper().getScaleFactor()
             return (number * factor).let {
                 if (roundDown) floor(it) else ceil(it)
             } / factor

@@ -5,11 +5,10 @@ import gg.essential.elementa.constraints.ConstraintType
 import gg.essential.elementa.constraints.resolution.ConstraintVisitor
 import gg.essential.elementa.font.data.Font
 import gg.essential.elementa.font.data.Glyph
-import gg.essential.elementa.scale.ScaleHelper
+import gg.essential.elementa.scale.WindowScaler
 import gg.essential.elementa.utils.readFromLegacyShader
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
-import gg.virtualclient.virtualminecraft.VirtualWindow
 import gg.virtualclient.virtualminecraft.shader.*
 import gg.virtualclient.virtualminecraft.vertex.CommonVertexFormats
 import gg.virtualclient.virtualminecraft.vertex.DrawMode
@@ -218,7 +217,7 @@ class FontRenderer(
         doffsetUniform.setValue(3.5f / currentPointSize)
 
 
-        val guiScale = ScaleHelper.getActiveScaleHelper().getScaleFactor().toFloat()
+        val guiScale = WindowScaler.getActiveScaleHelper().getScaleFactor().toFloat()
 
         //Reset
         obfuscated = false

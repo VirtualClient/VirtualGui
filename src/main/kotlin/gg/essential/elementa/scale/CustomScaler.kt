@@ -1,11 +1,13 @@
 package gg.essential.elementa.scale
 
 import gg.essential.elementa.impl.Platform
+import gg.essential.elementa.state.BasicState
+import gg.essential.elementa.state.State
 import gg.essential.elementa.utils.GuiScale
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualWindow
 
-class CustomScaleHelper(private val scaleProvider: () -> Int) : ScaleHelper {
+class CustomScaler(private val scaleProvider: State<Int>) : WindowScaler {
 
     private var scaleFactor: Double = 0.0
     private var scaledWidth: Int = 0
@@ -37,7 +39,7 @@ class CustomScaleHelper(private val scaleProvider: () -> Int) : ScaleHelper {
     }
 
     override fun init() {
-        this.scaleFactor = calculateScaleFactor(scaleProvider.invoke(), Platform.platform.forceUnicodeFont).toDouble()
+        this.scaleFactor = calculateScaleFactor(scaleProvider.get(), Platform.platform.forceUnicodeFont).toDouble()
         val i = (VirtualWindow.framebufferWidth.toDouble() / scaleFactor).toInt()
         scaledWidth = if (VirtualWindow.framebufferWidth.toDouble() / scaleFactor > i.toDouble()) i + 1 else i
         val j = (VirtualWindow.framebufferHeight.toDouble() / scaleFactor).toInt()
@@ -58,8 +60,8 @@ class CustomScaleHelper(private val scaleProvider: () -> Int) : ScaleHelper {
     }
 
     companion object {
-        fun scaleForScreenSize(step: Int = 650): CustomScaleHelper {
-            return CustomScaleHelper { GuiScale.scaleForScreenSize(step).ordinal }
+        fun scaleForScreenSize(step: Int = 650): CustomScaler {
+            return CustomScaler(BasicState(GuiScale.scaleForScreenSize(step).ordinal))
         }
     }
 }

@@ -3,7 +3,7 @@ package gg.essential.elementa.scale
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualWindow
 
-object VanillaScaleHelper : ScaleHelper {
+object VanillaScaleHelper : WindowScaler {
     override fun drawScreen(matrixStack: VirtualMatrixStack) {}
 
     override fun postDrawScreen(matrixStack: VirtualMatrixStack) {}

@@ -4,7 +4,7 @@ import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualMouse
 import gg.virtualclient.virtualminecraft.VirtualWindow
 
-interface ScaleHelper {
+interface WindowScaler {
 
     fun drawScreen(matrixStack: VirtualMatrixStack)
     fun postDrawScreen(matrixStack: VirtualMatrixStack)
@@ -25,13 +25,13 @@ interface ScaleHelper {
     }
 
     companion object {
-        private var activeScaleHelper: ScaleHelper? = null
+        private var activeScaleHelper: WindowScaler? = null
 
-        fun getActiveScaleHelper(): ScaleHelper {
+        fun getActiveScaleHelper(): WindowScaler {
             return activeScaleHelper ?: VanillaScaleHelper
         }
 
-        fun setActiveScaleHelper(scaleHelper: ScaleHelper?) {
+        fun setActiveScaleHelper(scaleHelper: WindowScaler?) {
             activeScaleHelper = scaleHelper
         }
     }
