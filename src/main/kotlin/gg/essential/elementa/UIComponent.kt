@@ -646,15 +646,6 @@ abstract class UIComponent : Observable() {
     }
 
 
-    @Deprecated(
-        "You no longer need to call mouseDrag manually, Elementa handles it internally.",
-        level = DeprecationLevel.ERROR
-    )
-    open fun mouseDrag(mouseX: Int, mouseY: Int, button: Int) {
-        // no-op
-    }
-
-
     /**
      * Runs the set [onMouseDrag] method for the component and it's children.
      * Use this in the proper mouse drag event to cascade all component's mouse scroll events.

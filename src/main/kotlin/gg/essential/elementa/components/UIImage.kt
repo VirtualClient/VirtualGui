@@ -64,13 +64,6 @@ open class UIImage @JvmOverloads constructor(
         }
     }
 
-    @Deprecated(
-        "Please provide a completable future instead",
-        ReplaceWith("CompletableFuture.supplyAsync(imageFunction)", "java.util.concurrent.CompletableFuture"),
-        level = DeprecationLevel.ERROR
-    )
-    constructor(imageFunction: () -> BufferedImage) : this(CompletableFuture.supplyAsync(imageFunction))
-
     override fun drawImage(matrixStack: VirtualMatrixStack, x: Double, y: Double, width: Double, height: Double, color: Color) {
         when {
             texture != null -> drawTexture(matrixStack, texture!!, color, x, y, width, height, textureMinFilter.glMode, textureMagFilter.glMode)
