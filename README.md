@@ -1,4 +1,19 @@
-# Elementa
+# VirtualGUI
+
+VirtualGUI is a fork of [Elementa](https://github.com/EssentialGG/Elementa) that adjusts the library for our requirements.
+**This fork is not meant as a drop-in replacement of Elementa and will not work as such.**
+
+Instead of UniversalCraft, VirtualGUI is built on VirtualMinecraft, which does roughly the same thing, and even borrows code(in order to keep Elementa working),
+but is more orientated towards the needs of VirtualClient.
+
+This fork contains breaking changes, like removing ElementaVersion(if we encounter a situation where we need to 
+do breaking changes and keep backwards compatability we plan to introduce a more intuitive feature flag system) and deprecated legacy apis.
+
+In order to avoid collisions with Elementa, we have changed the package name to `gg.virtualclient.virtualgui`. Elementa
+system properties and error messages remain the same for the time being. 
+
+
+## What is Elementa?
 
 Elementa (from the name of the first book published on Geometry by Euclid) is a library
 that aims to make GUI creation extremely simple. It's based on a couple key concepts, some of which
