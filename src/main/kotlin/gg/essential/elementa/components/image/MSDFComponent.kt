@@ -55,13 +55,6 @@ open class MSDFComponent constructor(
         }
     }
 
-    @Deprecated(
-        "Please provide a completable future instead",
-        ReplaceWith("CompletableFuture.supplyAsync(imageFunction)", "java.util.concurrent.CompletableFuture"),
-        level = DeprecationLevel.ERROR
-    )
-    constructor(imageFunction: () -> BufferedImage) : this(CompletableFuture.supplyAsync(imageFunction))
-
 
     override fun draw(matrixStack: VirtualMatrixStack) {
         beforeDraw(matrixStack)
