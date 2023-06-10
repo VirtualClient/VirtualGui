@@ -10,6 +10,7 @@ import gg.virtualclient.virtualgui.markdown.selection.ImageCursor
 import gg.virtualclient.virtualgui.markdown.selection.TextCursor
 import gg.virtualclient.virtualgui.utils.withAlpha
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
+import gg.virtualclient.virtualminecraft.VirtualSystem
 import java.awt.Color
 import java.net.URI
 import java.net.URISyntaxException
@@ -376,8 +377,7 @@ class ParagraphDrawable(
         currentDrawable.style.linkLocation?.takeIf { !dragged && mouseButton == 0 }?.let { linkLocation ->
             if (md.fireLinkClickEvent(MarkdownComponent.LinkClickEvent(linkLocation))) {
                 try {
-                    //TODO(VirtualMinecraft): UDesktop in VirtualMinecraft
-//                    UDesktop.browse(URI(linkLocation))
+                    VirtualSystem.openURL(URI(linkLocation).toString())
                 } catch (e: URISyntaxException) {
                     // Ignored, if the link is invalid we just do nothing
                 }

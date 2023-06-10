@@ -109,8 +109,7 @@ class MarkdownComponent(
 
             onKeyType { _, keyCode ->
                 if (selection != null && keyCode == Key.KEY_C.getKeyCode() && VirtualKeyboard.isControlKeyDown()) {
-                    //TODO(VirtualMinecraft): UDesktop in VirtualMinecraft
-//                    UDesktop.setClipboardString(drawables.selectedText(VirtualKeyboard.isShiftKeyDown()))
+                    VirtualKeyboard.setClipboardString(drawables.selectedText(VirtualKeyboard.isShiftKeyDown()))
                 }
             }
         }

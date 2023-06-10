@@ -91,8 +91,7 @@ abstract class AbstractTextInput(
                 copySelection()
                 deleteSelection()
             } else if (VirtualKeyboard.isKeyComboCtrlV(keyCode)) {
-                //TODO(VirtualMinecraft):
-//                commitTextAddition(UDesktop.getClipboardString())
+                commitTextAddition(VirtualKeyboard.getClipboardString())
             } else if (VirtualKeyboard.isKeyComboCtrlZ(keyCode)) {
                 if (undoStack.isEmpty())
                     return@onKeyType
@@ -561,8 +560,7 @@ abstract class AbstractTextInput(
         val (visualSelectionStart, visualSelectionEnd) = getSelection()
         if (visualSelectionStart == visualSelectionEnd)
             return
-        //TODO(VirtualMinecraft):
-//        UDesktop.setClipboardString(getTextBetween(visualSelectionStart, visualSelectionEnd))
+        VirtualKeyboard.setClipboardString(getTextBetween(visualSelectionStart, visualSelectionEnd))
     }
 
     protected open fun charBefore(pos: LinePosition) = pos.toTextualPos().let {
