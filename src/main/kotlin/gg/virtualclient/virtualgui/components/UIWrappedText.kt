@@ -10,7 +10,7 @@ import gg.virtualclient.virtualgui.state.MappedState
 import gg.virtualclient.virtualgui.state.State
 import gg.virtualclient.virtualgui.state.pixels
 import gg.virtualclient.virtualgui.utils.getStringSplitToWidth
-import gg.virtualclient.virtualgui.utils.getStringSplitToWidthTruncated
+import gg.virtualclient.virtualgui.utils.splitStringToWidthTruncated
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.VirtualRenderSystem
 import gg.virtualclient.virtualminecraft.VirtualTextRenderer
@@ -155,7 +155,7 @@ open class UIWrappedText @JvmOverloads constructor(
         VirtualRenderSystem.enableBlend()
 
         val lines = if (trimText) {
-            getStringSplitToWidthTruncated(
+            splitStringToWidthTruncated(
                 textState.get(),
                 width,
                 textScale,

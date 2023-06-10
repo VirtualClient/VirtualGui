@@ -8,6 +8,35 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.TranslatableComponent
 
+fun splitStringToWidthTruncated(
+    text: String,
+    maxLineWidth: Float,
+    textScale: Float,
+    maxLines: Int,
+    ensureSpaceAtEndOfLines: Boolean = true,
+    processColorCodes: Boolean = true,
+    fontProvider: FontProvider = DefaultFonts.VANILLA_FONT_RENDERER,
+    trimmedTextSuffix: String = "..."
+): List<String> {
+    val lines = getStringSplitToWidth(text, maxLineWidth, textScale, ensureSpaceAtEndOfLines, processColorCodes,fontProvider)
+    if (lines.size <= maxLines)
+        return lines
+
+    return lines.subList(0, maxLines).mapIndexed { index, contents ->
+        if (index == maxLines - 1) {
+            var length = contents.length
+            while (length > 0 && (contents.substring(0, length) + trimmedTextSuffix).width(textScale,fontProvider) > maxLineWidth)
+                length--
+            contents.substring(0, length) + trimmedTextSuffix
+        } else contents
+    }
+}
+
+@Deprecated(
+    "Does not properly take suffix and text combined width into account and multiplies maxLineWidth by textScale unnecessarily.",
+    ReplaceWith("splitStringToWidthTruncated()"),
+    DeprecationLevel.WARNING,
+)
 fun getStringSplitToWidthTruncated(
     text: String,
     maxLineWidth: Float,
@@ -25,8 +54,8 @@ fun getStringSplitToWidthTruncated(
     val suffixWidth = trimmedTextSuffix.width(textScale,fontProvider)
 
     return lines.subList(0, maxLines).mapIndexed { index, contents ->
-        var length = contents.lastIndex
-        if (index == maxLines - 1 && length > 0) {
+        if (index == maxLines - 1) {
+            var length = contents.length
             while (length > 0 && contents.substring(0, length).width(textScale,fontProvider) + suffixWidth > maxLineWidth * textScale)
                 length--
             contents.substring(0, length) + trimmedTextSuffix

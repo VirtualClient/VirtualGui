@@ -4,7 +4,7 @@ import gg.virtualclient.virtualgui.constraints.HeightConstraint
 import gg.virtualclient.virtualgui.dsl.coerceAtMost
 import gg.virtualclient.virtualgui.dsl.pixels
 import gg.virtualclient.virtualgui.dsl.width
-import gg.virtualclient.virtualgui.utils.getStringSplitToWidthTruncated
+import gg.virtualclient.virtualgui.utils.splitStringToWidthTruncated
 import gg.virtualclient.virtualminecraft.VirtualMatrixStack
 import gg.virtualclient.virtualminecraft.keyboard.VirtualKeyboard
 import java.awt.Color
@@ -77,7 +77,7 @@ class UIMultilineTextInput @JvmOverloads constructor(
 
         val textScale = getTextScale()
         if (!active && !hasText()) {
-            val textToDraw = getStringSplitToWidthTruncated(placeholder, getWidth(), textScale, 1)[0]
+            val textToDraw = splitStringToWidthTruncated(placeholder, getWidth(), textScale, 1)[0]
             drawUnselectedText(matrixStack, textToDraw, getLeft(), 0)
             return super.draw(matrixStack)
         }

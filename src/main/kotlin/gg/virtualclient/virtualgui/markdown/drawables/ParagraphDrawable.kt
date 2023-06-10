@@ -277,8 +277,7 @@ class ParagraphDrawable(
     }
 
     override fun draw(matrixStack: VirtualMatrixStack, state: DrawState) {
-        drawables.filterIsInstance<TextDrawable>().forEach { it.beforeDraw(state) }
-        drawables.forEach { it.draw(matrixStack, state) }
+        drawables.forEach { it.drawCompat(matrixStack, state) }
 
         // TODO: Remove
         if (MarkdownComponent.DEBUG) {
