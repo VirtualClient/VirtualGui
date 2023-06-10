@@ -139,109 +139,109 @@ class ComponentsGui : WindowScreen(Component.empty()) {
 
 
 
-        ComponentType("UIImage") {
-            UIImage.ofURL(URL("https://i.imgur.com/Pc6iMw3.png")).constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
+            ComponentType("UIImage") {
+                UIImage.ofURL(URL("https://i.imgur.com/Pc6iMw3.png")).constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
 
-                width = 100.pixels()
-                height = 50.pixels()
-            } childOf this
+                    width = 100.pixels()
+                    height = 50.pixels()
+                } childOf this
 
-            UIImage.ofURL(URL("https://i.imgur.com/Pc6iMw3.png")).constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
+                UIImage.ofURL(URL("https://i.imgur.com/Pc6iMw3.png")).constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
 
-                width = 150.pixels()
-                height = ImageAspectConstraint()
-            } childOf this
-        } childOf window
+                    width = 150.pixels()
+                    height = ImageAspectConstraint()
+                } childOf this
+            } childOf window
 
-        ComponentType("BlurHashImage") {
-            BlurHashImage("L4ESU,OD1e#:=GwwJSAr1M,r|]Ar").constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
+            ComponentType("BlurHashImage") {
+                BlurHashImage("L4ESU,OD1e#:=GwwJSAr1M,r|]Ar").constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
 
-                width = 100.pixels()
-                height = 50.pixels()
-            } childOf this
+                    width = 100.pixels()
+                    height = 50.pixels()
+                } childOf this
 
-            BlurHashImage.ofURL("L4ESU,OD1e#:=GwwJSAr1M,r|]Ar", URL("https://i.imgur.com/Pc6iMw3.png")).constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
+                BlurHashImage.ofURL("L4ESU,OD1e#:=GwwJSAr1M,r|]Ar", URL("https://i.imgur.com/Pc6iMw3.png")).constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
 
-                width = 100.pixels()
-                height = 50.pixels()
-            } childOf this
-        } childOf window
+                    width = 100.pixels()
+                    height = 50.pixels()
+                } childOf this
+            } childOf window
 
-        ComponentType("Text Input") {
-            val box1 = UIBlock(Color(50, 50, 50)).constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
+            ComponentType("Text Input") {
+                val box1 = UIBlock(Color(50, 50, 50)).constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
 
-                width = 100.pixels()
-                height = 12.pixels()
-            } childOf this
+                    width = 100.pixels()
+                    height = 12.pixels()
+                } childOf this
 
-            val textInput1 = UITextInput("My single line text input!").constrain {
-                x = 2.pixels()
-                y = 2.pixels()
+                val textInput1 = UITextInput("My single line text input!").constrain {
+                    x = 2.pixels()
+                    y = 2.pixels()
 
-                width = RelativeConstraint(1f) - 6.pixels()
-            } childOf box1
+                    width = RelativeConstraint(1f) - 6.pixels()
+                } childOf box1
 
-            box1.onMouseClick { textInput1.grabWindowFocus() }
+                box1.onMouseClick { textInput1.grabWindowFocus() }
 
-            val box2 = UIBlock(Color(50, 50, 50)).constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
+                val box2 = UIBlock(Color(50, 50, 50)).constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
 
-                width = 100.pixels()
-                height = ChildBasedSizeConstraint() + 4.pixels()
-            } childOf this
+                    width = 100.pixels()
+                    height = ChildBasedSizeConstraint() + 4.pixels()
+                } childOf this
 
-            val textInput2 = UIMultilineTextInput("My multiline text input!").constrain {
-                x = 2.pixels()
-                y = 2.pixels()
+                val textInput2 = UIMultilineTextInput("My multiline text input!").constrain {
+                    x = 2.pixels()
+                    y = 2.pixels()
 
-                width = RelativeConstraint(1f) - 6.pixels()
-            }.setMaxLines(4) childOf box2
+                    width = RelativeConstraint(1f) - 6.pixels()
+                }.setMaxLines(4) childOf box2
 
-            box2.onMouseClick { textInput2.grabWindowFocus() }
-        } childOf window
+                box2.onMouseClick { textInput2.grabWindowFocus() }
+            } childOf window
 
-        ComponentType("ScrollComponent") {
-            val scroll1 = ScrollComponent().constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
+            ComponentType("ScrollComponent") {
+                val scroll1 = ScrollComponent().constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
 
-                width = 150.pixels()
-                height = 75.pixels()
-            } childOf this
+                    width = 150.pixels()
+                    height = 75.pixels()
+                } childOf this
 
-            repeat(5) {
-                UIBlock(Color.RED).constrain {
-                    x = CenterConstraint()
-                    y = SiblingConstraint(padding = 2f)
+                repeat(5) {
+                    UIBlock(Color.RED).constrain {
+                        x = CenterConstraint()
+                        y = SiblingConstraint(padding = 2f)
 
-                    width = 50.pixels()
-                    height = 25.pixels()
-                } childOf scroll1
-            }
+                        width = 50.pixels()
+                        height = 25.pixels()
+                    } childOf scroll1
+                }
 
-            ScrollComponent("I'm empty :(").constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
+                ScrollComponent("I'm empty :(").constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
 
-                width = 150.pixels()
-                height = 75.pixels()
-            } childOf this
-        } childOf window
+                    width = 150.pixels()
+                    height = 75.pixels()
+                } childOf this
+            } childOf window
 
-        ComponentType("Markdown") {
-            MarkdownComponent(
-                """
+            ComponentType("Markdown") {
+                MarkdownComponent(
+                    """
                     # Markdown!
                     
                     This is pretty cool. We [can](https://google.com) now render arbitrary markdown beautifully.
@@ -250,36 +250,37 @@ class ComponentsGui : WindowScreen(Component.empty()) {
                     We even have code :)
                     ```
                 """.trimIndent()
-            ).constrain {
-                x = 2.pixels()
-                y = SiblingConstraint(padding = 2f)
-                width = 200.pixels()
-                height = 100.pixels()
-            } childOf this
-        } childOf window
+                ).constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint(padding = 2f)
+                    width = 200.pixels()
+                    height = 100.pixels()
+                } childOf this
+            } childOf window
 
-        ComponentType("SVG") {
-            SVGComponent.ofResource("/svg/test.svg").constrain {
-                x = 2.pixels()
-                y = SiblingConstraint(padding = 2f)
-                width = 50.pixels()
-                height = 50.pixels()
-            } childOf this
-        } childOf window
+            ComponentType("SVG") {
+                SVGComponent.ofResource("/svg/test.svg").constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint(padding = 2f)
+                    width = 50.pixels()
+                    height = 50.pixels()
+                } childOf this
+            } childOf window
 
-        ComponentType("Gradient") {
-            GradientComponent(Color.BLACK, Color.PINK).constrain {
-                x = 2.pixels()
-                y = SiblingConstraint() + 5.pixels()
-                width = 50.pixels()
-                height = 50.pixels()
-            } childOf this
-        } childOf window
+            ComponentType("Gradient") {
+                GradientComponent(Color.BLACK, Color.PINK).constrain {
+                    x = 2.pixels()
+                    y = SiblingConstraint() + 5.pixels()
+                    width = 50.pixels()
+                    height = 50.pixels()
+                } childOf this
+            } childOf window
 
-        Inspector(window).constrain {
-            x = 10.pixels(true)
-            y = 10.pixels(true)
-        } childOf window
+            Inspector(window).constrain {
+                x = 10.pixels(true)
+                y = 10.pixels(true)
+            } childOf window
+        }
     }
 
     class ComponentType(componentName: String, initBlock: ComponentType.() -> Unit) : UIContainer() {

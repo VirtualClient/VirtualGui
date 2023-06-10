@@ -1,5 +1,5 @@
-public final class gg/essential/elementa/dsl/PlatformUtil {
-	public static final fun getUIImageFromIdentifier (Lnet/minecraft/util/Identifier;)Lgg/essential/elementa/components/UIImage;
-	public static final fun ofResource (Lgg/essential/elementa/components/UIImage$Companion;Lnet/minecraft/util/Identifier;)Lgg/essential/elementa/components/UIImage;
+public final class gg/virtualclient/virtualgui/dsl/PlatformUtil {
+	public static final fun getUIImageFromIdentifier (Lnet/minecraft/util/Identifier;)Lgg/virtualclient/virtualgui/components/UIImage;
+	public static final fun ofResource (Lgg/virtualclient/virtualgui/components/UIImage$Companion;Lnet/minecraft/util/Identifier;)Lgg/virtualclient/virtualgui/components/UIImage;
 }
 

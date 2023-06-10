@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm")
     id("org.jetbrains.dokka")
     id("gg.virtualclient.multi-version")
-    id("gg.virtualclient.defaults")
+    id("gg.virtualclient.defaults.loom")
     id("maven-publish")
 }
 
@@ -24,6 +24,8 @@ repositories {
     maven {
         url = uri("https://repo.virtualclient.gg/artifactory/virtualclient-public/")
     }
+    maven("https://repo.essential.gg/repository/maven-public")
+
 }
 
 dependencies {
@@ -34,7 +36,7 @@ dependencies {
 //    modApi(libs.versions.universalcraft.map { "gg.essential:universalcraft-$platform:$it" }) {
 //        exclude(group = "org.jetbrains.kotlin")
 //    }
-    modApi("gg.virtualclient:virtualminecraft:1.0.0-${platform.mcVersion}-SNAPSHOT") {
+    modApi("gg.virtualclient:virtualminecraft:1.0.4-${platform.mcVersion}-SNAPSHOT") {
         exclude(group = "org.jetbrains.kotlin")
     }
 
@@ -47,6 +49,8 @@ dependencies {
             11802 -> "0.57.0+1.18.2"
             11900 -> "0.57.0+1.19"
             11903 -> "0.68.1+1.19.3"
+            11904 -> "0.83.0+1.19.4"
+            12000 -> "0.83.0+1.20"
             else -> throw GradleException("Unsupported platform $platform")
         }
         val fabricApiModules = mutableListOf(
@@ -66,11 +70,11 @@ dependencies {
     }
 }
 
-tasks.processResources {
-    filesMatching(listOf("fabric.mod.json")) {
-        filter { it.replace("\"com.example.examplemod.ExampleMod\"", "") }
-    }
-}
+//tasks.processResources {
+//    filesMatching(listOf("fabric.mod.json")) {
+//        filter { it.replace("\"com.example.examplemod.ExampleMod\"", "") }
+//    }
+//}
 
 tasks.dokkaHtml {
     moduleName.set("Elementa $name")
@@ -108,7 +112,7 @@ configure<PublishingExtension> {
         create<MavenPublication>("maven") {
             groupId = "gg.virtualclient"
             artifactId = "virtualgui"
-            version = "1.0.1-${platform.mcVersion}-SNAPSHOT"
+            version = "1.1.0-${platform.mcVersion}-SNAPSHOT"
             from(components["java"])
             artifact(tasks.jar)
         }

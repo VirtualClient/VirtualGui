@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm") version "1.6.10"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.8.0"
     id("org.jetbrains.dokka") version "1.6.10" apply false
-    id("gg.virtualclient.defaults")
+    id("gg.virtualclient.defaults.java")
 }
 
 kotlin.jvmToolchain {
@@ -16,8 +16,8 @@ tasks.compileKotlin.setJvmDefault("all-compatibility")
 
 val internal by configurations.creating {
     val relocated = registerRelocationAttribute("internal-relocated") {
-        relocate("org.dom4j", "gg.essential.elementa.impl.dom4j")
-        relocate("org.commonmark", "gg.essential.elementa.impl.commonmark")
+        relocate("org.dom4j", "gg.virtualclient.virtualgui.impl.dom4j")
+        relocate("org.commonmark", "gg.virtualclient.virtualgui.impl.commonmark")
         remapStringsIn("org.dom4j.DocumentFactory")
         remapStringsIn("org.commonmark.internal.util.Html5Entities")
     }
@@ -46,10 +46,10 @@ dependencies {
     internal(libs.dom4j)
     implementation(prebundle(internal))
 
-    // Depending on LWJGL3 instead of 2 so we can choose opengl bindings only
+    // Depending on LWJGL3 instead of 2, so we can choose opengl bindings only
     compileOnly("org.lwjgl:lwjgl-opengl:3.3.1")
 
-    compileOnly("gg.virtualclient:virtualminecraft:1.0.0-11605-SNAPSHOT") {
+    compileOnly("gg.virtualclient:virtualminecraft:1.0.4-11605-SNAPSHOT") {
         attributes { attribute(common, true) }
     }
     compileOnly("net.kyori:adventure-api:4.12.0")

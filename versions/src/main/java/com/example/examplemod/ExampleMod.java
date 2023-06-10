@@ -43,6 +43,7 @@ public class ExampleMod implements ClientModInitializer {
 
     //#if FABRIC
     public void onInitializeClient() {
+        System.out.println("Test");
          StencilEffect.enableStencil();
          ClientTickEvents.START_CLIENT_TICK.register(it -> tick());
     }

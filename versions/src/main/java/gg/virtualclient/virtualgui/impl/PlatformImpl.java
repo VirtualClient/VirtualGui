@@ -6,7 +6,7 @@ import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.Matrix4f;
+import org.joml.Matrix4f;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,10 +16,14 @@ public class PlatformImpl implements Platform {
 
     @Override
     public int getMcVersion() {
-        //#if MC>=11903
+        //#if MC>=12000
+        return 12000;
+        //#elseif MC>=11904
+        //$$ return 11904;
+        //#elseif MC>=11903
         //$$ return 11903;
         //#elseif MC==11900
-        return 11900;
+        //$$ return 11900;
         //#elseif MC==11802
         //$$ return 11802;
         //#elseif MC==11701
@@ -84,12 +88,16 @@ public class PlatformImpl implements Platform {
         //#if MC>=11701
         RenderSystem.clear(256, VirtualMinecraft.INSTANCE.isRunningOnMac());
         //#if MC>=11903
-        //$$ Matrix4f matrix4f = new Matrix4f().setOrtho(0.0f, (float) scaledWidth, (float) scaledHeight, 0.0f, 1000.0f, 3000.0f);
+        Matrix4f matrix4f = new Matrix4f().setOrtho(0.0f, (float) scaledWidth, (float) scaledHeight, 0.0f, 1000.0f, 3000.0f);
         //#else
-        Matrix4f matrix4f = Matrix4f.projectionMatrix(0.0f, (float) scaledWidth, 0.0f, (float) scaledHeight, 1000.0f, 3000.0f);
+        //$$ Matrix4f matrix4f = Matrix4f.projectionMatrix(0.0f, (float) scaledWidth, 0.0f, (float) scaledHeight, 1000.0f, 3000.0f);
         //#endif
 
-        RenderSystem.setProjectionMatrix(matrix4f);
+        //#if MC>=12000
+        RenderSystem.setProjectionMatrix(matrix4f, com.mojang.blaze3d.systems.VertexSorter.BY_Z);
+        //#else
+        //$$ RenderSystem.setProjectionMatrix(matrix4f);
+        //#endif
         MatrixStack matrixStack = RenderSystem.getModelViewStack();
         matrixStack.loadIdentity();
         matrixStack.translate(0.0, 0.0, -2000.0);
