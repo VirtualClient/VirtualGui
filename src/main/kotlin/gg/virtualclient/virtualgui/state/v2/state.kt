@@ -1,4 +1,4 @@
-package gg.essential.elementa.state.v2
+package gg.virtualclient.virtualgui.state.v2
 
 /**
  * Holds strong references to listeners to prevent them from being garbage collected.

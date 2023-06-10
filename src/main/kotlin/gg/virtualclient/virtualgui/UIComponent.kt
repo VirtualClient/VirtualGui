@@ -13,7 +13,7 @@ import gg.virtualclient.virtualgui.events.UIClickEvent
 import gg.virtualclient.virtualgui.events.UIScrollEvent
 import gg.virtualclient.virtualgui.font.FontProvider
 import gg.virtualclient.virtualgui.scale.WindowScaler
-import gg.essential.elementa.state.v2.ReferenceHolder
+import gg.virtualclient.virtualgui.state.v2.ReferenceHolder
 import gg.virtualclient.virtualgui.utils.*
 import gg.virtualclient.virtualgui.utils.requireMainThread
 import gg.virtualclient.virtualgui.utils.requireState
