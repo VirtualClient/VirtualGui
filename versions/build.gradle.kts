@@ -36,7 +36,7 @@ dependencies {
 //    modApi(libs.versions.universalcraft.map { "gg.essential:universalcraft-$platform:$it" }) {
 //        exclude(group = "org.jetbrains.kotlin")
 //    }
-    modApi("gg.virtualclient:virtualminecraft:1.0.4-${platform.mcVersion}-SNAPSHOT") {
+    modApi("gg.virtualclient:virtualminecraft:1.0.5-${platform.mcVersion}-SNAPSHOT") {
         exclude(group = "org.jetbrains.kotlin")
     }
 
@@ -70,11 +70,11 @@ dependencies {
     }
 }
 
-//tasks.processResources {
-//    filesMatching(listOf("fabric.mod.json")) {
-//        filter { it.replace("\"com.example.examplemod.ExampleMod\"", "") }
-//    }
-//}
+tasks.processResources {
+    filesMatching(listOf("fabric.mod.json")) {
+        filter { it.replace("\"com.example.examplemod.ExampleMod\"", "") }
+    }
+}
 
 tasks.dokkaHtml {
     moduleName.set("Elementa $name")
